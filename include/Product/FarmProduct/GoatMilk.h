@@ -26,6 +26,13 @@ class GoatMilk : public FarmProduct{
      * 
      */
     GoatMilk();
+
+    /**
+     * @brief mengembalikan lambang untuk GoatMilk
+     * 
+     * @return lambang yang ditampilkan untuk GoatMilk
+     */
+    std::string render();
     
   private:
 

@@ -27,6 +27,13 @@ class DuckEgg : public FarmProduct{
      */
     DuckEgg();
 
+    /**
+     * @brief mengembalikan lambang untuk DuckEgg
+     * 
+     * @return lambang yang ditampilkan untuk DuckEgg
+     */
+    std::string render();
+
 };
 
 #endif

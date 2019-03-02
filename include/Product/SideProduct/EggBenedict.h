@@ -36,9 +36,16 @@ class EggBenedict : public SideProduct{
     /**
      * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat EggBenedict
      * 
-     * @return LinkedList<Product> resep dari EggBenedict
+     * @return LinkedList<std::shared_ptr<Product>> resep dari EggBenedict
      */
-    LinkedList<Product> getRecipe();
+    LinkedList<std::shared_ptr<Product>> getRecipe();
+
+    /**
+     * @brief mengembalikan lambang untuk EggBenedict
+     * 
+     * @return lambang yang ditampilkan untuk EggBenedict
+     */
+    std::string render();
 
   private:
 

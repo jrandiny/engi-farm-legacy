@@ -7,16 +7,22 @@ Cow::Cow(int type):FarmAnimal(5,type){
     eatStatus=false;
 }
 
-String Cow::speak(){
+std::string Cow::speak(){
     return "Moooooooo..!";
 }
 
-FarmProduct Cow::getProduct(){
-    if (habitat.getType()==1){
-        CowMeat res;
+std::shared_ptr<Product> Cow::getProduct(){
+    if (habitat==1){
+        std::shared_ptr<Product> res = std::shared_ptr<Product>(new CowMeat());
         return res;
-    }else if(habitat.getType()==2){
-        CowMilk res;
+    }else if(habitat==2){
+        std::shared_ptr<Product> res = std::shared_ptr<Product>(new CowMilk());
         return res;
+    }else{
+        throw std::runtime_error("Ga mungkin bang");
     }
+}
+
+std::string Cow::render(){
+    return "O";
 }

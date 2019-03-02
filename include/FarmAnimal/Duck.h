@@ -15,7 +15,7 @@
  * Kelas turunan FarmAnimal
  * Menghasilkan DuckEgg
  */
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/DuckEgg.h>
 
 class Duck : public FarmAnimal{
@@ -30,13 +30,19 @@ class Duck : public FarmAnimal{
          * 
          * @return String suara Duck
          */
-        String speak();
+        std::string speak();
         /**
          * @brief mendapatkan produk oleh Duck
          * 
          * @return DuckEgg
          */
-        FarmProduct getProduct();   
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Duck
+         * 
+         * @return lambang yang ditampilkan untuk Duck 
+         */
+        std::string render();
 };
 
 #endif

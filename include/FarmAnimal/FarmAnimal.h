@@ -9,10 +9,9 @@
 #ifndef FARMANIMAL_H
 #define FARMANIMAL_H
 
-#include <Product/FarmProduct.h>
+#include <Product/Product.h>
 #include <Renderable.h>
-#include <Cell/Land.h>
-#include <string>
+#include <memory>
 
 /**
  * @brief Kelas abstrak FarmAnimal
@@ -28,7 +27,7 @@ class FarmAnimal : public Renderable{
          * 
          * @param time Waktu hingga lapar animal
          */
-        FarmAnimal(int time);
+        FarmAnimal(int time,int type);
 
         /**
          * @brief Menggerakan posisi secara random
@@ -39,15 +38,15 @@ class FarmAnimal : public Renderable{
         /**
          * @brief Fungsi virtual untuk mendapatkan produk binatang
          * 
-         * @return FarmProduct Produk dari binatang
+         * @return Product Produk dari binatang
          */
-        virtual FarmProduct getProduct()=0;
+        virtual std::shared_ptr<Product> getProduct()=0;
 
         /**
          * @brief Fungsi virtual untuk bicara hewan
          * 
          */
-        virtual void speak()=0;
+        virtual std::string speak()=0;
 
         /**
          * @brief Mengatur status makan binatang
@@ -72,7 +71,7 @@ class FarmAnimal : public Renderable{
         const int timeToHungry;
         int posX,posY;
         bool eatStatus;
-        const Land habitat;
+        const int habitat;
 
 };
 

@@ -9,7 +9,7 @@
 #ifndef GOAT_H
 #define GOAT_H
 
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/GoatMilk.h>
 #include <Product/FarmProduct/GoatMeat.h>
 
@@ -33,14 +33,20 @@ class Goat : public FarmAnimal{
          * 
          * @return String suara Goat 
          */
-        String speak();
+        std::string speak();
         /**
          * @brief mendapatkan produk oleh Goat
          * 
          * @return GoatMilk jika habitat berada di GrassLand
          * @return GoatMeat jika habitat berada di Barn 
          */
-        FarmProduct getProduct();
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Goat
+         * 
+         * @return lambang yang ditampilkan untuk Goat 
+         */
+        std::string render();
 };
 
 #endif

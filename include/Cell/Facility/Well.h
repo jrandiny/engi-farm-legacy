@@ -1,6 +1,6 @@
 /**
  * @file Well.h
- * @author Backend K3
+ * @author Back End K3
  * @brief File definisi kelas Well
  * @version 0.1
  * @date 2019-03-01
@@ -25,6 +25,12 @@ class Well:public Facility{
          * @param _y Lokasi Y
          */
         Well(int _x, int _y);
+        /**
+         * @brief mengembalikan lambang untuk Well
+         * 
+         * @return lambang yang ditampilkan untuk Well 
+         */
+        std::string render();
 };
 
 #endif

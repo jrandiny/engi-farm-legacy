@@ -18,7 +18,7 @@
  * Kelas ini adalah parent dari semua kelas yang merupakan product
  * Product adalah barang yang dihasilkan oleh animal yang memiliki nilai jual
  */
-class Product : public Renderable{
+class Product: public Renderable{
 
   public:
     /**

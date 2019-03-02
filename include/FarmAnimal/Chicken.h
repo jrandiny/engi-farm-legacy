@@ -9,7 +9,7 @@
 #ifndef CHICKEN_H
 #define CHICKEN_H
 
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/ChickenEgg.h>
 
 /**
@@ -32,13 +32,19 @@ class Chicken : public FarmAnimal{
          * 
          * @return String suara Chicken
          */
-        String speak();
+        std::string speak();
         /**
          * @brief mendapatkan produk oleh Chicken
          * 
          * @return ChickenEgg
          */
-        FarmProduct getProduct();
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Chicken
+         * 
+         * @return lambang yang ditampilkan untuk Chicken 
+         */
+        std::string render();
 };
 
 #endif

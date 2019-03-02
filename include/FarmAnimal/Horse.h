@@ -9,7 +9,7 @@
 #ifndef HORSE_H
 #define HORSE_H
 
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/HorseMeat.h>
 
 /**
@@ -32,13 +32,19 @@ class Horse : public FarmAnimal{
          * 
          * @return suara Horse 
          */
-        String speak();
+        std::string speak();
         /**
          * @brief mendapatkan produk oleh Horse
          * 
          * @return HorseMeat
          */
-        FarmProduct getProduct();
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Horse
+         * 
+         * @return lambang yang ditampilkan untuk Horse 
+         */
+        std::string render();
 };
 
 #endif

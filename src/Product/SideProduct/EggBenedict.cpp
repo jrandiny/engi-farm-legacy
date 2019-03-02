@@ -1,12 +1,16 @@
 #include <Product/SideProduct/EggBenedict.h>
 
 EggBenedict::EggBenedict(){
-    recipe.addFirst(DuckEgg());
-    recipe.addFirst(RabbitMeat());
-    recipe.addFirst(GoatMilk());
+    recipe.addFirst(std::shared_ptr<Product>(new DuckEgg()));
+    recipe.addFirst(std::shared_ptr<Product>(new RabbitMeat()));
+    recipe.addFirst(std::shared_ptr<Product>(new GoatMilk()));
 }
 
 
-LinkedList<Product> EggBenedict::getRecipe(){
+LinkedList<std::shared_ptr<Product>> EggBenedict::getRecipe(){
     return recipe; //belum diimplementasikan    
+}
+
+std::string EggBenedict::render(){
+    return "Egg Benedict";
 }

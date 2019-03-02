@@ -9,6 +9,8 @@
 #ifndef RENDERABLE_H
 #define RENDERABLE_H
 
+#include <string>
+
 /**
  * @brief kelas abstrak Renderable
  * @class Renderable Renderable.h <Renderable.h>
@@ -24,7 +26,7 @@ class Renderable{
          * 
          * @return char character object turunannya
          */
-        virtual char render() =0;
+        virtual std::string render() = 0;
 };
 
 #endif

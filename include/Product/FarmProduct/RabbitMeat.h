@@ -27,6 +27,13 @@ class RabbitMeat : public FarmProduct{
      */
     RabbitMeat();
 
+    /**
+     * @brief mengembalikan lambang untuk RabbitMeat
+     * 
+     * @return lambang yang ditampilkan untuk RabbitMeat
+     */
+    std::string render();
+
 };
 
 #endif

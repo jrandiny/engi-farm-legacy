@@ -27,6 +27,13 @@ class CowMilk : public FarmProduct{
      */
     CowMilk();
 
+    /**
+     * @brief mengembalikan lambang untuk CowMilk
+     * 
+     * @return lambang yang ditampilkan untuk CowMilk
+     */
+    std::string render();
+
 };
 
 #endif

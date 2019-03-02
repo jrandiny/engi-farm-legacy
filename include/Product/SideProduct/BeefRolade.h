@@ -34,9 +34,16 @@ class BeefRolade : public SideProduct{
     /**
      * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat BeefRolade
      * 
-     * @return LinkedList<Product> resep dari BeefRolade
+     * @return LinkedList<std::shared_ptr<Product>> resep dari BeefRolade
      */
-    LinkedList<Product> getRecipe();
+    LinkedList<std::shared_ptr<Product>> getRecipe();
+
+    /**
+     * @brief mengembalikan lambang untuk BeefRolade
+     * 
+     * @return lambang yang ditampilkan untuk BeefRolade
+     */
+    std::string render();
 
   private:
 

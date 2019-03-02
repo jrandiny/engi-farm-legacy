@@ -27,6 +27,13 @@ class HorseMeat : public FarmProduct{
      */
     HorseMeat();
 
+    /**
+     * @brief mengembalikan lambang untuk HorseMeat
+     * 
+     * @return lambang yang ditampilkan untuk HorseMeat
+     */
+    std::string render();
+
   private:
 
 };

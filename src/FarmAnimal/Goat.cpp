@@ -1,22 +1,28 @@
 #include <FarmAnimal/Goat.h>
 #include <iostream>
 
-Goat::Goat(int type):FarmAnimal(5),habitat(0,0,type){
+Goat::Goat(int type):FarmAnimal(5,type){
     posX=0;
     posY=0;
     eatStatus=false;
 }
 
-String Goat::speak(){
+std::string Goat::speak(){
     return "Blet blet..!";
 }
 
-FarmProduct Goat::getProduct(){
-    if (habitat.getType()==1){
-        GoatMeat res;
+std::shared_ptr<Product> Goat::getProduct(){
+    if (habitat==1){
+        std::shared_ptr<Product> res = std::shared_ptr<Product>(new GoatMeat());
         return res;
-    }else if(habitat.getType()==2){
-        GoatMilk res;
+    }else if(habitat==2){
+        std::shared_ptr<Product> res = std::shared_ptr<Product>(new GoatMilk());
         return res;
+    }else{
+        throw std::runtime_error("Ga mungkin bang");
     }
+}
+
+std::string Goat::render(){
+    return "G";
 }

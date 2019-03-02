@@ -26,6 +26,12 @@ class GoatMeat : public FarmProduct{
      */
     GoatMeat();
     
+    /**
+     * @brief mengembalikan lambang untuk GoatMeat
+     * 
+     * @return lambang yang ditampilkan untuk GoatMeat
+     */
+    std::string render();
 };
 
 #endif

@@ -9,7 +9,7 @@
 #ifndef COW_H
 #define COW_H
 
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/CowMeat.h>
 #include <Product/FarmProduct/CowMilk.h>
 
@@ -35,7 +35,7 @@ class Cow : public FarmAnimal{
          * 
          * @return String suara Cow
          */
-        String speak();
+        std::string speak();
 
         /**
          * @brief mendapatkan produk oleh Cow
@@ -43,7 +43,13 @@ class Cow : public FarmAnimal{
          * @return CowMilk jika habitat berada di GrassLand
          * @return CowMeat jika habitat berada di Barn 
          */
-        FarmProduct getProduct();
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Cow
+         * 
+         * @return lambang yang ditampilkan untuk Cow 
+         */
+        std::string render();
 };
 
 #endif

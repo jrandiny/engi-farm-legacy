@@ -19,17 +19,23 @@
 #include <Cell/Facility/Well.h>
 #include <Cell/Facility/Truck.h>
 #include <Cell/Land.h>
+#include <memory>
+
 /**
  * @brief Kelas riil Player
  * @class Player Player.h <Player.h>
  * 
  * Player adalah objek yang digunakan pemain sebagai karakter utama
  */
-class Player{
+class Player: public Renderable{
+    class Resep{
+        public:
+            static std::shared_ptr<SideProduct> getRecipe(std::string name);
+    };
     private:
         const int MAX_WATER = 50;// maximum jumlah air yang bisa ditampung
         const int MAX_ITEM_BAG = 10; // maximum product yang bisa ditampung di tas
-        LinkedList<Product> bag; // tas dari player
+        LinkedList<std::shared_ptr<Product>> bag; // tas dari player
         // const LinkedList<SideProduct> recipe; // daftar resep side product
         int water; // jumlah air saat ini
         int money; // jumlah uang saat ini
@@ -50,18 +56,19 @@ class Player{
          * @param posY Lokasi Y
          */
         Player(int water, int money, int posX, int posY);
-        /**
-         * @brief Destruktor Player
-         * 
-         */
-        ~Player();
+        // /**
+        //  * @brief Destruktor Player
+        //  * 
+        //  */
+        // ~Player();
 
         /**
          * @brief getter untuk data bag
          * 
          * @return list produk isi dari tas
          */
-        LinkedList<Product> getBag();
+        LinkedList<std::shared_ptr<Product>> getBag();
+
         /**
          * @brief getter untuk data water
          * 
@@ -103,7 +110,7 @@ class Player{
          * 
          * @param hewan hewan yang diajak berbicara
          */
-        void talk(FarmAnimal& hewan);
+        std::string talk(FarmAnimal& hewan);
         // berinteraksi dengan FarmAnimal atau Facility
         /**
          * @brief berinteraksi dengan FarmAnimal
@@ -121,7 +128,7 @@ class Player{
          * 
          * @param w objek well yang diambil sumurnya
          */
-        void interact(Well w);
+        void interact(Well);
         /**
          * @brief berinteraksi dengan Fasilitas (Truck)
          * 
@@ -130,7 +137,7 @@ class Player{
          * 
          * @param t truck yang akan digunakan untuk menjual produk
          */
-        void interact(Truck t);
+        void interact(Truck);
         /**
          * @brief membunuh hewan untuk diambil dagingnya
          * 
@@ -145,15 +152,21 @@ class Player{
          * 
          * @param l land yang akan disiram
          */
-        void grow(Land l);
+        void grow(Land& l);
         /**
          * @brief membuat SideProduct
          * 
          * digunakan pada mixer dan menghasilkan SideProduct
          * 
-         * @param sp SideProduct yang ingin dibuat
+         * @param nama nama SideProduct yang ingin dibuat
          */
-        void mix(SideProduct& sp);
+        void mix(std::string nama);
+        /**
+         * @brief mengembalikan lambang player
+         * 
+         * @return char lambang yang ditampilkan untuk Player
+         */
+        std::string render();
 };
 
 #endif

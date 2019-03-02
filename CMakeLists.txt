@@ -14,12 +14,22 @@ include_directories(include)
 
 file(GLOB_RECURSE ENGI_FARM_SOURCE "src/*.cpp")
 
-add_executable(tester
+add_executable(testerList
   ${ENGI_FARM_SOURCE}
-  test/mainlist.cpp
+  test/testList.cpp
 )
 
-add_executable(testercb
+add_executable(testerCB
   ${ENGI_FARM_SOURCE}
-  test/testConceptCb.cpp
+  test/testCB.cpp
+)
+
+add_executable(testerAnimal
+  ${ENGI_FARM_SOURCE}
+  test/testAnimal.cpp
+)
+
+add_executable(testerPlayer
+  ${ENGI_FARM_SOURCE}
+  test/testPlayer.cpp
 )

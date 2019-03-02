@@ -1,11 +1,15 @@
 #include <Product/SideProduct/Meatza.h>
 
 Meatza::Meatza(){
-    recipe.addFirst(GoatMeat());
-    recipe.addFirst(HorseMeat());
-    recipe.addFirst(RabbitMeat());
+    recipe.addFirst(std::shared_ptr<Product>(new GoatMeat()));
+    recipe.addFirst(std::shared_ptr<Product>(new HorseMeat()));
+    recipe.addFirst(std::shared_ptr<Product>(new RabbitMeat()));
 }
 
-LinkedList<Product> Meatza::getRecipe(){
+LinkedList<std::shared_ptr<Product>> Meatza::getRecipe(){
     return recipe; //belum diimplementasikan    
+}
+
+std::string Meatza::render(){
+    return "Meatza";
 }

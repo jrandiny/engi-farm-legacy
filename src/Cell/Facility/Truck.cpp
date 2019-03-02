@@ -9,3 +9,7 @@ void Truck::callback(){
     usable = true;
     deactivateTimer();
 }
+
+std::string Truck::render(){
+    return "D";
+}

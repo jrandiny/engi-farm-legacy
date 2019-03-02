@@ -9,7 +9,7 @@
 #ifndef RABBIT_H
 #define RABBIT_H
 
-#include <FarmAnimal.h>
+#include <FarmAnimal/FarmAnimal.h>
 #include <Product/FarmProduct/RabbitMeat.h>
 
 /**
@@ -31,13 +31,19 @@ class Rabbit : public FarmAnimal{
          * 
          * @return String suara Goat 
          */
-        String speak();
+        std::string speak();
         /**
          * @brief mendapatkan produk oleh Rabbit
          * 
          * @return RabbitMeat 
          */
-        FarmProduct getProduct();
+        std::shared_ptr<Product> getProduct();
+        /**
+         * @brief mengembalikan lambang untuk Rabbit
+         * 
+         * @return lambang yang ditampilkan untuk Rabbit 
+         */
+        std::string render();
 };
 
 #endif

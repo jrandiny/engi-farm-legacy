@@ -21,13 +21,19 @@
 class ChickenEgg : public FarmProduct{
   public:
     /**
-     * @brief constructor object ChickenEgg
+     * @brief Konstruktor objek ChickenEgg
      * 
      */
     ChickenEgg();
 
-  private:
+    /**
+     * @brief mengembalikan lambang untuk ChickenEgg
+     * 
+     * @return lambang yang ditampilkan untuk ChickenEgg
+     */
+    std::string render();
 
+  private:
 };
 
 #endif

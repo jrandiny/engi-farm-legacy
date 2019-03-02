@@ -18,6 +18,18 @@
  */
 class Mixer:public Facility{
     public:
+        /**
+         * @brief Konstruktor tipe Mixer berparameter
+         * 
+         * @param _x Lokasi X
+         * @param _y Lokasi Y
+         */
         Mixer(int _x, int _y);
+        /**
+         * @brief mengembalikan lambang untuk Mixer
+         * 
+         * @return lambang yang ditampilkan untuk Mixer 
+         */
+        std::string render();
 };
 #endif

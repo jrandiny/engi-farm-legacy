@@ -27,6 +27,12 @@ class Truck:public Facility, public SimulationObject{
          * @param _y Lokasi Y
          */
         Truck(int _x, int _y);
+        /**
+         * @brief mengembalikan lambang untuk Mixer
+         * 
+         * @return lambang yang ditampilkan untuk Mixer 
+         */
+        std::string render();
     private:
         void callback();
 };

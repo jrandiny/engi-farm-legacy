@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-/**
+/** 
  * @brief Kelas abstrak LinkedList
  * @class LinkedList LinkedList.h <LinkedList.h>
  * 
@@ -102,7 +102,8 @@ class LinkedList{
          */
         LinkedList(const LinkedList& in){
             Node* temp = in.getFirst();
-            while(temp!=nullptr){
+
+            for(int i =0;i<in.getNeff();i++){
                 addFirst(temp->getInfo());
                 temp = temp->getNext();
             }
@@ -123,20 +124,16 @@ class LinkedList{
 
             temp = head;
 
-            if(temp!=nullptr){
-                next = head->getNext();
-
-                while(next!=nullptr){
-                    delete temp;
-                    temp = next;
-                    next = temp->getNext();
-                }
-
+            for(int i=0;i<neff;i++){
+                next = temp->getNext();
                 delete temp;
+                temp = next;
             }
 
             temp = in.getFirst();
-            while(temp!=nullptr){
+
+
+            for(int i=0;i<in.neff;i++){
                 addFirst(temp->getInfo());
                 temp = temp->getNext();
             }
@@ -155,16 +152,10 @@ class LinkedList{
 
             temp = head;
 
-            if(temp!=nullptr){
-                next = head->getNext();
-
-                while(next!=nullptr){
-                    delete temp;
-                    temp = next;
-                    next = temp->getNext();
-                }
-
+            for(int i=0;i<neff;i++){
+                next = temp->getNext();
                 delete temp;
+                temp = next;
             }
         }
 

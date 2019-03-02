@@ -1,17 +1,21 @@
 #include <FarmAnimal/Duck.h>
 #include <iostream>
 
-Duck::Duck():FarmAnimal(5),habitat(0,0,0){
+Duck::Duck():FarmAnimal(5,0){
     posX=0;
     posY=0;
     eatStatus=false;
 }
 
-String Duck::speak(){
+std::string Duck::speak(){
     return "Quack quack..!";
 }
 
-FarmProduct Duck::getProduct(){
-    DuckEgg res;
+std::shared_ptr<Product> Duck::getProduct(){
+    std::shared_ptr<Product> res = std::shared_ptr<Product>(new DuckEgg());
     return res;
+}
+
+std::string Duck::render(){
+    return "D";
 }

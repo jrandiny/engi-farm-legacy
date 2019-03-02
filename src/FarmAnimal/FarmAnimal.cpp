@@ -5,7 +5,7 @@
  * 
  * @param time Waktu hingga lapar
  */
-FarmAnimal::FarmAnimal(int time,int type):timeToHungry(time),habitat(0,0,type){
+FarmAnimal::FarmAnimal(int time,int type):timeToHungry(time),habitat(type){
 }
 
 void FarmAnimal::setEatStatus(bool newStatus){
@@ -21,5 +21,5 @@ void FarmAnimal::moveRandom(){
 }
 
 int FarmAnimal::getHabitat(){
-    return habitat.getType();
+    return habitat;
 }

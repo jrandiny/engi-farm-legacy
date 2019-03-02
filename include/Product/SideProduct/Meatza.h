@@ -33,9 +33,16 @@ class Meatza : public SideProduct{
     /**
      * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat Meatza
      * 
-     * @return LinkedList<Product> resep dari Meatza
+     * @return LinkedList<std::shared_ptr<Product>> resep dari Meatza
      */
-    LinkedList<Product> getRecipe();
+    LinkedList<std::shared_ptr<Product>> getRecipe();
+
+    /**
+     * @brief mengembalikan lambang untuk Meatza
+     * 
+     * @return lambang yang ditampilkan untuk Meatza
+     */
+    std::string render();
 
   private:
 

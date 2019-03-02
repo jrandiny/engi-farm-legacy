@@ -11,6 +11,7 @@
 
 #include <Product/Product.h>
 #include <LinkedList.h>
+#include <memory>
 
 /**
  * @brief kelas abstrak SideProduct
@@ -32,14 +33,14 @@ class SideProduct : public Product{
      * 
      * @return LinkedList Product
      */
-    virtual LinkedList<Product> getRecipe() = 0;
+    virtual LinkedList<std::shared_ptr<Product>> getRecipe() = 0;
 
   protected:
     /**
      * @brief atribut kelas SideProduct berupa linkedlist product bahan untuk membuat SideProduct
      * 
      */
-    LinkedList<Product> recipe;
+    LinkedList<std::shared_ptr<Product>> recipe;
 };
 
 #endif
