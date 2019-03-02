@@ -1,7 +1,11 @@
-#include "linkedList.h"
+#include <LinkedList.h>
 // #include "test.h"
+
+#include <iostream>
+using namespace std;
+
 int main(){
-  linkedList<int> list;
+  LinkedList<int> list;
   int pilihan=1;
   int input;
   while (pilihan != 0){
@@ -20,11 +24,11 @@ int main(){
     cin>>pilihan;
     switch (pilihan) {
       case 1:
-        if(list.getFirst()!=nullptr){
-          cout<<"Info First: "<<list.getFirst()->getInfo()<<endl;
-        } else {
-          cout<<"null"<<endl;
-        }
+        // if(list.getFirst()!=nullptr){
+          // cout<<"Info First: "<<list.getFirst()->getInfo()<<endl;
+        // } else {
+          // cout<<"null"<<endl;
+        // }
         break;
       case 2:
         cout<<list.getNeff()<<endl;
@@ -46,7 +50,7 @@ int main(){
         cout<<"Element: ";
         cin>>input;
         input = list.find(input);
-        if(input!=IdxUndeff){
+        if(input!=list.idxUndeff){
           cout<<"Element found at index "<<input<<endl;
         } else {
           cout<<"Can't find element"<<endl;
@@ -55,13 +59,13 @@ int main(){
       case 7:
         cout<<"Element: ";
         cin>>input;
-        list.add(input);
+        list.addLast(input);
         cout<<"Element added at last index"<<endl;
         break;
       case 8:
         cout<<"Element which want to be removed: ";
         cin>>input;
-        if(list.find(input)!=IdxUndeff){
+        if(list.find(input)!=list.idxUndeff){
           list.remove(input);
           cout<<"Element removed"<<endl;
         } else {

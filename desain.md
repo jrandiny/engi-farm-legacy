@@ -117,6 +117,6 @@ Membuang elemen dari linked list
 Mengembalikan elemen pada indeks
 
 # Spesifikasi
-Untuk tugas ini buat setidaknya ​ 6 ​ (enam) kelas riil ​ FarmAnimal​ , ​ 6 ​ (enam) kelas riil
-FarmProduct​ , dan ​ 3​ (tiga) kelas riil SideProduct​ (total 15 kelas)
-
+- Untuk tugas ini buat setidaknya ​ 6 ​ (enam) kelas riil ​ FarmAnimal​ , ​ 6 ​ (enam) kelas riil FarmProduct​ , dan ​ 3​ (tiga) kelas riil SideProduct​ (total 15 kelas)
+- Truck tidak bisa dipakai untuk beberapa saat setelah interact dengan truck 
+- permainan berakhir saat semua hewan mati
