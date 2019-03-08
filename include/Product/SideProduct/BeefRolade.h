@@ -1,13 +1,11 @@
 /**
  * @file BeefRolade.h
  * @author Back End K3
- * @brief File berisi definisi kelas BeefRolade
+ * @brief File berisi definisi class BeefRolade
  * @version 0.1
  * @date 2019-03-01
- * 
- * @copyright Copyright (c) 2019
- * 
  */
+
 #ifndef BEEFROLADE_H
 #define BEEFROLADE_H
 
@@ -17,31 +15,31 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil BeefRolade
+ * @brief Kelas riil turunan SideProduct
  * @class BeefRolade BeefRolade.h <Product/FarmProduct/BeefRolade.h>
  * 
- * Kelas ini adalah turunan dari SideProduct
+ * Kelas ini adalah turunan dari SideProduct\n
  * BeefRolade dapat dibuat dari CowMeat dan ChickenEgg dari FarmProduct
  */
 class BeefRolade : public SideProduct{
   public:
     /**
-     * @brief constructor object BeefRolade
+     * @brief Konstruktor kelas BeefRolade
      * 
      */
     BeefRolade();
 
     /**
-     * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat BeefRolade
+     * @brief Mengembalikan linkedlist product bahan membuat BeefRolade
      * 
-     * @return LinkedList<std::shared_ptr<Product>> resep dari BeefRolade
+     * @return LinkedList bahan-bahan untuk membuat BeefRolade
      */
     LinkedList<std::shared_ptr<Product>> getRecipe();
 
     /**
-     * @brief mengembalikan lambang untuk BeefRolade
+     * @brief Mengembalikan lambang untuk BeefRolade
      * 
-     * @return lambang yang ditampilkan untuk BeefRolade
+     * @return Lambang yang ditampilkan untuk BeefRolade
      */
     std::string render();
 

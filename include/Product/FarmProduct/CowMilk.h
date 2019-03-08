@@ -1,7 +1,7 @@
 /**
  * @file CowMilk.h
  * @author Back End K3
- * @brief file beisi definisi kelas CowMilk
+ * @brief File beisi definisi class CowMilk
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,24 +13,24 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil CowMilk
+ * @brief Kelas riil turunan FarmProduct
  * @class CowMilk CowMilk.h <Product/FarmProduct/CowMilk.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * CowMilk adalah product yang dihasilkan dari object animal Cow
  */
 class CowMilk : public FarmProduct{
   public:
     /**
-     * @brief constructor object CowMilk
+     * @brief Konstruktor kelas CowMilk
      * 
      */
     CowMilk();
 
     /**
-     * @brief mengembalikan lambang untuk CowMilk
+     * @brief Mengembalikan lambang untuk CowMilk
      * 
-     * @return lambang yang ditampilkan untuk CowMilk
+     * @return Lambang yang ditampilkan untuk CowMilk
      */
     std::string render();
 

@@ -1,7 +1,7 @@
 /**
  * @file FarmAnimal.h
  * @author Back End K3
- * @brief File berisi definisi kelas FarmAnimal
+ * @brief File berisi definisi class FarmAnimal
  * @version 0.1
  * @date 2019-03-01
  */
@@ -11,19 +11,20 @@
 
 #include <Product/Product.h>
 #include <Renderable.h>
+#include <SimulationObject.h>
 #include <memory>
 
 /**
- * @brief Kelas abstrak FarmAnimal
+ * @brief Kelas abstrak turunan Renderable dan SimulationObject
  * @class FarmAnimal FarmAnimal.h <FarmAnimal/FarmAnimal.h>
  * 
- * Kelas ini adalah parent dari semua kelas yang merupakan FarmAnimal
+ * Kelas ini adalah parent dari semua kelas yang merupakan FarmAnimal\n
  * FarmAnimal adalah hewan yang dapat menghasilkan product
  */
-class FarmAnimal : public Renderable{
+class FarmAnimal : public Renderable, public SimulationObject{
     public:
         /**
-         * @brief Konstruktor class FarmAnimal
+         * @brief Konstruktor kelas FarmAnimal
          * 
          * @param time Waktu hingga lapar animal
          */
@@ -38,7 +39,7 @@ class FarmAnimal : public Renderable{
         /**
          * @brief Fungsi virtual untuk mendapatkan produk binatang
          * 
-         * @return Product Produk dari binatang
+         * @return Product produk dari binatang
          */
         virtual std::shared_ptr<Product> getProduct()=0;
 
@@ -57,7 +58,7 @@ class FarmAnimal : public Renderable{
         /**
          * @brief Mengambil status makan binatang
          * 
-         * @return Status makan
+         * @return Status sudah makan
          */
         bool getEatStatus();
 

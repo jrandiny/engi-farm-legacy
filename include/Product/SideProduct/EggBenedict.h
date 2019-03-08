@@ -1,12 +1,9 @@
 /**
  * @file EggBenedict.h
  * @author Back End K3
- * @brief file berisi definisi kelas EggBenedict
+ * @brief File berisi definisi class EggBenedict
  * @version 0.1
  * @date 2019-03-01
- * 
- * @copyright Copyright (c) 2019
- * 
  */
 
 #ifndef EGGBENEDICT_H
@@ -19,31 +16,31 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil EggBenedict
+ * @brief Kelas riil turunan SideProduct
  * @class EggBenedict EggBenedict.h <Product/SideProduct/EggBenedict.h>
  * 
- * Kelas ini adalah turunan dari kelas SideProduct
+ * Kelas ini adalah turunan dari kelas SideProduct\n
  * EggBenedict dapat dibuat dari DuckEgg, RabbitMeat, dan GoatMilk dari FarmProduct
  */
 class EggBenedict : public SideProduct{
   public:
     /**
-     * @brief constructor object EggBendict
+     * @brief Konstruktor kelas EggBendict
      * 
      */
     EggBenedict();
 
     /**
-     * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat EggBenedict
+     * @brief Mengembalikan linkedlist product bahan membuat EggBenedict
      * 
-     * @return LinkedList<std::shared_ptr<Product>> resep dari EggBenedict
+     * @return LinkedList bahan-bahan untuk membuat EggBenedict
      */
     LinkedList<std::shared_ptr<Product>> getRecipe();
 
     /**
-     * @brief mengembalikan lambang untuk EggBenedict
+     * @brief Mengembalikan lambang untuk EggBenedict
      * 
-     * @return lambang yang ditampilkan untuk EggBenedict
+     * @return Lambang yang ditampilkan untuk EggBenedict
      */
     std::string render();
 

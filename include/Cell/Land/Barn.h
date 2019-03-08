@@ -1,7 +1,7 @@
 /**
  * @file Barn.h
  * @author Back End K3
- * @brief File berisi definisi kelas Barn
+ * @brief File berisi definisi class Barn
  * @version 0.1
  * @date 2019-03-02
  */
@@ -12,15 +12,15 @@
 #include <Cell/Land.h>
 
 /**
- * @brief Kelas riil Barn
+ * @brief Kelas riil turunan Land
  * 
- * Kelas untuk salah satu tipe Land yaitu Barn
+ * Kelas untuk salah satu tipe Land yaitu Barn\n
  * Tipe Land ini dapat ditinggali binatang yang menghasilkan daging
  */
 class Barn:public Land{
     public:
         /**
-         * @brief Konstruktor objek Barn
+         * @brief Konstruktor kelas Barn
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
@@ -28,9 +28,9 @@ class Barn:public Land{
         Barn(int _x, int _y);
 
         /**
-         * @brief mengembalikan lambang untuk Barn
+         * @brief Mengembalikan lambang untuk Barn
          * 
-         * @return lambang yang ditampilkan untuk Barn
+         * @return Lambang yang ditampilkan untuk Barn
          */
         std::string render();
 };

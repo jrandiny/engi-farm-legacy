@@ -1,7 +1,7 @@
 /**
  * @file Duck.h
  * @author Back End K3
- * @brief File berisi definisi kelas Duck
+ * @brief File berisi definisi class Duck
  * @version 0.1
  * @date 2019-03-01
  */
@@ -9,10 +9,10 @@
 #define DUCK_H
 
 /**
- * @brief Kelas riil Duck
+ * @brief Kelas riil turunan FarmAnimal
  * @class Duck Duck.h <FarmAnimal/Duck.h>
  * 
- * Kelas turunan FarmAnimal
+ * Kelas turunan FarmAnimal\n
  * Menghasilkan DuckEgg
  */
 #include <FarmAnimal/FarmAnimal.h>
@@ -21,26 +21,26 @@
 class Duck : public FarmAnimal{
     public:
         /**
-         * @brief konstruktor objek Duck
+         * @brief Konstruktor kelas Duck
          * 
          */
         Duck();
         /**
-         * @brief mengembalikan suara Duck
+         * @brief Mengembalikan suara Duck
          * 
          * @return String suara Duck
          */
         std::string speak();
         /**
-         * @brief mendapatkan produk oleh Duck
+         * @brief Mendapatkan produk oleh Duck
          * 
          * @return DuckEgg
          */
         std::shared_ptr<Product> getProduct();
         /**
-         * @brief mengembalikan lambang untuk Duck
+         * @brief Mengembalikan lambang untuk Duck
          * 
-         * @return lambang yang ditampilkan untuk Duck 
+         * @return Lambang yang ditampilkan untuk Duck 
          */
         std::string render();
 };

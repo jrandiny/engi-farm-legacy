@@ -1,7 +1,7 @@
 /**
  * @file ChickenEgg.h
  * @author Back End K3
- * @brief file berisi definisi kelas ChickenEgg
+ * @brief File berisi definisi class ChickenEgg
  * @version 0.1
  * @date 2019-03-01
  */
@@ -12,24 +12,24 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil ChickenEgg
+ * @brief Kelas riil turunan FarmProduct
  * @class ChickenEgg ChickenEgg.h <Product/FarmProduct/ChickenEgg.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * ChickenEgg adalah product yang dihasilkan oleh object animal Chicken
  */
 class ChickenEgg : public FarmProduct{
   public:
     /**
-     * @brief Konstruktor objek ChickenEgg
+     * @brief Konstruktor kelas ChickenEgg
      * 
      */
     ChickenEgg();
 
     /**
-     * @brief mengembalikan lambang untuk ChickenEgg
+     * @brief Mengembalikan lambang untuk ChickenEgg
      * 
-     * @return lambang yang ditampilkan untuk ChickenEgg
+     * @return Lambang yang ditampilkan untuk ChickenEgg
      */
     std::string render();
 

@@ -1,7 +1,7 @@
 /**
  * @file RabbitMeat.h
  * @author Back End K3
- * @brief file berisi definisi kelas RabbitMeat
+ * @brief File berisi definisi class RabbitMeat
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,24 +13,24 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil RabbitMeat
+ * @brief Kelas riil turunan FarmProduct
  * @class RabbitMeat RabbitMeath <Product/FarmProduct/RabbitMeat.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * RabbitMeat adalah product yang dihasilkan dari object animal Rabbit
  */
 class RabbitMeat : public FarmProduct{
   public:
     /**
-     * @brief Construct a new Rabbit Meat object
+     * @brief Konstruktor kelas RabbitMeat
      * 
      */
     RabbitMeat();
 
     /**
-     * @brief mengembalikan lambang untuk RabbitMeat
+     * @brief Mengembalikan lambang untuk RabbitMeat
      * 
-     * @return lambang yang ditampilkan untuk RabbitMeat
+     * @return Lambang yang ditampilkan untuk RabbitMeat
      */
     std::string render();
 

@@ -1,7 +1,7 @@
 /**
  * @file Meatza.h
  * @author Back End K3
- * @brief file berisi definisi kelas Meatza
+ * @brief File berisi definisi class Meatza
  * @version 0.1
  * @date 2019-03-01
  */
@@ -16,31 +16,31 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil Meetza
+ * @brief Kelas riil turunan SideProduct
  * @class Meatza Meatza.h <Product/SideProduct/Meatza.h>
  * 
- * Kelas ini adalah turunan dari kelas SideProduct
+ * Kelas ini adalah turunan dari kelas SideProduct\n
  * Meatza dapat dibuat dari GoatMeat, HorseMeat, RabbitMeat dari FarmProduct
  */
 class Meatza : public SideProduct{
   public:
     /**
-     * @brief constructor object Meatza
+     * @brief Konstruktor kelas Meatza
      * 
      */
     Meatza();
 
     /**
-     * @brief fungsi getRecipe yang mengembalikan linkedlist product bahan membuat Meatza
+     * @brief Mengembalikan linkedlist product bahan membuat Meatza
      * 
-     * @return LinkedList<std::shared_ptr<Product>> resep dari Meatza
+     * @return LinkedList bahan-bahan untuk membuat Meatza
      */
     LinkedList<std::shared_ptr<Product>> getRecipe();
 
     /**
-     * @brief mengembalikan lambang untuk Meatza
+     * @brief Mengembalikan lambang untuk Meatza
      * 
-     * @return lambang yang ditampilkan untuk Meatza
+     * @return Lambang yang ditampilkan untuk Meatza
      */
     std::string render();
 

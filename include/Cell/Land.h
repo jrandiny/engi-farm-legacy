@@ -1,7 +1,7 @@
 /**
  * @file Land.h
  * @author Back End K3
- * @brief File berisi definisi kelas Land
+ * @brief File berisi definisi class Land
  * @version 0.1
  * @date 2019-03-01
  */
@@ -11,7 +11,7 @@
 #include <Cell/Cell.h>
 
 /**
- * @brief Kelas Land
+ * @brief Kelas abstrak turunan Cell
  * @class Land Land.h <Cell/Land.h>
  * 
  * Kelas ini adalah untuk tiap Cell bertipe tanah tempat yang bisa dijalani
@@ -22,7 +22,7 @@
 class Land : public Cell{
     public:
         /**
-         * @brief Konstruktor class Land
+         * @brief Konstruktor kelas Land
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y

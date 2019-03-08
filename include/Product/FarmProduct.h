@@ -1,7 +1,7 @@
 /**
  * @file FarmProduct.h\
  * @author Back End K3
- * @brief file berisi definisi kelas FarmProduct
+ * @brief File berisi definisi class FarmProduct
  * @version 0.1
  * @date 2019-03-01
  */
@@ -12,16 +12,16 @@
 #include <Product/Product.h>
 
 /**
- * @brief Kelas abstrak FarmProduct
+ * @brief Kelas abstrak turunan Product
  * @class FarmProduct FarmProduct.h <Product/FarmProduct.h>
  * 
- * Kelas ini adalah parent dari semua kelas yang merupakan FarmProduct
+ * Kelas ini adalah parent dari semua kelas yang merupakan FarmProduct\n
  * FarmProduct adalah product yang dapat dihasilkan dari FarmAnimal
  */
 class FarmProduct : public Product{
   public:
   /**
-   * @brief contructor untuk objek FarmProduct
+   * @brief Konstruktor kelas FarmProduct
    * 
    */
   FarmProduct();

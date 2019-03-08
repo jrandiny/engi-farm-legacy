@@ -1,7 +1,7 @@
 /**
  * @file Chicken.h
  * @author Back End K3
- * @brief File berisi definisi Kelas Chicken
+ * @brief File berisi definisi class Chicken
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,36 +13,36 @@
 #include <Product/FarmProduct/ChickenEgg.h>
 
 /**
- * @brief Kelas riil Chicken
+ * @brief Kelas riil turunan FarmAnimal
  * @class Chicken Chicken.h <FarmAnimal/Chicken.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmAnimal
+ * Kelas ini adalah turunan dari kelas FarmAnimal\n
  * Chicken adalah animal yang dapat menghasilkan ChickenEgg
  */
 class Chicken : public FarmAnimal{
     public:
 
         /**
-         * @brief konstruktor objek Chicken
+         * @brief Konstruktor kelas Chicken
          * 
          */
         Chicken();
         /**
-         * @brief mengembalikan suara Chicken
+         * @brief Mengembalikan suara Chicken
          * 
          * @return String suara Chicken
          */
         std::string speak();
         /**
-         * @brief mendapatkan produk oleh Chicken
+         * @brief Mendapatkan produk oleh Chicken
          * 
          * @return ChickenEgg
          */
         std::shared_ptr<Product> getProduct();
         /**
-         * @brief mengembalikan lambang untuk Chicken
+         * @brief Mengembalikan lambang untuk Chicken
          * 
-         * @return lambang yang ditampilkan untuk Chicken 
+         * @return Lambang yang ditampilkan untuk Chicken 
          */
         std::string render();
 };

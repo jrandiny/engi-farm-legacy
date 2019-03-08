@@ -6,7 +6,6 @@
 #include <Product/SideProduct/EggBenedict.h>
 #include <Product/SideProduct/Meatza.h>
 #include <memory>
-// #include <iostream>
 
 std::shared_ptr<SideProduct> Player::Resep::getRecipe(std::string name){
     if (name == "EggBenedict"){
@@ -77,7 +76,6 @@ std::string Player::talk(FarmAnimal& hewan){
 
 void Player::interact(FarmAnimal& hewan){
     if (hewan.getEatStatus()){
-        // std::shared_ptr<Product> temp = hewan.getProduct();
         bag.addLast(hewan.getProduct());
     }
 }
@@ -93,7 +91,6 @@ void Player::interact(Truck){
 void Player::kill(FarmAnimal& hewan){
     
     if (hewan.getHabitat()==2){
-        // std::shared_ptr<Product> temp = hewan.getProduct();
         bag.addLast(hewan.getProduct());
     } else {
         throw std::exception();

@@ -1,7 +1,7 @@
 /**
  * @file GoatMilk.h
  * @author Back End K3
- * @brief file definisi kelas GoatMilk
+ * @brief File definisi class GoatMilk
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,7 +13,7 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil GoatMilk
+ * @brief Kelas riil turunan FarmProduct
  * @class GoatMilk GoatMilk.h <Product/FarmProduct/GoatMilk.h>
  * 
  * Kelas ini adalah turunan dari kelas FarmProduct
@@ -22,15 +22,15 @@
 class GoatMilk : public FarmProduct{
   public:
     /**
-     * @brief constructor object GoatMilk
+     * @brief Konstruktor kelas GoatMilk
      * 
      */
     GoatMilk();
 
     /**
-     * @brief mengembalikan lambang untuk GoatMilk
+     * @brief Mengembalikan lambang untuk GoatMilk
      * 
-     * @return lambang yang ditampilkan untuk GoatMilk
+     * @return Lambang yang ditampilkan untuk GoatMilk
      */
     std::string render();
     

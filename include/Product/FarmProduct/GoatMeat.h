@@ -1,7 +1,7 @@
 /**
  * @file GoatMeat.h
  * @author Back End K3
- * @brief file berisi definisi kelas GoatMeat
+ * @brief File berisi definisi class GoatMeat
  * @version 0.1
  * @date 2019-03-01
  */
@@ -12,24 +12,24 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil GoatMeat
+ * @brief Kelas riil turunan FarmProduct
  * @class GoatMeat GoatMeat.h <Product/FarmProduct/GoatMeat.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * GoatMeat adalah product yang dihasilkan dari object animal Goat
  */
 class GoatMeat : public FarmProduct{
   public:
     /**
-     * @brief constructor object GoatMeat
+     * @brief Konstruktor kelas GoatMeat
      * 
      */
     GoatMeat();
     
     /**
-     * @brief mengembalikan lambang untuk GoatMeat
+     * @brief Mengembalikan lambang untuk GoatMeat
      * 
-     * @return lambang yang ditampilkan untuk GoatMeat
+     * @return Lambang yang ditampilkan untuk GoatMeat
      */
     std::string render();
 };

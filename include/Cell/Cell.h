@@ -1,7 +1,7 @@
 /**
  * @file Cell.h
  * @author Back End K3
- * @brief File berisi definisi kelas Cell
+ * @brief File berisi definisi class Cell
  * @version 0.1
  * @date 2019-03-01 
  */
@@ -12,29 +12,39 @@
 #include <Renderable.h>
 
 /**
- * @brief Kelas abstrak Cell
+ * @brief Kelas abstrak turunan Renderable
  * @class Cell Cell.h <Cell/Cell.h>
  * 
- * Kelas ini adalah parent dari semua class yang berupa cell
+ * Kelas ini adalah parent dari semua class yang berupa cell\n
  * Cell adalah satu petak objek di peta yang tidak bergerak
  */
 class Cell : public Renderable{
     public:
         /**
-         * @brief Konstruktor class Cell
+         * @brief Konstruktor kelas Cell
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
          */
         Cell(int _x, int _y);
-
+        
         /**
-         * @brief Apakah Cell terisi (tidak dapat dilewati)
+         * @brief Mengecek apakah Cell terisi
          * 
-         * @return cell terisi
+         * @return Cell terisi atau tidak
          */
         bool isOccupied() const;
+        /**
+         * @brief Mengembalikan lokasi X
+         * 
+         * @return Lokasi X 
+         */
         int getX() const;
+        /**
+         * @brief Mengembalikan lokasi Y
+         * 
+         * @return Lokasi Y
+         */
         int getY() const;
     protected:
         const int x;

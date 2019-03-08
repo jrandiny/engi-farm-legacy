@@ -1,12 +1,9 @@
 /**
  * @file Player.h
  * @author Back End K3
- * @brief File berisi definisi kelas Player
+ * @brief File berisi definisi class Player
  * @version 0.1
  * @date 2019-03-01
- * 
- * @copyright Copyright (c) 2019
- * 
  */
 
 #ifndef PLAYER_H
@@ -22,7 +19,7 @@
 #include <memory>
 
 /**
- * @brief Kelas riil Player
+ * @brief Kelas riil turunan Renderable
  * @class Player Player.h <Player.h>
  * 
  * Player adalah objek yang digunakan pemain sebagai karakter utama
@@ -43,12 +40,12 @@ class Player: public Renderable{
         int posY; // posisi X player
     public:
         /**
-         * @brief Konstruktor Player tanpa parameter
+         * @brief Konstruktor kelas Player
          * 
          */
         Player();
         /**
-         * @brief Konstruktor Player dengan parameter
+         * @brief Konstruktor kelas Player dengan parameter
          * 
          * @param water jumlah air
          * @param money jumlah uang
@@ -56,64 +53,56 @@ class Player: public Renderable{
          * @param posY Lokasi Y
          */
         Player(int water, int money, int posX, int posY);
-        // /**
-        //  * @brief Destruktor Player
-        //  * 
-        //  */
-        // ~Player();
-
         /**
-         * @brief getter untuk data bag
+         * @brief Mengembalikan bag
          * 
          * @return list produk isi dari tas
          */
         LinkedList<std::shared_ptr<Product>> getBag();
 
         /**
-         * @brief getter untuk data water
+         * @brief Mengembalikan jumlah water
          * 
          * @return jumlah air
          */
         int getWater();
         /**
-         * @brief getter untuk data uang
+         * @brief Mengembalikan jumlah money
          * 
          * @return jumlah uang
          */
         int getMoney();
         /**
-         * @brief getter untuk data posX
+         * @brief Mengembalikan posX
          * 
          * @return lokasi X player
          */
         int getPosX();
         /**
-         * @brief getter untuk data posY
+         * @brief Mengemlaikan posY
          * 
          * @return lokasi Y player
          */
         int getPosY();
 
         /**
-         * @brief memindahkan posisi player
+         * @brief Memindahkan posisi player
          * 
          * mengubah posX dan posY tergantung input arah
          * 
          * @param arah (0: atas, 1: kanan, 2: bawah, 3: kiri)
          */
         void move(int arah);
-        // berbicara dengan hewan memanggil speak pada FarmAnimal
         /**
-         * @brief berbicara dengan hewan
+         * @brief Berbicara dengan hewan
          * 
          * berbicara dengan hewan memanggil speak pada FarmAnimal
          * 
          * @param hewan hewan yang diajak berbicara
          */
         std::string talk(FarmAnimal& hewan);
-        // berinteraksi dengan FarmAnimal atau Facility
         /**
-         * @brief berinteraksi dengan FarmAnimal
+         * @brief Berinteraksi dengan FarmAnimal
          * 
          * interaksi dengan hewan di coop menghasilkan egg
          * interaksi dengan hewan di grassland menghasilkan milk
@@ -122,7 +111,7 @@ class Player: public Renderable{
          */
         void interact(FarmAnimal& hewan);
         /**
-         * @brief berinteraksi dengan Fasilitas (Well)
+         * @brief Berinteraksi dengan Fasilitas (Well)
          * 
          * interaksi dengan well mengisi water hingga penuh
          * 
@@ -130,7 +119,7 @@ class Player: public Renderable{
          */
         void interact(Well);
         /**
-         * @brief berinteraksi dengan Fasilitas (Truck)
+         * @brief Berinteraksi dengan Fasilitas (Truck)
          * 
          * interaksi dengan truck mengosongkan bag dan mendapat money
          * dan menjadikan truck tidak bisa digunakan untu beberapa saat
@@ -139,7 +128,7 @@ class Player: public Renderable{
          */
         void interact(Truck);
         /**
-         * @brief membunuh hewan untuk diambil dagingnya
+         * @brief Membunuh hewan untuk diambil dagingnya
          * 
          * dilakukan untuk mengambil meat dari MeatProducingFarmAnimal
          * hewan langsung dianggap mati
@@ -148,13 +137,13 @@ class Player: public Renderable{
          */
         void kill(FarmAnimal& hewan);
         /**
-         * @brief untuk menyiram land tempat player berdiri
+         * @brief Menyiram land tempat player berdiri
          * 
          * @param l land yang akan disiram
          */
         void grow(Land& l);
         /**
-         * @brief membuat SideProduct
+         * @brief Membuat SideProduct
          * 
          * digunakan pada mixer dan menghasilkan SideProduct
          * 
@@ -162,7 +151,7 @@ class Player: public Renderable{
          */
         void mix(std::string nama);
         /**
-         * @brief mengembalikan lambang player
+         * @brief Mengembalikan lambang player
          * 
          * @return char lambang yang ditampilkan untuk Player
          */

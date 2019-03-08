@@ -1,7 +1,7 @@
 /**
  * @file Goat.h
  * @author Back End K3
- * @brief File berisi definisi kelas Goat
+ * @brief File berisi definisi class Goat
  * @version 0.1
  * @date 2019-03-01
  */
@@ -14,37 +14,37 @@
 #include <Product/FarmProduct/GoatMeat.h>
 
 /**
- * @brief Kelas riil Goat
+ * @brief Kelas riil turunan FarmAnimal
  * @class Goat Goat.h <FarmAnimal/Goat.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmAnimal
+ * Kelas ini adalah turunan dari kelas FarmAnimal\n
  * Goat adalah animal yang menghasilkan GoatMeat dan GoatMilk
  */
 class Goat : public FarmAnimal{
     public:
         /**
-         * @brief konstruktor objek Goat dengan tipe habitatnya
+         * @brief Konstruktor kelas Goat dengan parameter
          * 
-         * @param type tipe habitat Goat
+         * @param type Tipe habitat Goat
          */
         Goat(int type);
         /**
-         * @brief mengembalikan suara Goat
+         * @brief Mengembalikan suara Goat
          * 
          * @return String suara Goat 
          */
         std::string speak();
         /**
-         * @brief mendapatkan produk oleh Goat
+         * @brief Mendapatkan produk oleh Goat
          * 
          * @return GoatMilk jika habitat berada di GrassLand
          * @return GoatMeat jika habitat berada di Barn 
          */
         std::shared_ptr<Product> getProduct();
         /**
-         * @brief mengembalikan lambang untuk Goat
+         * @brief Mengembalikan lambang untuk Goat
          * 
-         * @return lambang yang ditampilkan untuk Goat 
+         * @return Lambang yang ditampilkan untuk Goat 
          */
         std::string render();
 };

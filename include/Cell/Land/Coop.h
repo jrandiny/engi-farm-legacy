@@ -1,7 +1,7 @@
 /**
  * @file Coop.h
  * @author Back End K3
- * @brief File berisi definisi kelas Coop
+ * @brief File berisi definisi class Coop
  * @version 0.1
  * @date 2019-03-02
  */
@@ -12,14 +12,26 @@
 #include <Cell/Land.h>
 
 /**
- * @brief Kelas riil Coop
+ * @brief Kelas riil turunan Land
  * 
- * Kelas untuk salah satu tipe Land yaitu Coop
+ * Kelas untuk salah satu tipe Land yaitu Coop\n
  * Tipe Land ini dapat ditinggali binatang yang menghasilkan telur
  */
 class Coop:public Land{
     public:
+        /**
+         * @brief Konstruktor kelas Coop
+         * 
+         * @param _x Lokasi X
+         * @param _y Lokasi Y
+         */
         Coop(int _x, int _y);
+        
+        /**
+         * @brief Mengembalikan lambang untuk Coop
+         * 
+         * @return Lambang yang ditampilkan untuk Coop
+         */
         std::string render();
 };
 

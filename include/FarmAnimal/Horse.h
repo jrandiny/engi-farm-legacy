@@ -1,7 +1,7 @@
 /**
  * @file Horse.h
  * @author Back End K3
- * @brief File berisi definisi Kelas Horse
+ * @brief File berisi definisi class Horse
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,36 +13,36 @@
 #include <Product/FarmProduct/HorseMeat.h>
 
 /**
- * @brief Kelas riil Horse
+ * @brief Kelas riil turunan FarmAnimal
  * @class Horse Horse.h <FarmAnimal/Horse.h>    
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * Horse adalah animal yang dapat menghasilkan HorseMeat
  */
 class Horse : public FarmAnimal{
     public:
         /**
-         * @brief konstruktor objek Horse
+         * @brief Konstruktor kelas Horse
          * 
          */
         Horse();
 
         /**
-         * @brief mengembalikan suara Horse
+         * @brief Mengembalikan suara Horse
          * 
-         * @return suara Horse 
+         * @return Suara Horse 
          */
         std::string speak();
         /**
-         * @brief mendapatkan produk oleh Horse
+         * @brief Mendapatkan produk oleh Horse
          * 
          * @return HorseMeat
          */
         std::shared_ptr<Product> getProduct();
         /**
-         * @brief mengembalikan lambang untuk Horse
+         * @brief Mengembalikan lambang untuk Horse
          * 
-         * @return lambang yang ditampilkan untuk Horse 
+         * @return Lambang yang ditampilkan untuk Horse 
          */
         std::string render();
 };

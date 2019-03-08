@@ -11,7 +11,7 @@
 #include <Cell/Facility.h>
 
 /**
- * @brief Kelas fasilitas Mixer
+ * @brief Kelas riil turunan Facility
  * @class Mixer Mixer.h <Cell/Facility/Mixer.h>
  * 
  * Kelas ini adalah kelas untuk fasilitas mixer 
@@ -19,16 +19,17 @@
 class Mixer:public Facility{
     public:
         /**
-         * @brief Konstruktor tipe Mixer berparameter
+         * @brief Konstruktor kelas Mixer dengan parameter
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
          */
         Mixer(int _x, int _y);
+        
         /**
-         * @brief mengembalikan lambang untuk Mixer
+         * @brief Mengembalikan lambang untuk Mixer
          * 
-         * @return lambang yang ditampilkan untuk Mixer 
+         * @return Lambang yang ditampilkan untuk Mixer 
          */
         std::string render();
 };

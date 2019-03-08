@@ -1,7 +1,7 @@
 /**
  * @file Cow.h
  * @author Back End K3
- * @brief File berisi definisi kelas Cow
+ * @brief File berisi definisi class Cow
  * @version 0.1
  * @date 2019-03-01
  */
@@ -14,40 +14,40 @@
 #include <Product/FarmProduct/CowMilk.h>
 
 /**
- * @brief Kelas riil Cow
+ * @brief Kelas riil turunan FarmAnimal
  * @class Cow Cow.h <FarmAnimal/Cow.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmAnimal
+ * Kelas ini adalah turunan dari kelas FarmAnimal\n
  * Cow adalah object animal yang dapat menghasilkan CowMeat dan CowMilk
  */
 class Cow : public FarmAnimal{
     public:
 
         /**
-         * @brief konstruktor objek Cow dengan tipe habitatnya
+         * @brief Konstruktor kelas Cow dengan paremeter
          * 
-         * @param type tipe habitat Goat
+         * @param type Tipe habitat Goat
          */
         Cow(int type);
 
         /**
-         * @brief mengembalikan suara Cow
+         * @brief Mengembalikan suara Cow
          * 
          * @return String suara Cow
          */
         std::string speak();
 
         /**
-         * @brief mendapatkan produk oleh Cow
+         * @brief Mendapatkan produk oleh Cow
          * 
          * @return CowMilk jika habitat berada di GrassLand
          * @return CowMeat jika habitat berada di Barn 
          */
         std::shared_ptr<Product> getProduct();
         /**
-         * @brief mengembalikan lambang untuk Cow
+         * @brief Mengembalikan lambang untuk Cow
          * 
-         * @return lambang yang ditampilkan untuk Cow 
+         * @return Lambang yang ditampilkan untuk Cow 
          */
         std::string render();
 };

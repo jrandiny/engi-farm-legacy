@@ -1,7 +1,7 @@
 /**
  * @file Product.h
  * @author Back End K3
- * @brief File berisi definisi kelas Product
+ * @brief File berisi definisi class Product
  * @version 0.1
  * @date 2019-03-01 
  */
@@ -12,47 +12,46 @@
 #include <Renderable.h>
 
 /**
- * @brief Kelas abstrak Product
+ * @brief Kelas abstrak turunan Renderable
  * @class Product Product.h <Product/Product.h>
  * 
- * Kelas ini adalah parent dari semua kelas yang merupakan product
+ * Kelas ini adalah parent dari semua kelas yang merupakan product\n
  * Product adalah barang yang dihasilkan oleh animal yang memiliki nilai jual
  */
 class Product: public Renderable{
 
   public:
     /**
-     * @brief Konstructor object Product
+     * @brief Konstruktor kelas Product
      * 
      */
     Product();
 
     /**
-     * @brief fungsi get yang mengembalikan nilai harga suatu product
+     * @brief Mengembalikan nilai harga suatu product
      * 
-     * @return nilai harga jual suatu product
+     * @return Nilai harga jual suatu product
      */
     int getHarga();
     
     /**
-     * @brief fungsi set untuk harga object
+     * @brief Menetapkan harga object
      * 
-     * @param harga harga objek 
+     * @param Harga harga objek 
      */
     void setHarga(int harga);
 
     /**
-     * @brief file untuk mengecek sama atau tidaknya suatu product
+     * @brief Komparator kesamaan Product
      * 
-     * @param P produk yang ingin dibandingkan
-     * @return true jika product P sama dengan product object
-     * @return false jika product P tidak sama dengan product object
+     * @param P Produk yang ingin dibandingkan
+     * @return True jika sama
      */
     bool operator==(Product& P);
 
   protected: 
     /**
-     * @brief atribut nilai harga jual object
+     * @brief Atribut nilai harga jual object
      * 
      */
     int harga;

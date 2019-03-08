@@ -1,7 +1,7 @@
 /**
  * @file HorseMeat.h
  * @author Back End K3
- * @brief file berisi definsi kelas HorseMeat
+ * @brief File berisi definsi class HorseMeat
  * @version 0.1
  * @date 2019-03-01
  */
@@ -13,24 +13,24 @@
 #include <Player.h>
 
 /**
- * @brief Kelas riil HorseMeat
+ * @brief Kelas riil turunan FarmProduct
  * @class HorseMeat HorseMeat.h <Product/FarmProduct/HorseMeat.h>
  * 
- * Kelas ini adalah turunan dari kelas HorseMeat
+ * Kelas ini adalah turunan dari kelas HorseMeat\n
  * HorseMeat adalah product yang dihasilkan dari object animal Horse
  */
 class HorseMeat : public FarmProduct{
   public:
     /**
-     * @brief connstructor object HorseMeat
+     * @brief Konstruktor kelas HorseMeat
      * 
      */
     HorseMeat();
 
     /**
-     * @brief mengembalikan lambang untuk HorseMeat
+     * @brief Mengembalikan lambang untuk HorseMeat
      * 
-     * @return lambang yang ditampilkan untuk HorseMeat
+     * @return Lambang yang ditampilkan untuk HorseMeat
      */
     std::string render();
 

@@ -1,7 +1,7 @@
 /**
  * @file LinkedList.h
  * @author Back End K3
- * @brief Generic class LinkedList
+ * @brief File berisi definisi generic class LinkedList
  * @version 0.1
  * @date 2019-03-01
  */
@@ -12,7 +12,7 @@
 #include <iostream>
 
 /** 
- * @brief Kelas abstrak LinkedList
+ * @brief Kelas generik LinkedList
  * @class LinkedList LinkedList.h <LinkedList.h>
  * 
  * @tparam T tipe data bentukan
@@ -25,16 +25,16 @@ class LinkedList{
             Node* next;
         public:
             /**
-             * @brief Konstruktor objek node tanpa parameter
+             * @brief Konstruktor kelas Node
              * 
              */
             Node(){
                 next = nullptr;
             }
             /**
-             * @brief Konstruktor objek node dengan parameter
+             * @brief Konstruktor kelas Node dengan parameter
              * 
-             * @param info info yang akan dijadikan data
+             * @param info Info yang akan dijadikan data
              */
             Node(T info){
                 this->info = info;
@@ -42,34 +42,34 @@ class LinkedList{
             }
 
             /**
-             * @brief getter untuk data info
+             * @brief Mengembalikan info
              * 
-             * @return info dari node yang dimaksud
+             * @return Info dari node yang dimaksud
              */
             T getInfo() const{
                 return info;
             }
             /**
-             * @brief getter untuk pointer ke next Node
+             * @brief Mengembalikan pointer next
              * 
-             * @return pointer ke next Node
+             * @return Pointer ke next Node
              */
             Node* getNext() const{
                 return next;
             }
 
             /**
-             * @brief setter untuk data info
+             * @brief Menetapkan info
              * 
-             * @param info info yang digunakan untuk update node 
+             * @param info Info yang digunakan untuk update node 
              */
             void setInfo(T info){
                     this->info = info;
             }
             /**
-             * @brief setter untuk data next
+             * @brief Menetapkan pointer next
              * 
-             * @param next pointer ke node selanjutnya
+             * @param next Pointer ke node selanjutnya
              */
             void setNext(Node* next){
                 this->next = next;
@@ -83,7 +83,7 @@ class LinkedList{
         const int idxUndeff = -1;
 
         /**
-         * @brief Konstruktor LinkedList tanpa parameter
+         * @brief Konstruktor kelas LinkedList
          * 
          * membuat LinkedList baru dengan headnya null
          * dan neffnya 0
@@ -94,7 +94,7 @@ class LinkedList{
             neff = 0;
         }
         /**
-         * @brief Konstruktor LinkedList dengan parameter
+         * @brief Konstruktor kelas LinkedList dengan parameter
          * 
          * @param in LinkedList yang ingin dicopy
          * 
@@ -112,11 +112,12 @@ class LinkedList{
         }
 
         /**
-         * @brief operator overloading =
+         * @brief Operator overloading =
+         * 
+         * mengcopy seluruh Node dari in
          * 
          * @param in LinkedList yang akan di = 
          * @return LinkedList baru
-         * mengcopy seluruh Node dari in
          */
         LinkedList& operator=(const LinkedList& in){
             Node* temp;
@@ -143,7 +144,7 @@ class LinkedList{
             return *this;
         }
         /**
-         * @brief Destruktor untuk LinkedList
+         * @brief Destruktor class LinkedList
          * 
          */
         ~LinkedList(){
@@ -160,49 +161,45 @@ class LinkedList{
         }
 
         /**
-         * @brief getter yang mengembalikan first
+         * @brief Mengambalikan first dari LinkedList
          * 
-         * @return pointer ke Node 
+         * @return Pointer ke Node 
          */
         Node* getFirst() const{
             return head;
         }
         /**
-         * @brief getter dari neff 
+         * @brief Mengembalikan neff
          * 
-         * @return jumlah elemen pada LindkedList 
+         * @return Jumlah elemen pada LindkedList 
          */
         int getNeff() const {
             return neff;
         }
 
-        // Mengembalikan True jika linked list kosong
         /**
-         * @brief mengetahui apakah LinkedList kosong
+         * @brief Mengetahui apakah LinkedList kosong
          * 
-         * @return true jika LinkedList kosong
-         * @return false jika LinkedList tidak kosong
+         * @return True jika LinkedList kosong
          */
         bool isEmpty(){
             return head == nullptr;
         }
 
         /**
-         * @brief mengecek apakah indeks dalam selang yang benar
+         * @brief Mengecek apakah indeks dalam selang yang benar
          * 
-         * @param indeks indeks yang ingin di cek
+         * @param indeks Indeks yang ingin di cek
          * @return true jika indeks berada dalam selang yang benar
-         * @return false jika indeks berada dalam selang yang salah
          */
         bool isInRange(int indeks){
             return (indeks>=firstIdx) && (indeks<neff);
         }
-        // 
         /**
-         * @brief mencari indeks dari elemen yang dimasukkan
+         * @brief Mencari indeks dari elemen yang dimasukkan
          * 
-         * @param elemen elemen yang ingin di cari indeksnya
-         * @return int indeks dimana elemen ditemukan, IdxUndeff jika tidak ada
+         * @param elemen Elemen yang ingin di cari indeksnya
+         * @return Indeks dimana elemen ditemukan, IdxUndeff jika tidak ada
          */
         int find(T elemen){
             int indeks = firstIdx;
@@ -223,9 +220,9 @@ class LinkedList{
             return indeks;
         }
         /**
-         * @brief menambahkan elemen di awal LinkedList
+         * @brief Menambahkan elemen di awal LinkedList
          * 
-         * @param elemen elemen yang ingin ditambahkan
+         * @param elemen Elemen yang ingin ditambahkan
          */
         void addFirst(T elemen){
             Node* temp = new Node(elemen);
@@ -234,9 +231,9 @@ class LinkedList{
         }
 
         /**
-         * @brief menambahkan elemen di akhir LinkedList
+         * @brief Menambahkan elemen di akhir LinkedList
          * 
-         * @param elemen elemen yang ingin di tambahkan
+         * @param elemen Elemen yang ingin di tambahkan
          */
         void addLast(T elemen){
             Node *p1,*p2,*temp;
@@ -256,9 +253,9 @@ class LinkedList{
         }
 
         /**
-         * @brief membuang elemen dari LinkedList
+         * @brief Membuang elemen dari LinkedList
          * 
-         * @param elemen elemen yang ingin di buang dari LinkedList
+         * @param elemen Elemen yang ingin di buang dari LinkedList
          */
         void remove(T elemen){
             Node *p1,*p2;
@@ -285,12 +282,12 @@ class LinkedList{
         }
 
         /**
-         * @brief mengembalikan elemen pada indeks
+         * @brief Mengembalikan elemen pada indeks
          * 
          * prekondisi indeks pasti isInRange
          * 
-         * @param indeks indeks yang ingin dicari
-         * @return T elemen pada posisi ke-indeks
+         * @param indeks Indeks yang ingin dicari
+         * @return T Elemen pada posisi ke-indeks
          */
         T get(int indeks){
             int iter = indeks;
@@ -303,7 +300,7 @@ class LinkedList{
         }
 
         /**
-         * @brief print semua elemen pada LinkedList
+         * @brief Menampilkan semua elemen pada LinkedList
          * 
          */
         void print(){
