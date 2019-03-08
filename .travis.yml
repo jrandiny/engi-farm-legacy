@@ -1,0 +1,15 @@
+language: cpp
+compiler: gcc
+os: linux
+dist: xenial
+addons:
+    apt:
+        packages:
+            - cmake
+            - cmake-data
+
+script:
+    - mkdir build
+    - cd build
+    - cmake ..
+    - make
