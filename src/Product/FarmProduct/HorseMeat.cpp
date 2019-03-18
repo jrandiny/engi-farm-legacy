@@ -1,6 +1,6 @@
 #include <Product/FarmProduct/HorseMeat.h>
 
-HorseMeat::HorseMeat(){
+HorseMeat::HorseMeat():FarmProduct(16){
     setHarga(100);
 }
 

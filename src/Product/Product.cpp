@@ -12,7 +12,7 @@
  * @brief constructor objek Product
  * 
  */
-Product::Product(){
+Product::Product(int id): id(id){
     this->harga = 0;
 }
 
@@ -21,8 +21,16 @@ Product::Product(){
  * 
  * @return harga
  */
-int Product::getHarga(){
+int Product::getHarga() const{
     return this->harga;
+}
+/**
+ * @brief fungsi mengembalikan nilai id suatu product
+ * 
+ * @return id 
+ */
+int Product::getId() const{
+    return id;
 }
 
 /**
@@ -42,5 +50,5 @@ void Product::setHarga(int harga){
  * @return false jika product P tidak sama dengan product object
  */
 bool Product::operator==(Product& P){
-    return true; //belum diimplementasikan
+    return P.getId()==getId();
 }

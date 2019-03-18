@@ -1,6 +1,6 @@
 #include <Product/SideProduct/BeefRolade.h>
 
-BeefRolade::BeefRolade(){
+BeefRolade::BeefRolade():SideProduct(21){
     recipe.addFirst(std::shared_ptr<Product>(new CowMeat()));
     recipe.addFirst(std::shared_ptr<Product>(new ChickenEgg()));
 }

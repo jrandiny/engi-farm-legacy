@@ -11,6 +11,4 @@
  * @brief constructor object SideProduct
  * 
  */
-SideProduct::SideProduct(){
-
-}
+SideProduct::SideProduct(int id): Product(id){}

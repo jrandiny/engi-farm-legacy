@@ -5,6 +5,7 @@ Goat::Goat(int type):FarmAnimal(5,type){
     posX=0;
     posY=0;
     eatStatus=false;
+    deathStatus = false;
 }
 
 std::string Goat::speak(){

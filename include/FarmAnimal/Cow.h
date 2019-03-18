@@ -50,6 +50,7 @@ class Cow : public FarmAnimal{
          * @return Lambang yang ditampilkan untuk Cow 
          */
         std::string render();
+
 };
 
 #endif

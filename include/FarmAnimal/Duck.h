@@ -43,6 +43,7 @@ class Duck : public FarmAnimal{
          * @return Lambang yang ditampilkan untuk Duck 
          */
         std::string render();
+
 };
 
 #endif

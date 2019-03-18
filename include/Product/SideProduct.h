@@ -26,7 +26,7 @@ class SideProduct : public Product{
      * @brief Konstruktor kelas SideProduct
      * 
      */
-    SideProduct();
+    SideProduct(int id);
 
     /**
      * @brief Mengembalikan sebuah LinkedList product

@@ -49,6 +49,16 @@ class LinkedList{
             T getInfo() const{
                 return info;
             }
+
+            /**
+             * @brief Mengembalikan refrensi ke info
+             * 
+             * @return Refrensi ke info
+             */
+            T& getInfoRef(){
+                return info;
+            }
+
             /**
              * @brief Mengembalikan pointer next
              * 
@@ -103,8 +113,18 @@ class LinkedList{
         LinkedList(const LinkedList& in){
             Node* temp = in.getFirst();
 
+            Node* prev = nullptr;
+
             for(int i =0;i<in.getNeff();i++){
-                addFirst(temp->getInfo());
+                Node* tempIns = new Node(temp->getInfo());
+                
+                if(prev==nullptr){
+                    head = tempIns;
+                    prev = tempIns;
+                }else{
+                    prev->setNext(tempIns);
+                    prev = tempIns;
+                }
                 temp = temp->getNext();
             }
 
@@ -133,9 +153,18 @@ class LinkedList{
 
             temp = in.getFirst();
 
+            Node* prev = nullptr;
 
-            for(int i=0;i<in.neff;i++){
-                addFirst(temp->getInfo());
+            for(int i =0;i<in.getNeff();i++){
+                Node* tempIns = new Node(temp->getInfo());
+                
+                if(prev==nullptr){
+                    head = tempIns;
+                    prev = tempIns;
+                }else{
+                    prev->setNext(tempIns);
+                    prev = tempIns;
+                }
                 temp = temp->getNext();
             }
 
@@ -168,6 +197,7 @@ class LinkedList{
         Node* getFirst() const{
             return head;
         }
+
         /**
          * @brief Mengembalikan neff
          * 
@@ -228,6 +258,7 @@ class LinkedList{
             Node* temp = new Node(elemen);
             temp->setNext(head);
             head = temp;
+            neff++;
         }
 
         /**
@@ -297,6 +328,16 @@ class LinkedList{
                 iter--;
             } //iter==firstIdx;
             return p->getInfo();
+        }
+        
+        T& operator[](int indeks){
+            int iter = indeks;
+            Node* p = head;
+            while(iter>firstIdx){
+                p = p->getNext();
+                iter--;
+            } //iter==firstIdx;
+            return p->getInfoRef();
         }
 
         /**

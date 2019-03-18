@@ -1,7 +1,7 @@
 #include <Product/FarmProduct/CowMilk.h>
 
 
-CowMilk::CowMilk(){
+CowMilk::CowMilk():FarmProduct(12){
     setHarga(100);
 }
 

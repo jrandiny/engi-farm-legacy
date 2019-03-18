@@ -16,7 +16,7 @@
  * @brief Kelas riil turunan FarmProduct
  * @class GoatMilk GoatMilk.h <Product/FarmProduct/GoatMilk.h>
  * 
- * Kelas ini adalah turunan dari kelas FarmProduct
+ * Kelas ini adalah turunan dari kelas FarmProduct\n
  * GoatMilk adalah product yang dihasilkan dari object animal Goat
  */
 class GoatMilk : public FarmProduct{

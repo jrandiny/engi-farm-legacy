@@ -31,6 +31,8 @@ class Facility: public Cell{
          * @return True saat bisa digunakan
          */
         bool isUsable() const;
+
+
     protected:
         bool usable;
 };

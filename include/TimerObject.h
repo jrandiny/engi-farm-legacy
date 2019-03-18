@@ -1,34 +1,34 @@
 /**
- * @file SimulationObject.h
+ * @file TimerObject.h
  * @author Back End K3
- * @brief File berisi definisi class SimulationObject
+ * @brief File berisi definisi class TimerObject
  * @version 0.1
  * @date 2019-03-01
  */
 
 
-#ifndef SIMULATIONOBJ_H
-#define SIMULATIONOBJ_H
+#ifndef TIMEROBJECT_H
+#define TIMEROBJECT_H
 
 /**
- * @brief Kelas abstrak dasar SimulationObject
- * @class SimulationObject SimulationObject.h <SimulationObject.h>
+ * @brief Kelas abstrak dasar TimerObject
+ * @class TimerObject TimerObject.h <TimerObject.h>
  * 
  * Kelas ini adalah parent dari kelas Truck dan FarmAnimal\n
  * SimulationOject membuat object yang memiliki timer
  */
-class SimulationObject{
+class TimerObject{
     public:
         /**
-         * @brief Konstruktor kelas SimulationObject
+         * @brief Konstruktor kelas TimerObject
          * 
          */
-        SimulationObject();
+        TimerObject();
 
         /**
          * @brief Fungsi untuk update timer
          * 
-         * Fungsi ini akan menjalankan semua timer untuk objek yang mengimplementasi SimulationObject\n
+         * Fungsi ini akan menjalankan semua timer untuk objek yang mengimplementasi TimerObject\n
          * Fungsi ini harus dijalankan tiap kali tick di game
          */
         void tick();
@@ -36,14 +36,14 @@ class SimulationObject{
         /**
          * @brief Aktivasi timer
          * 
-         * Mengaktivasi timer pada SimulationObject, sebaiknya dipanggl sesudah setTimer
+         * Mengaktivasi timer pada TimerObject, sebaiknya dipanggl sesudah setTimer
          */
         void activateTimer();
 
         /**
          * @brief Deaktivasi timer
          * 
-         * Mengdeaktivasi timer pada SimulationObject
+         * Mengdeaktivasi timer pada TimerObject
          */
         void deactivateTimer();
 

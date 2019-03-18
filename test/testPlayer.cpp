@@ -8,6 +8,11 @@
 #include <FarmAnimal/Horse.h>
 #include <FarmAnimal/Rabbit.h>
 #include <Product/FarmProduct/ChickenEgg.h>
+#include <map>
+#include <Cell/Facility/Well.h>
+#include <Cell/Cell.h>
+#include <Cell/Land.h>
+#include <Cell/Land/Coop.h>
 using namespace std;
 
 void PrintStatus(Player& P){
@@ -16,7 +21,7 @@ void PrintStatus(Player& P){
 
 int main(){
     LinkedList<FarmAnimal*> Farm;
-    LinkedList<std::shared_ptr<Product>> bag2;
+    map<shared_ptr<Product>,int,Player::cmpSharedPtrProduct> bag;
     Farm.addLast(new Chicken());
     Farm.addLast(new Duck());
     Farm.addLast(new Horse());
@@ -27,18 +32,55 @@ int main(){
     Farm.addLast(new Goat(2));
     Player P(10,500000,0,5);
     PrintStatus(P);
-    Farm.get(0)->setEatStatus(true);
-    P.interact(*(Farm.get(0)));
-    bag2=P.getBag();
-    P.getBag().print();
-    for(int i=0;i<4;i++){
-        P.move(i);
-        PrintStatus(P);
+    
+    
+    
+    // for(int i=0;i<4;i++){
+    //     P.move(i);
+    //     PrintStatus(P);
+    // }
+    for(int i=0;i<Farm.getNeff();i++){
+        // cout<<P.talk(*Farm.get(i))<<endl;
+        // Farm.get(i)->setEatStatus(true);
+        Farm[i]->setEatStatus(true);
+        P.interact(*(Farm.get(i)));
     }
     for(int i=0;i<Farm.getNeff();i++){
-        cout<<P.talk(*Farm.get(i))<<endl;
+        // cout<<P.talk(*Farm.get(i))<<endl;
+        // Farm.get(i)->setEatStatus(true);
+        Farm[i]->setEatStatus(true);
+        P.interact(*(Farm.get(i)));
     }
+    bag=P.getBag();
+    // cout<<bag.size()<<endl;
+    for (auto iter:bag){
+        cout<<iter.first->render()<<" "<<iter.second<<endl;
+    }
+    LinkedList<Cell*> map;
+    LinkedList<Land*> land;
+    Land *d = new Coop(1,5);
+    map.addFirst(d);
+    land.addFirst(d);
+    cout<<map[0]->isOccupied()<<endl;
+    land[0]->occupy();
+    cout<<map[0]->isOccupied()<<endl;
+    cout<<map[0]->render()<<endl;
+    // Cell *c = new Well(1,5);
+    // P.interact(c);
+    PrintStatus(P);
+    // Cell *d = new Coop(0,5);
+    // Land *a = dynamic_cast<Land*>(d);
+    // if(a!=nullptr){
+    //     cout<<(*a).haveGrass()<<endl;
 
+    // }
+    // P.grow(*d);
+    // cout<<d->haveGrass()<<endl;
+    P.mix("EggBenedict");
+    bag=P.getBag();
+    for (auto iter:bag){
+        cout<<iter.first->render()<<" "<<iter.second<<endl;
+    }
 
     return 0;
 }

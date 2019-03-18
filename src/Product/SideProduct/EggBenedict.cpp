@@ -1,6 +1,6 @@
 #include <Product/SideProduct/EggBenedict.h>
 
-EggBenedict::EggBenedict(){
+EggBenedict::EggBenedict():SideProduct(22){
     recipe.addFirst(std::shared_ptr<Product>(new DuckEgg()));
     recipe.addFirst(std::shared_ptr<Product>(new RabbitMeat()));
     recipe.addFirst(std::shared_ptr<Product>(new GoatMilk()));

@@ -25,15 +25,20 @@ class Product: public Renderable{
      * @brief Konstruktor kelas Product
      * 
      */
-    Product();
+    Product(int id);
 
     /**
      * @brief Mengembalikan nilai harga suatu product
      * 
      * @return Nilai harga jual suatu product
      */
-    int getHarga();
-    
+    int getHarga() const;
+    /**
+     * @brief Mengembalikan nilai id suatu product
+     * 
+     * @return Nilai id suatu product
+     */
+    int getId() const;
     /**
      * @brief Menetapkan harga object
      * 
@@ -55,6 +60,7 @@ class Product: public Renderable{
      * 
      */
     int harga;
+    const int id;
 
 };
 

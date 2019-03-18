@@ -14,7 +14,7 @@
  * @brief Kelas abstrak turunan Cell
  * @class Land Land.h <Cell/Land.h>
  * 
- * Kelas ini adalah untuk tiap Cell bertipe tanah tempat yang bisa dijalani
+ * Kelas ini adalah untuk tiap Cell bertipe tanah tempat yang bisa dijalani\n
  * Di dalamnya bisa terdapat grass dan tipe tanah
  * 
  * @var type Tipe tanah (0 = coop, 1 = grassland, 2 = barn)

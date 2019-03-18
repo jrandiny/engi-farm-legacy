@@ -11,17 +11,17 @@
 
 #include <Product/Product.h>
 #include <Renderable.h>
-#include <SimulationObject.h>
 #include <memory>
+#include <TimerObject.h>
 
 /**
- * @brief Kelas abstrak turunan Renderable dan SimulationObject
+ * @brief Kelas abstrak turunan Renderable dan TimerObject
  * @class FarmAnimal FarmAnimal.h <FarmAnimal/FarmAnimal.h>
  * 
  * Kelas ini adalah parent dari semua kelas yang merupakan FarmAnimal\n
  * FarmAnimal adalah hewan yang dapat menghasilkan product
  */
-class FarmAnimal : public Renderable, public SimulationObject{
+class FarmAnimal : public Renderable, public TimerObject{
     public:
         /**
          * @brief Konstruktor kelas FarmAnimal
@@ -63,15 +63,38 @@ class FarmAnimal : public Renderable, public SimulationObject{
         bool getEatStatus();
 
         /**
+         * @brief Mengatur status kematian binatang
+         * 
+         */
+        void setDeathStatus(bool);
+
+        /**
+         * @brief Mengambil status kematian binatang
+         * 
+         * @return Status binatang mati
+         */
+        bool getDeathStatus();
+
+        /**
          * @brief Get the Habitat object
          * 
          * @return Mengambil id habitat
          */
         int getHabitat();
+
+        /**
+         * @brief Callback untuk kelaparan atau mati
+         * 
+         * Mengatur status animal kapan lapar dan mati
+         */
+        void callback();
+
     protected:
         const int timeToHungry;
+        const int timeToDeath = 5;
         int posX,posY;
         bool eatStatus;
+        bool deathStatus;
         const int habitat;
 
 };

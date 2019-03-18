@@ -45,6 +45,7 @@ class Chicken : public FarmAnimal{
          * @return Lambang yang ditampilkan untuk Chicken 
          */
         std::string render();
+
 };
 
 #endif

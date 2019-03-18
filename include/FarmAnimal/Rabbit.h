@@ -44,6 +44,7 @@ class Rabbit : public FarmAnimal{
          * @return Lambang yang ditampilkan untuk Rabbit 
          */
         std::string render();
+
 };
 
 #endif

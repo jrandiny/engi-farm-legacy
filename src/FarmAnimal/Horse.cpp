@@ -6,6 +6,7 @@ Horse::Horse():FarmAnimal(5,2){
     posX=0;
     posY=0;
     eatStatus=false;
+    deathStatus = false;
 }
 
 std::string Horse::speak(){

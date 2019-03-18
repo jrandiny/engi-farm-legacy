@@ -45,6 +45,8 @@ class Horse : public FarmAnimal{
          * @return Lambang yang ditampilkan untuk Horse 
          */
         std::string render();
+
+
 };
 
 #endif

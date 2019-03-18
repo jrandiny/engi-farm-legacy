@@ -1,4 +1,4 @@
-#include <SimulationObject.h>
+#include <TimerObject.h>
 #include <Cell/Facility/Truck.h>
 #include <Cell/Facility/Well.h>
 #include <vector>
@@ -6,7 +6,7 @@
 
 int main(){
     std::vector<Facility*> lof;
-    std::vector<SimulationObject*> los;
+    std::vector<TimerObject*> los;
 
     Truck* test = new Truck(0,0);
 
@@ -21,7 +21,7 @@ int main(){
             std::cout<<"Fal "<<(*fal).getX()<<" u ="<<fal->isUsable()<<std::endl;
         }
 
-        for(SimulationObject* sim : los){
+        for(TimerObject* sim : los){
             sim->tick();
             if(loop==1){
                 sim->setTimer(3);

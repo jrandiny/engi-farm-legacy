@@ -9,16 +9,16 @@
 #define TRUCK_H
 
 #include <Cell/Facility.h>
-#include <SimulationObject.h>
+#include <TimerObject.h>
 
 /**
- * @brief Kelas riil turunan Facility dan SimulationObject
+ * @brief Kelas riil turunan Facility dan TimerObject
  * @class Truck Truck.h <Cell/Facility/Truck.h>
  * 
  * Kelas ini adalah kelas untuk fasilitas tipe Truck\n
  * Truck berguna untuk mengirim hasil dagangan
  */
-class Truck:public Facility, public SimulationObject{
+class Truck:public Facility, public TimerObject{
     public:
         /**
          * @brief Konstruktor kelas Truck dengan parameter
@@ -33,6 +33,7 @@ class Truck:public Facility, public SimulationObject{
          * @return Lambang yang ditampilkan untuk Mixer 
          */
         std::string render();
+
     private:
 
         /**

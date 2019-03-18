@@ -1,6 +1,6 @@
 #include <Product/FarmProduct/GoatMeat.h>
 
-GoatMeat::GoatMeat(){
+GoatMeat::GoatMeat():FarmProduct(14){
     setHarga(100);
 }
 

@@ -10,6 +10,7 @@
 
 Land::Land(int _x, int _y, int _type):Cell(_x,_y),type(_type){
     grass = false;
+    occupied = false;
 };
 
 int Land::getType() const{

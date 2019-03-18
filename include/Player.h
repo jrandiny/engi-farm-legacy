@@ -17,6 +17,7 @@
 #include <Cell/Facility/Truck.h>
 #include <Cell/Land.h>
 #include <memory>
+#include <map>
 
 /**
  * @brief Kelas riil turunan Renderable
@@ -29,16 +30,23 @@ class Player: public Renderable{
         public:
             static std::shared_ptr<SideProduct> getRecipe(std::string name);
     };
+    public:
+    class cmpSharedPtrProduct {
+        public:
+            bool operator()(const std::shared_ptr<Product>& a, const std::shared_ptr<Product>& b) const {
+                return (*a).getId() < (*b).getId();
+            }
+    };
     private:
         const int MAX_WATER = 50;// maximum jumlah air yang bisa ditampung
         const int MAX_ITEM_BAG = 10; // maximum product yang bisa ditampung di tas
-        LinkedList<std::shared_ptr<Product>> bag; // tas dari player
-        // const LinkedList<SideProduct> recipe; // daftar resep side product
+        std::map<std::shared_ptr<Product>,int,cmpSharedPtrProduct> bag; // tas dari player
         int water; // jumlah air saat ini
         int money; // jumlah uang saat ini
         int posX; // posisi X player
         int posY; // posisi X player
     public:
+
         /**
          * @brief Konstruktor kelas Player
          * 
@@ -58,8 +66,7 @@ class Player: public Renderable{
          * 
          * @return list produk isi dari tas
          */
-        LinkedList<std::shared_ptr<Product>> getBag();
-
+        std::map<std::shared_ptr<Product>,int,cmpSharedPtrProduct> getBag();
         /**
          * @brief Mengembalikan jumlah water
          * 
@@ -117,7 +124,7 @@ class Player: public Renderable{
          * 
          * @param w objek well yang diambil sumurnya
          */
-        void interact(Well);
+        void interact(Well&);
         /**
          * @brief Berinteraksi dengan Fasilitas (Truck)
          * 
@@ -126,7 +133,7 @@ class Player: public Renderable{
          * 
          * @param t truck yang akan digunakan untuk menjual produk
          */
-        void interact(Truck);
+        void interact(Truck& truck);
         /**
          * @brief Membunuh hewan untuk diambil dagingnya
          * 

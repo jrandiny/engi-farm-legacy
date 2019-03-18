@@ -1,9 +1,9 @@
-#include <SimulationObject.h>
+#include <TimerObject.h>
 
-SimulationObject::SimulationObject(){
+TimerObject::TimerObject(){
     timerActive = false;
 }
-void SimulationObject::tick(){
+void TimerObject::tick(){
     if(timerActive){
         if (timer>0){
             timer--;
@@ -14,17 +14,17 @@ void SimulationObject::tick(){
     }
     
 }
-void SimulationObject::activateTimer(){
+void TimerObject::activateTimer(){
     timerActive = true;
 }
-void SimulationObject::deactivateTimer(){
+void TimerObject::deactivateTimer(){
     timerActive = false;
 }
-void SimulationObject::setTimer(int timer){
+void TimerObject::setTimer(int timer){
     this->timer = timer;
 }
 
-void SimulationObject::setAndActivate(int timer){
+void TimerObject::setAndActivate(int timer){
     setTimer(timer);
     activateTimer();
 }

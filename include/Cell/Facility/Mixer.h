@@ -32,5 +32,7 @@ class Mixer:public Facility{
          * @return Lambang yang ditampilkan untuk Mixer 
          */
         std::string render();
+
+
 };
 #endif

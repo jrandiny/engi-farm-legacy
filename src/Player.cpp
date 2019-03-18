@@ -34,9 +34,10 @@ Player::Player(int water, int money, int posX, int posY){
 }
 
 
-LinkedList<std::shared_ptr<Product>> Player::getBag(){
+std::map<std::shared_ptr<Product>,int, Player::cmpSharedPtrProduct> Player::getBag(){
     return bag;
 }
+
 int Player::getWater(){
     return water;
 }
@@ -76,22 +77,34 @@ std::string Player::talk(FarmAnimal& hewan){
 
 void Player::interact(FarmAnimal& hewan){
     if (hewan.getEatStatus()){
-        bag.addLast(hewan.getProduct());
+        std::map<std::shared_ptr<Product>,int>::iterator iter = bag.find(std::shared_ptr<Product>(hewan.getProduct()));
+        if (iter!=bag.end()){
+            iter->second++;
+        } else {
+            bag.insert(std::pair<std::shared_ptr<Product>,int>(hewan.getProduct(),1));
+        }
     }
 }
-void Player::interact(Well){
+void Player::interact(Well&){
     water = MAX_WATER;
 }
-void Player::interact(Truck){
-    for (int i =0;i<bag.getNeff();i++){
-        money+= bag.get(0)->getHarga();
-        bag.remove(bag.get(0));
+void Player::interact(Truck& truck){
+    for (std::map<std::shared_ptr<Product>,int>::iterator it = bag.begin();it!=bag.end();it++){
+        money+= it->second * (it->first)->getHarga();
+        bag.erase(it->first);
     }
+
+    truck.setAndActivate(15);
 }
 void Player::kill(FarmAnimal& hewan){
     
     if (hewan.getHabitat()==2){
-        bag.addLast(hewan.getProduct());
+        std::map<std::shared_ptr<Product>,int>::iterator iter = bag.find(std::shared_ptr<Product>(hewan.getProduct()));
+        if (iter!=bag.end()){
+            iter->second++;
+        } else {
+            bag.insert(std::pair<std::shared_ptr<Product>,int>(hewan.getProduct(),1));
+        }
     } else {
         throw std::exception();
     }
@@ -109,24 +122,34 @@ void Player::mix(std::string nama){
         throw std::runtime_error(e.what());
     }
     LinkedList<std::shared_ptr<Product>> resep = sp->getRecipe();
-    LinkedList<std::shared_ptr<Product>> copy_bag = bag;
     int i=0;
     bool same = true;
-    while(i<resep.getNeff() && same ){
-        if (copy_bag.find(resep.get(i))) {
-            copy_bag.remove(resep.get(i));
-            resep.remove(resep.get(i));
-            i++;
-        } else {
-            same = false;
-        }
+    while(same && i <resep.getNeff()){
+        same = bag.end()!= bag.find(resep.get(i));
+        i++;
     }
+
     if (same){
-        bag = copy_bag;
-        bag.addLast(sp);
-    }
-    while(!copy_bag.isEmpty()){
-        copy_bag.remove(copy_bag.get(0));
+        for (int j=0;j<i;j++){
+            std::map<std::shared_ptr<Product>,int>::iterator iter = bag.find(std::shared_ptr<Product>(resep.get(j)));
+            if(iter->second==1){
+                bag.erase(iter->first);
+            }else{
+                iter->second--;
+            }
+        }
+        std::cout<<"tes"<<std::endl;
+        std::map<std::shared_ptr<Product>,int>::iterator found=bag.find(sp);
+        std::cout<<sp->render()<<std::endl;
+        // std::cout<<found->first->render()<<std::endl;
+        if(found!=bag.end()){
+            std::cout<<"ad"<<std::endl;
+            bag.insert(std::pair<std::shared_ptr<Product>,int>(sp,1));
+        }else{
+            std::cout<<"daslljsda"<<std::endl;
+            std::cout<<found->first<<std::endl;
+            found->second++;
+        }
     }
 }
 

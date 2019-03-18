@@ -1,6 +1,6 @@
 #include <Product/FarmProduct/DuckEgg.h>
 
-DuckEgg::DuckEgg(){
+DuckEgg::DuckEgg():FarmProduct(13){
     setHarga(100);
 }
 

@@ -25,12 +25,14 @@ class Well:public Facility{
          * @param _y Lokasi Y
          */
         Well(int _x, int _y);
+
         /**
          * @brief Mengembalikan lambang untuk Well
          * 
          * @return Lambang yang ditampilkan untuk Well 
          */
         std::string render();
+
 };
 
 #endif
