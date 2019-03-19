@@ -18,8 +18,14 @@
  * Kelas ini adalah parent dari semua class yang berupa Cell\n
  * Cell adalah satu petak objek di peta yang tidak bergerak
  */
+
+
+
 class Cell : public Renderable{
     public:
+
+        enum CellType {Mxr,Trck,Wll,Brn,Cp,GrLd};
+
         /**
          * @brief Konstruktor kelas Cell
          * 
@@ -27,7 +33,7 @@ class Cell : public Renderable{
          * @param _y Lokasi Y
          * @param _type type Cell
          */
-        Cell(int _x, int _y, int _type);
+        Cell(int _x, int _y, CellType _type);
 
 
         /**
@@ -35,7 +41,7 @@ class Cell : public Renderable{
          * 
          * @return Tipe (1 = Barn, 2 = Coop, 3 = GrassLand, 4 = Mixer, 5 = Truck, 6 = Well)
          */
-        int getType() const;
+        CellType getType() const;
         
         /**
          * @brief Mengecek apakah Cell terisi
@@ -84,7 +90,7 @@ class Cell : public Renderable{
          * - 5 = Truck
          * - 6 = Well
          */
-        const int type;
+        const CellType type;
         /**
          * @brief Aribut yang menyatakan kondisi Cell apakah dapat terisi (tidak dapat dilewati)
          */

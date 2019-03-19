@@ -25,7 +25,7 @@ class Facility: public Cell{
          * @param _y Lokasi Y
          * @param _type Tipe tanah (4 = Mixer, 5 = Truck, 6 = Well)
          */
-        Facility(int _x, int _y, int _type);
+        Facility(int _x, int _y, CellType _type);
         /**
          * @brief Mengecek apakah Facility dapat digunakan
          * 

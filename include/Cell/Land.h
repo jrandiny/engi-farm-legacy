@@ -26,7 +26,7 @@ class Land : public Cell{
          * @param _y Lokasi Y
          * @param _type Tipe tanah (1 = Barn, 2 = Coop, 3 = GrassLand)
          */
-        Land(int _x, int _y, int _type);
+        Land(int _x, int _y, CellType _type);
 
         /**
          * @brief Menempati sebuah Land

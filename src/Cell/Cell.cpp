@@ -8,14 +8,14 @@
 #include <Cell/Cell.h>
 
 
-Cell::Cell(int _x, int _y, int _type):x(_x),y(_y),type(_type){}
+Cell::Cell(int _x, int _y, CellType _type):x(_x),y(_y),type(_type){}
 
 
 bool Cell::isOccupied() const{
     return occupied;
 }
 
-int Cell::getType() const{
+Cell::CellType Cell::getType() const{
     return type;
 }
 

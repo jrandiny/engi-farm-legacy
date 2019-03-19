@@ -21,11 +21,14 @@
 class Product: public Renderable{
 
   public:
+
+    enum ProductType {BeefRl,EggBen,Mtza,ChickEgg,CowMt,CowMk,DkEgg,GoatMt,GoatMk,HorseMt,RabbitMt};
+
     /**
      * @brief Konstruktor kelas Product
      * 
      */
-    Product(int id, int _harga);
+    Product(ProductType type, int _harga);
 
     /**
      * @brief Mengembalikan nilai harga suatu Product
@@ -34,11 +37,11 @@ class Product: public Renderable{
      */
     int getHarga() const;
     /**
-     * @brief Mengembalikan nilai id suatu Product
+     * @brief Mengembalikan nilai type suatu Product
      * 
-     * @return Nilai id suatu Product
+     * @return Nilai type suatu Product
      */
-    int getId() const;
+    ProductType getType() const;
 
     /**
      * @brief Komparator kesamaan Product
@@ -50,9 +53,9 @@ class Product: public Renderable{
 
   protected: 
     /**
-     * @brief Atribut nilai id yang membedakan setiap kelas turunan Product
+     * @brief Atribut nilai type yang membedakan setiap kelas turunan Product
      */
-    const int id;
+    const ProductType type;
     /**
      * @brief Atribut nilai harga jual object
      */

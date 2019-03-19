@@ -24,7 +24,7 @@ class FarmProduct : public Product{
    * @brief Konstruktor kelas FarmProduct
    * 
    */
-  FarmProduct(int id, int _harga);
+  FarmProduct(ProductType type, int _harga);
 };
 
 #endif

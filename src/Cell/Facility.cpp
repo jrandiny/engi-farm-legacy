@@ -8,7 +8,7 @@
 
 #include <Cell/Facility.h>
 
-Facility::Facility(int _x, int _y, int _type):Cell(_x,_y,_type){
+Facility::Facility(int _x, int _y, CellType _type):Cell(_x,_y,_type){
     occupied = true;
 }
 

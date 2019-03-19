@@ -7,4 +7,4 @@
  */
 #include <Product/SideProduct.h>
 
-SideProduct::SideProduct(int id,int _harga): Product(id,_harga){}
+SideProduct::SideProduct(ProductType type,int _harga): Product(type,_harga){}

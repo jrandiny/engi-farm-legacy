@@ -8,7 +8,7 @@
 
 #include <Cell/Land/Coop.h>
 
-Coop::Coop(int _x, int _y):Land(_x, _y, 2){};
+Coop::Coop(int _x, int _y):Land(_x, _y, Cp){};
 
 std::string Coop::render(){
     if(haveGrass()){

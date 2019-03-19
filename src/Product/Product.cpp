@@ -8,17 +8,17 @@
 
 #include <Product/Product.h>
 
-Product::Product(int id, int _harga): id(id),harga(_harga){
+Product::Product(ProductType type, int _harga): type(type),harga(_harga){
 }
 
 
 int Product::getHarga() const{
     return this->harga;
 }
-int Product::getId() const{
-    return id;
+Product::ProductType Product::getType() const{
+    return type;
 }
 
 bool Product::operator==(Product& P){
-    return P.getId()==getId();
+    return P.getType()==getType();
 }

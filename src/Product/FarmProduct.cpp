@@ -1,3 +1,3 @@
 #include <Product/FarmProduct.h>
 
-FarmProduct::FarmProduct(int id,int _harga): Product(id,_harga){}
+FarmProduct::FarmProduct(ProductType type,int _harga): Product(type,_harga){}
