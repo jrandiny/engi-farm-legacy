@@ -12,9 +12,10 @@
  * @brief Konstruktor objek facility
  * 
  * @param _x lokasi x
- * @param _y lokasi y
+ * @param _y lokasi y 
+ * @param _type type cell
  */
-Facility::Facility(int _x, int _y):Cell(_x,_y){
+Facility::Facility(int _x, int _y, int _type):Cell(_x,_y,_type){
     occupied = true;
 }
 

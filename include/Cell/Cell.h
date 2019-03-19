@@ -25,8 +25,17 @@ class Cell : public Renderable{
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
+         * @param _type type cell
          */
-        Cell(int _x, int _y);
+        Cell(int _x, int _y, int _type);
+
+
+        /**
+         * @brief Mengambil tipe objek
+         * 
+         * @return Tipe (1 = barn, 2 = coop, 3 = grassland, 4 = mixer, 5 = truck, 6 = well)
+         */
+        int getType() const;
         
         /**
          * @brief Mengecek apakah Cell terisi
@@ -46,9 +55,20 @@ class Cell : public Renderable{
          * @return Lokasi Y
          */
         int getY() const;
+
+        /**
+         * @brief Mengambalikan apakah objek Cell in sama dengan objek this
+         * 
+         * @param in objek Cell pembanding
+         * @return true jika objek Cell in sama dengan objek this
+         * @return false jika objek Cell in tidak sama dengan objek this
+         */
+        bool operator==(Cell& in);
+
     protected:
         const int x;
         const int y;
+        const int type;
         bool occupied;
 };
 

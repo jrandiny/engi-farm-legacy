@@ -8,7 +8,7 @@
 
 #include <Cell/Land/GrassLand.h>
 
-GrassLand::GrassLand(int _x, int _y):Land(_x, _y, 1){};
+GrassLand::GrassLand(int _x, int _y):Land(_x, _y, 3){};
 
 std::string GrassLand::render(){
     if(haveGrass()){

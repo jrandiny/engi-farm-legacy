@@ -26,16 +26,9 @@ class Land : public Cell{
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
-         * @param _type Tipe tanah (0 = coop, 1 = grassland, 2 = barn)
+         * @param _type Tipe tanah (1 = barn, 2 = coop, 3 = grassland)
          */
         Land(int _x, int _y, int _type);
-
-        /**
-         * @brief Mengambil tipe objek
-         * 
-         * @return Tipe tanah (0 = coop, 1 = grassland, 2 = barn)
-         */
-        int getType() const;
 
         /**
          * @brief Menempati sebuah Land
@@ -75,7 +68,6 @@ class Land : public Cell{
 
     private:
         bool grass;
-        const int type;
 };
 
 #endif

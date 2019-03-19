@@ -138,17 +138,11 @@ void Player::mix(std::string nama){
                 iter->second--;
             }
         }
-        std::cout<<"tes"<<std::endl;
         std::map<std::shared_ptr<Product>,int>::iterator found=bag.find(sp);
-        std::cout<<sp->render()<<std::endl;
-        // std::cout<<found->first->render()<<std::endl;
         if(found!=bag.end()){
-            std::cout<<"ad"<<std::endl;
-            bag.insert(std::pair<std::shared_ptr<Product>,int>(sp,1));
-        }else{
-            std::cout<<"daslljsda"<<std::endl;
-            std::cout<<found->first<<std::endl;
             found->second++;
+        }else{
+            bag.insert(std::pair<std::shared_ptr<Product>,int>(sp,1));
         }
     }
 }

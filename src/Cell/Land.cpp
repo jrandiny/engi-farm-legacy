@@ -8,14 +8,10 @@
 
 #include <Cell/Land.h>
 
-Land::Land(int _x, int _y, int _type):Cell(_x,_y),type(_type){
+Land::Land(int _x, int _y, int _type):Cell(_x,_y,_type){
     grass = false;
     occupied = false;
 };
-
-int Land::getType() const{
-    return type;
-}
 
 bool Land::haveGrass() const{
     return grass;

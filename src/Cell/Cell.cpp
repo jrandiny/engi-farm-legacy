@@ -13,7 +13,7 @@
  * @param _x Lokasi X
  * @param _y Lokasi Y
  */
-Cell::Cell(int _x, int _y):x(_x),y(_y){}
+Cell::Cell(int _x, int _y, int _type):x(_x),y(_y),type(_type){}
 
 /**
  * @brief Mengembalikan apakah terisi
@@ -22,6 +22,10 @@ Cell::Cell(int _x, int _y):x(_x),y(_y){}
  */
 bool Cell::isOccupied() const{
     return occupied;
+}
+
+int Cell::getType() const{
+    return type;
 }
 
 /**
@@ -40,5 +44,9 @@ int Cell::getX() const{
  */
 int Cell::getY() const{
     return y;
+}
+
+bool Cell::operator==(Cell& in){
+    return in.getType()==getType();
 }
 

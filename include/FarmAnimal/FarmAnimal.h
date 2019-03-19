@@ -76,7 +76,7 @@ class FarmAnimal : public Renderable, public TimerObject{
         bool getDeathStatus();
 
         /**
-         * @brief Get the Habitat object
+         * @brief Mengembalikan id habitat binatang
          * 
          * @return Mengambil id habitat
          */
@@ -88,6 +88,20 @@ class FarmAnimal : public Renderable, public TimerObject{
          * Mengatur status animal kapan lapar dan mati
          */
         void callback();
+
+        /**
+         * @brief Mengembalikan posisi X binatang
+         * 
+         * @return posisi X binatang 
+         */
+        int getX() const;
+
+        /**
+         * @brief Mengembalikan posisi Y binatang
+         * 
+         * @return posisi Y binatang 
+         */
+        int getY() const;
 
     protected:
         const int timeToHungry;

@@ -40,3 +40,11 @@ void FarmAnimal::callback(){
         deathStatus = true;
     }
 }
+
+int FarmAnimal::getX() const{
+    return posX;
+}
+
+int FarmAnimal::getY() const{
+    return posY;
+}
