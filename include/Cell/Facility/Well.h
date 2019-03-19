@@ -14,7 +14,7 @@
  * @brief Kelas riil turunan Facility
  * @class Well Well.h <Cell/Facility/Well.h>
  * 
- * Kelas untuk well yang merupakan salah satu tipe facility
+ * Kelas untuk Well yang merupakan salah satu tipe Facility
  */
 class Well:public Facility{
     public:

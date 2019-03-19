@@ -31,7 +31,7 @@ class EggBenedict : public SideProduct{
     EggBenedict();
 
     /**
-     * @brief Mengembalikan linkedlist product bahan membuat EggBenedict
+     * @brief Mengembalikan LinkedList of shared_ptr of Product bahan membuat EggBenedict
      * 
      * @return LinkedList bahan-bahan untuk membuat EggBenedict
      */

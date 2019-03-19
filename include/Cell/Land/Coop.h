@@ -13,9 +13,10 @@
 
 /**
  * @brief Kelas riil turunan Land
+ * @class Coop Coop.h <Cell/Land/Coop.h>
  * 
  * Kelas untuk salah satu tipe Land yaitu Coop\n
- * Tipe Land ini dapat ditinggali binatang yang menghasilkan telur
+ * Tipe Land ini dapat ditinggali hewan yang menghasilkan telur
  */
 class Coop:public Land{
     public:

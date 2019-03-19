@@ -15,7 +15,7 @@
  * @brief Kelas abstrak turunan Renderable
  * @class Product Product.h <Product/Product.h>
  * 
- * Kelas ini adalah parent dari semua kelas yang merupakan product\n
+ * Kelas ini adalah parent dari semua kelas yang merupakan produk\n
  * Product adalah barang yang dihasilkan oleh animal yang memiliki nilai jual
  */
 class Product: public Renderable{
@@ -25,26 +25,20 @@ class Product: public Renderable{
      * @brief Konstruktor kelas Product
      * 
      */
-    Product(int id);
+    Product(int id, int _harga);
 
     /**
-     * @brief Mengembalikan nilai harga suatu product
+     * @brief Mengembalikan nilai harga suatu Product
      * 
-     * @return Nilai harga jual suatu product
+     * @return Nilai harga jual suatu Product
      */
     int getHarga() const;
     /**
-     * @brief Mengembalikan nilai id suatu product
+     * @brief Mengembalikan nilai id suatu Product
      * 
-     * @return Nilai id suatu product
+     * @return Nilai id suatu Product
      */
     int getId() const;
-    /**
-     * @brief Menetapkan harga object
-     * 
-     * @param Harga harga objek 
-     */
-    void setHarga(int harga);
 
     /**
      * @brief Komparator kesamaan Product
@@ -56,11 +50,13 @@ class Product: public Renderable{
 
   protected: 
     /**
-     * @brief Atribut nilai harga jual object
-     * 
+     * @brief Atribut nilai id yang membedakan setiap kelas turunan Product
      */
-    int harga;
     const int id;
+    /**
+     * @brief Atribut nilai harga jual object
+     */
+    const int harga;
 
 };
 

@@ -1,6 +1,6 @@
 #include <Product/SideProduct/Meatza.h>
 
-Meatza::Meatza():SideProduct(23){
+Meatza::Meatza():SideProduct(23,500){
     recipe.addFirst(std::shared_ptr<Product>(new GoatMeat()));
     recipe.addFirst(std::shared_ptr<Product>(new HorseMeat()));
     recipe.addFirst(std::shared_ptr<Product>(new RabbitMeat()));

@@ -19,7 +19,7 @@
  * @class FarmAnimal FarmAnimal.h <FarmAnimal/FarmAnimal.h>
  * 
  * Kelas ini adalah parent dari semua kelas yang merupakan FarmAnimal\n
- * FarmAnimal adalah hewan yang dapat menghasilkan product
+ * FarmAnimal adalah hewan yang dapat menghasilkan Product
  */
 class FarmAnimal : public Renderable, public TimerObject{
     public:
@@ -37,9 +37,9 @@ class FarmAnimal : public Renderable, public TimerObject{
         void moveRandom();
 
         /**
-         * @brief Fungsi virtual untuk mendapatkan produk binatang
+         * @brief Fungsi virtual untuk mendapatkan produk hewan
          * 
-         * @return Product produk dari binatang
+         * @return Product produk dari hewan
          */
         virtual std::shared_ptr<Product> getProduct()=0;
 
@@ -50,33 +50,33 @@ class FarmAnimal : public Renderable, public TimerObject{
         virtual std::string speak()=0;
 
         /**
-         * @brief Mengatur status makan binatang
+         * @brief Mengatur status makan hewan
          * 
          */
         void setEatStatus(bool);
 
         /**
-         * @brief Mengambil status makan binatang
+         * @brief Mengambil status makan hewan
          * 
          * @return Status sudah makan
          */
         bool getEatStatus();
 
         /**
-         * @brief Mengatur status kematian binatang
+         * @brief Mengatur status kematian hewan
          * 
          */
         void setDeathStatus(bool);
 
         /**
-         * @brief Mengambil status kematian binatang
+         * @brief Mengambil status kematian hewan
          * 
-         * @return Status binatang mati
+         * @return Status hewan mati
          */
         bool getDeathStatus();
 
         /**
-         * @brief Mengembalikan id habitat binatang
+         * @brief Mengembalikan id habitat hewan
          * 
          * @return Mengambil id habitat
          */
@@ -90,25 +90,53 @@ class FarmAnimal : public Renderable, public TimerObject{
         void callback();
 
         /**
-         * @brief Mengembalikan posisi X binatang
+         * @brief Mengembalikan posisi X hewan
          * 
-         * @return posisi X binatang 
+         * @return Posisi X hewan 
          */
         int getX() const;
 
         /**
-         * @brief Mengembalikan posisi Y binatang
+         * @brief Mengembalikan posisi Y hewan
          * 
-         * @return posisi Y binatang 
+         * @return Posisi Y hewan 
          */
         int getY() const;
 
     protected:
+        /**
+         * @brief Atribut yang menentukan waktu kelaparan hewan
+         */
         const int timeToHungry;
+
+        /**
+         * @brief Atribut yang menentukan sisa waktu hewan sebelum mati kelaparan
+         */
         const int timeToDeath = 5;
-        int posX,posY;
+
+        /**
+         * @brief Atribut yang menyatakan lokasi X hewan
+         */
+        int posX;
+
+        /**
+         * @brief Atribut yang menyatakan lokasi Y hewan
+         */
+        int posY;
+
+        /**
+         * @brief Atribut yang menyatakan apakah hewan sudah makan
+         */
         bool eatStatus;
+
+        /**
+         * @brief Atribut yang menyatakan apakah hewan mati
+         */
         bool deathStatus;
+
+        /**
+         * @brief Atribut yang menentukan habitat hewan
+         */
         const int habitat;
 
 };

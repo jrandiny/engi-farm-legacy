@@ -14,7 +14,7 @@
  * @brief Kelas abstrak turunan Cell
  * @class Facility Facility.h <Cell/Facility.h>
  * 
- * Kelas ini adalah turunan dari class cell yang bertipe fasilitas
+ * Kelas ini adalah turunan dari class Cell yang bertipe fasilitas
  */
 class Facility: public Cell{
     public:
@@ -35,6 +35,9 @@ class Facility: public Cell{
 
 
     protected:
+        /**
+         * @brief Atribut yang menyatakan apakah suatu objek Facility sudah digunakan
+         */
         bool usable;
 };
 

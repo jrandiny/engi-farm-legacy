@@ -30,7 +30,7 @@ class BeefRolade : public SideProduct{
     BeefRolade();
 
     /**
-     * @brief Mengembalikan linkedlist product bahan membuat BeefRolade
+     * @brief Mengembalikan LinkedList of shared_ptr of Product bahan membuat BeefRolade
      * 
      * @return LinkedList bahan-bahan untuk membuat BeefRolade
      */

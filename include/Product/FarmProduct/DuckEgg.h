@@ -17,7 +17,7 @@
  * @class DuckEgg DuckEgg.h <Product/FarmProduct/DuckEgg.h>
  * 
  * Kelas ini adalah turuna dari kelas FarmProduct\n
- * DuckEgg adalah product yang dihasilkan dari object animal Duck
+ * DuckEgg adalah Product yang dihasilkan dari object animal Duck
  */
 class DuckEgg : public FarmProduct{
   public:

@@ -1,10 +1,5 @@
 #include <FarmAnimal/FarmAnimal.h>
 
-/**
- * @brief Konstruktor FarmAnimal dengan parameter timetohungry
- * 
- * @param time Waktu hingga lapar
- */
 FarmAnimal::FarmAnimal(int time,int type):timeToHungry(time),habitat(type){
 }
 

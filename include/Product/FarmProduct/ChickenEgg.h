@@ -16,7 +16,7 @@
  * @class ChickenEgg ChickenEgg.h <Product/FarmProduct/ChickenEgg.h>
  * 
  * Kelas ini adalah turunan dari kelas FarmProduct\n
- * ChickenEgg adalah product yang dihasilkan oleh object animal Chicken
+ * ChickenEgg adalah Product yang dihasilkan oleh object animal Chicken
  */
 class ChickenEgg : public FarmProduct{
   public:

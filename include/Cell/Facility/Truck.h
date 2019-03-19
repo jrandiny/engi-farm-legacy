@@ -34,6 +34,13 @@ class Truck:public Facility, public TimerObject{
          */
         std::string render();
 
+        /**
+         * @brief Menggunakan Truck untuk mengirim barang
+         * 
+         * @param time Waktu hingga dapat digunakan kembali
+         */
+        void use(int time);
+
     private:
 
         /**

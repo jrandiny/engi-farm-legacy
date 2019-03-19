@@ -16,7 +16,7 @@
  * @class FarmProduct FarmProduct.h <Product/FarmProduct.h>
  * 
  * Kelas ini adalah parent dari semua kelas yang merupakan FarmProduct\n
- * FarmProduct adalah product yang dapat dihasilkan dari FarmAnimal
+ * FarmProduct adalah Product yang dapat dihasilkan dari FarmAnimal
  */
 class FarmProduct : public Product{
   public:
@@ -24,7 +24,7 @@ class FarmProduct : public Product{
    * @brief Konstruktor kelas FarmProduct
    * 
    */
-  FarmProduct(int id);
+  FarmProduct(int id, int _harga);
 };
 
 #endif

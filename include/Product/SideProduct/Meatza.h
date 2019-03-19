@@ -31,7 +31,7 @@ class Meatza : public SideProduct{
     Meatza();
 
     /**
-     * @brief Mengembalikan linkedlist product bahan membuat Meatza
+     * @brief Mengembalikan LinkedList of shared_ptr of Product bahan membuat Meatza
      * 
      * @return LinkedList bahan-bahan untuk membuat Meatza
      */

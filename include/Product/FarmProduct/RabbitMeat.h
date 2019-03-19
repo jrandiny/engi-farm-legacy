@@ -17,7 +17,7 @@
  * @class RabbitMeat RabbitMeath <Product/FarmProduct/RabbitMeat.h>
  * 
  * Kelas ini adalah turunan dari kelas FarmProduct\n
- * RabbitMeat adalah product yang dihasilkan dari object animal Rabbit
+ * RabbitMeat adalah Product yang dihasilkan dari object animal Rabbit
  */
 class RabbitMeat : public FarmProduct{
   public:

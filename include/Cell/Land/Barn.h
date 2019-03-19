@@ -13,9 +13,10 @@
 
 /**
  * @brief Kelas riil turunan Land
+ * @class Barn Barn.h <Cell/Land/Barn.h>
  * 
  * Kelas untuk salah satu tipe Land yaitu Barn\n
- * Tipe Land ini dapat ditinggali binatang yang menghasilkan daging
+ * Tipe Land ini dapat ditinggali hewan yang menghasilkan daging
  */
 class Barn:public Land{
     public:

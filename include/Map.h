@@ -19,12 +19,28 @@
 #include <FarmAnimal/FarmAnimal.h>
 #include <memory>
 
+/**
+ * @brief Kelas riil turunan Renderable
+ * @class Map Map.h <Map.h>
+ * 
+ * Kelas ini adalah kelas yang akan menyimpan peta permainan dan memanipulasinya * 
+ */
 class Map{
     public:
-        class cmpSharedPtrLoc {
+        /**
+         * @brief Kelas pembanding shared_ptr dari Cell 
+         */
+        class cmpSharedPtrCell {
             public:
-                bool operator()(const std::shared_ptr<Product>& a, const std::shared_ptr<Product>& b) const {
-                    return (*a).getId() < (*b).getId();
+                /**
+                 * @brief Fungsi pembanding tipe shared_ptr Cell didapat dari tipe
+                 * 
+                 * @param a Cell a
+                 * @param b Cell b
+                 * @return True jika shared_ptr Cell a lebih kecil dari shared_ptr Cell b
+                 */
+                bool operator()(const std::shared_ptr<Cell>& a, const std::shared_ptr<Cell>& b) const {
+                    return (*a).getType() < (*b).getType();
                 }
         };
         /**

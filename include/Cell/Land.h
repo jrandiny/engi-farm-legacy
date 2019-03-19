@@ -16,8 +16,6 @@
  * 
  * Kelas ini adalah untuk tiap Cell bertipe tanah tempat yang bisa dijalani\n
  * Di dalamnya bisa terdapat grass dan tipe tanah
- * 
- * @var type Tipe tanah (0 = coop, 1 = grassland, 2 = barn)
  */
 class Land : public Cell{
     public:
@@ -26,20 +24,20 @@ class Land : public Cell{
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
-         * @param _type Tipe tanah (1 = barn, 2 = coop, 3 = grassland)
+         * @param _type Tipe tanah (1 = Barn, 2 = Coop, 3 = GrassLand)
          */
         Land(int _x, int _y, int _type);
 
         /**
          * @brief Menempati sebuah Land
          * 
-         * Membuat sebuah Land teroccupy, jika sudah teroccupy, tidak terjadi apa-apa
+         * Membuat sebuah Land ter-occupy, jika sudah ter-occupy, tidak terjadi apa-apa
          */
         void occupy();
         /**
          * @brief Unoccupy sebuah Land
          * 
-         * Membuat sebuah Land jadi tidak teroccupy, jika sudah tidak teroccupy, tidak terjadi apa-apa
+         * Membuat sebuah Land jadi tidak ter-occupy, jika sudah tidak ter-occupy, tidak terjadi apa-apa
          */
         void unoccupy();
 

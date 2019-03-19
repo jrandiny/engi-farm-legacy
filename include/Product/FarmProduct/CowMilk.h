@@ -17,7 +17,7 @@
  * @class CowMilk CowMilk.h <Product/FarmProduct/CowMilk.h>
  * 
  * Kelas ini adalah turunan dari kelas FarmProduct\n
- * CowMilk adalah product yang dihasilkan dari object animal Cow
+ * CowMilk adalah Product yang dihasilkan dari object animal Cow
  */
 class CowMilk : public FarmProduct{
   public:

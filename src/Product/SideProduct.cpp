@@ -7,8 +7,4 @@
  */
 #include <Product/SideProduct.h>
 
-/**
- * @brief constructor object SideProduct
- * 
- */
-SideProduct::SideProduct(int id): Product(id){}
+SideProduct::SideProduct(int id,int _harga): Product(id,_harga){}

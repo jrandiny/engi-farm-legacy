@@ -17,7 +17,7 @@
  * @class HorseMeat HorseMeat.h <Product/FarmProduct/HorseMeat.h>
  * 
  * Kelas ini adalah turunan dari kelas HorseMeat\n
- * HorseMeat adalah product yang dihasilkan dari object animal Horse
+ * HorseMeat adalah Product yang dihasilkan dari object animal Horse
  */
 class HorseMeat : public FarmProduct{
   public:

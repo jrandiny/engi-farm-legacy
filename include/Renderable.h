@@ -1,7 +1,7 @@
 /**
  * @file Renderable.h
  * @author Back End K3
- * @brief File berisi definisi class renderable
+ * @brief File berisi definisi class Renderable
  * @version 0.1
  * @date 2019-03-01 
  */

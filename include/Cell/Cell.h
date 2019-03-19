@@ -15,7 +15,7 @@
  * @brief Kelas abstrak turunan Renderable
  * @class Cell Cell.h <Cell/Cell.h>
  * 
- * Kelas ini adalah parent dari semua class yang berupa cell\n
+ * Kelas ini adalah parent dari semua class yang berupa Cell\n
  * Cell adalah satu petak objek di peta yang tidak bergerak
  */
 class Cell : public Renderable{
@@ -25,7 +25,7 @@ class Cell : public Renderable{
          * 
          * @param _x Lokasi X
          * @param _y Lokasi Y
-         * @param _type type cell
+         * @param _type type Cell
          */
         Cell(int _x, int _y, int _type);
 
@@ -33,7 +33,7 @@ class Cell : public Renderable{
         /**
          * @brief Mengambil tipe objek
          * 
-         * @return Tipe (1 = barn, 2 = coop, 3 = grassland, 4 = mixer, 5 = truck, 6 = well)
+         * @return Tipe (1 = Barn, 2 = Coop, 3 = GrassLand, 4 = Mixer, 5 = Truck, 6 = Well)
          */
         int getType() const;
         
@@ -66,9 +66,28 @@ class Cell : public Renderable{
         bool operator==(Cell& in);
 
     protected:
+        /**
+         * @brief Atribut yang menyatakan lokasi X
+         */
         const int x;
+        /**
+         * @brief Atribut yang menyatakan lokasi Y
+         */
         const int y;
+        /**
+         * @brief Atribut tipe Cell 
+         * 
+         * - 1 = Barn
+         * - 2 = Coop
+         * - 3 = GrassLand
+         * - 4 = Mixer
+         * - 5 = Truck
+         * - 6 = Well
+         */
         const int type;
+        /**
+         * @brief Aribut yang menyatakan kondisi Cell apakah dapat terisi (tidak dapat dilewati)
+         */
         bool occupied;
 };
 

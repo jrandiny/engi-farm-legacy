@@ -87,11 +87,17 @@ int main(){
         cout<<iter.first->render()<<" "<<iter.second<<endl;
     }
     Truck *t = new Truck(5,6);
+    cout<<(*t).isUsable()<<endl;
     P.interact(*t);
     PrintStatus(P);
     bag=P.getBag();
     for (auto iter:bag){
         cout<<iter.first->render()<<" "<<iter.second<<endl;
     }
+    cout<<"Truck usable = "<<(*t).isUsable()<<endl;
+    for(int i =0;i<16;i++){
+        t->tick();
+    }
+    cout<<"Truck usable = "<<(*t).isUsable()<<endl;
     return 0;
 }

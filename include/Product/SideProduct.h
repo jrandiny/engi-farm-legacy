@@ -18,7 +18,7 @@
  * @class SideProduct SideProduct.h <Product/SideProduct.h>
  * 
  * Kelas ini adalah parent dari semua kelas yang merupakan SideProduct\n
- * SideProduct adalah product hasil pengolahan dari 2 Farmproduct atau lebih 
+ * SideProduct adalah Product hasil pengolahan dari 2 FarmProduct atau lebih 
  */
 class SideProduct : public Product{
   public:
@@ -26,16 +26,19 @@ class SideProduct : public Product{
      * @brief Konstruktor kelas SideProduct
      * 
      */
-    SideProduct(int id);
+    SideProduct(int id, int _harga);
 
     /**
-     * @brief Mengembalikan sebuah LinkedList product
+     * @brief Mengembalikan sebuah LinkedList Product
      * 
      * @return LinkedList Product
      */
     virtual LinkedList<std::shared_ptr<Product>> getRecipe() = 0;
 
   protected:
+    /**
+     * @brief Atribut LinkedList yang menyimpan resep untuk membuat SideProduct
+     */
     LinkedList<std::shared_ptr<Product>> recipe;
 };
 

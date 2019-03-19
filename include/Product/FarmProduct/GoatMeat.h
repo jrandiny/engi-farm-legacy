@@ -16,7 +16,7 @@
  * @class GoatMeat GoatMeat.h <Product/FarmProduct/GoatMeat.h>
  * 
  * Kelas ini adalah turunan dari kelas FarmProduct\n
- * GoatMeat adalah product yang dihasilkan dari object animal Goat
+ * GoatMeat adalah Product yang dihasilkan dari object animal Goat
  */
 class GoatMeat : public FarmProduct{
   public:

@@ -13,9 +13,10 @@
 
 /**
  * @brief Kelas riil turunan Land
+ * @class GrassLand GrassLand.h <Cell/Land/GrassLand.h>
  * 
  * Kelas untuk salah satu tipe Land yaitu GrassLand\n
- * Tipe Land ini dapat ditinggali binatang yang menghasilkan susu
+ * Tipe Land ini dapat ditinggali hewan yang menghasilkan susu
  */
 class GrassLand:public Land{
     public:

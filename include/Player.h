@@ -26,26 +26,23 @@
  * Player adalah objek yang digunakan pemain sebagai karakter utama
  */
 class Player: public Renderable{
-    class Resep{
-        public:
-            static std::shared_ptr<SideProduct> getRecipe(std::string name);
-    };
     public:
-    class cmpSharedPtrProduct {
-        public:
-            bool operator()(const std::shared_ptr<Product>& a, const std::shared_ptr<Product>& b) const {
-                return (*a).getId() < (*b).getId();
-            }
-    };
-    private:
-        const int MAX_WATER = 50;// maximum jumlah air yang bisa ditampung
-        const int MAX_ITEM_BAG = 10; // maximum product yang bisa ditampung di tas
-        std::map<std::shared_ptr<Product>,int,cmpSharedPtrProduct> bag; // tas dari player
-        int water; // jumlah air saat ini
-        int money; // jumlah uang saat ini
-        int posX; // posisi X player
-        int posY; // posisi X player
-    public:
+        /**
+         * @brief Kelas pembanding shared_ptr dari Product
+         */
+        class cmpSharedPtrProduct {
+            public:
+                /**
+                 * @brief Fungsi pembanding tipe shared_ptr produk didapat dari id
+                 * 
+                 * @param a Produk a
+                 * @param b Produk b
+                 * @return True jika shared_ptr Produk a lebih kecil dari shared_ptr Produk b 
+                 */
+                bool operator()(const std::shared_ptr<Product>& a, const std::shared_ptr<Product>& b) const {
+                    return (*a).getId() < (*b).getId();
+                }
+        };
 
         /**
          * @brief Konstruktor kelas Player
@@ -64,9 +61,15 @@ class Player: public Renderable{
         /**
          * @brief Mengembalikan bag
          * 
-         * @return list produk isi dari tas
+         * @return std::mao of shared_ptr of Product isi dari tas
          */
         std::map<std::shared_ptr<Product>,int,cmpSharedPtrProduct> getBag();
+
+        /**
+         * @brief Menambah Product kedalam bag
+         * 
+         */
+        void addBag(std::shared_ptr<Product> p);
         /**
          * @brief Mengembalikan jumlah water
          * 
@@ -82,18 +85,18 @@ class Player: public Renderable{
         /**
          * @brief Mengembalikan posX
          * 
-         * @return lokasi X player
+         * @return lokasi X Player
          */
         int getPosX();
         /**
-         * @brief Mengemlaikan posY
+         * @brief Mengembalikan posY
          * 
-         * @return lokasi Y player
+         * @return lokasi Y Player
          */
         int getPosY();
 
         /**
-         * @brief Memindahkan posisi player
+         * @brief Memindahkan posisi Player
          * 
          * mengubah posX dan posY tergantung input arah
          * 
@@ -111,8 +114,8 @@ class Player: public Renderable{
         /**
          * @brief Berinteraksi dengan FarmAnimal
          * 
-         * interaksi dengan hewan di coop menghasilkan egg
-         * interaksi dengan hewan di grassland menghasilkan milk
+         * interaksi dengan hewan di Coop menghasilkan egg
+         * interaksi dengan hewan di GrassLand menghasilkan milk
          * 
          * @param hewan hewan yang diinteraksikan
          */
@@ -120,18 +123,18 @@ class Player: public Renderable{
         /**
          * @brief Berinteraksi dengan Fasilitas (Well)
          * 
-         * interaksi dengan well mengisi water hingga penuh
+         * interaksi dengan Well mengisi water hingga penuh
          * 
-         * @param w objek well yang diambil sumurnya
+         * @param w objek Well yang diambil sumurnya
          */
         void interact(Well&);
         /**
          * @brief Berinteraksi dengan Fasilitas (Truck)
          * 
-         * interaksi dengan truck mengosongkan bag dan mendapat money
-         * dan menjadikan truck tidak bisa digunakan untu beberapa saat
+         * interaksi dengan Truck mengosongkan bag dan mendapat money
+         * dan menjadikan Truck tidak bisa digunakan untuk beberapa saat
          * 
-         * @param t truck yang akan digunakan untuk menjual produk
+         * @param t Truck yang akan digunakan untuk menjual Product
          */
         void interact(Truck& truck);
         /**
@@ -144,25 +147,40 @@ class Player: public Renderable{
          */
         void kill(FarmAnimal& hewan);
         /**
-         * @brief Menyiram land tempat player berdiri
+         * @brief Menyiram Land tempat Player berdiri
          * 
-         * @param l land yang akan disiram
+         * @param l Land yang akan disiram
          */
         void grow(Land& l);
         /**
          * @brief Membuat SideProduct
          * 
-         * digunakan pada mixer dan menghasilkan SideProduct
+         * digunakan pada Mixer dan menghasilkan SideProduct
          * 
          * @param nama nama SideProduct yang ingin dibuat
          */
         void mix(std::string nama);
         /**
-         * @brief Mengembalikan lambang player
+         * @brief Mengembalikan lambang Player
          * 
          * @return char lambang yang ditampilkan untuk Player
          */
         std::string render();
+
+    private:
+        class Resep{
+            public:
+                static std::shared_ptr<SideProduct> getRecipe(std::string name);
+        };
+
+        const int MAX_WATER = 50;// maximum jumlah air yang bisa ditampung
+        const int MAX_ITEM_BAG = 10; // maximum Product yang bisa ditampung di tas
+        int itemNow;
+        std::map<std::shared_ptr<Product>,int,cmpSharedPtrProduct> bag; // tas dari player
+        int water; // jumlah air saat ini
+        int money; // jumlah uang saat ini
+        int posX; // posisi X player
+        int posY; // posisi X player
 };
 
 #endif

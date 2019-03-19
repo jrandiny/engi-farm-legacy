@@ -1,7 +1,7 @@
 /**
  * @file Mixer.h
  * @author Back End K3
- * @brief File berisi definisi class mixer
+ * @brief File berisi definisi class Mixer
  * @version 0.1
  * @date 2019-03-01
  */
@@ -14,7 +14,7 @@
  * @brief Kelas riil turunan Facility
  * @class Mixer Mixer.h <Cell/Facility/Mixer.h>
  * 
- * Kelas ini adalah kelas untuk fasilitas mixer 
+ * Kelas ini adalah kelas untuk fasilitas Mixer 
  */
 class Mixer:public Facility{
     public:
