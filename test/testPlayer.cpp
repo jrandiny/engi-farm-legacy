@@ -77,10 +77,21 @@ int main(){
     // P.grow(*d);
     // cout<<d->haveGrass()<<endl;
     P.mix("EggBenedict");
+    P.mix("BeefRolade");
+    P.mix("Meatza");
+    P.mix("EggBenedict");
+    P.mix("BeefRolade");
+    // P.mix("Meatza");
     bag=P.getBag();
     for (auto iter:bag){
         cout<<iter.first->render()<<" "<<iter.second<<endl;
     }
-
+    Truck *t = new Truck(5,6);
+    P.interact(*t);
+    PrintStatus(P);
+    bag=P.getBag();
+    for (auto iter:bag){
+        cout<<iter.first->render()<<" "<<iter.second<<endl;
+    }
     return 0;
 }

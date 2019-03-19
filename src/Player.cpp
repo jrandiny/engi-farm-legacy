@@ -91,8 +91,9 @@ void Player::interact(Well&){
 void Player::interact(Truck& truck){
     for (std::map<std::shared_ptr<Product>,int>::iterator it = bag.begin();it!=bag.end();it++){
         money+= it->second * (it->first)->getHarga();
-        bag.erase(it->first);
     }
+
+    bag.clear();
 
     truck.setAndActivate(15);
 }
