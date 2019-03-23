@@ -7,15 +7,15 @@
 #include <Product/SideProduct/Meatza.h>
 #include <memory>
 
-std::shared_ptr<SideProduct> Player::Resep::getRecipe(std::string name){
-    if (name == "EggBenedict"){
+std::shared_ptr<SideProduct> Player::Resep::getRecipe(Product::ProductType id){
+    if (id == Product::EggBenedictType){
         return std::shared_ptr<SideProduct>(new EggBenedict());
-    } else if (name == "Meatza"){
+    } else if (id == Product::MeatzaType){
         return std::shared_ptr<SideProduct>(new Meatza());
-    } else if(name== "BeefRolade"){
+    } else if(id == Product::BeefRoladeType){
         return std::shared_ptr<SideProduct>(new BeefRolade());
     } else {
-        throw std::runtime_error("No Recipe");
+        throw std::runtime_error("Enum Not Found");
     }
 }
 
@@ -49,6 +49,8 @@ void Player::addBag(std::shared_ptr<Product> p){
             bag.insert(std::pair<std::shared_ptr<Product>,int>(p,1));
         }
         itemNow++;
+    } else {
+        throw std::runtime_error("Bag is full");
     }
 }
 
@@ -93,6 +95,8 @@ void Player::interact(FarmAnimal& hewan){
     if (hewan.getEatStatus() && hewan.getHabitat()!=Cell::BarnType){
         addBag(hewan.getProduct());
         hewan.setEatStatus(false);
+    } else {
+        throw std::runtime_error("Can't interact with animal");
     }
 }
 void Player::interact(Well&){
@@ -100,37 +104,40 @@ void Player::interact(Well&){
 }
 void Player::interact(Truck& truck){
     if(truck.isUsable()){
-        for (std::map<std::shared_ptr<Product>,int>::iterator it = bag.begin();it!=bag.end();it++){
-            money+= it->second * (it->first)->getHarga();
+        if(itemNow>0){
+            for (std::map<std::shared_ptr<Product>,int>::iterator it = bag.begin();it!=bag.end();it++){
+                money+= it->second * (it->first)->getHarga();
+            }
+
+            bag.clear();
+
+            truck.use(15);
+            itemNow=0;
+        } else {
+            throw std::runtime_error("No Product to sell");
         }
-
-        bag.clear();
-
-        truck.use(15);
-        itemNow=0;
     }else{
         throw std::runtime_error("Truck is currently unusable");
     }
 }
 void Player::kill(FarmAnimal& hewan){
     
-    if (hewan.getHabitat()==Cell::BarnType){
+    if (hewan.getHabitat()==Cell::BarnType && !hewan.getDeathStatus()){
         addBag(hewan.getProduct());
         hewan.setDeathStatus(true);
     } else {
-        throw std::runtime_error("Can't kill animal not classified as meatproducing");
+        throw std::runtime_error("Can't kill animal");
     }
 }
 
 void Player::grow(Land& l){
     l.addGrass();
 }
-void Player::mix(std::string nama){
+void Player::mix(Product::ProductType id){
     if (itemNow<MAX_ITEM_BAG){
-
         std::shared_ptr<SideProduct> sp;
         try{
-            sp = Resep::getRecipe(nama);
+            sp = Resep::getRecipe(id);
         } catch (std::runtime_error e){
             throw std::runtime_error(e.what());
         }
@@ -152,7 +159,11 @@ void Player::mix(std::string nama){
                 }
             }
             addBag(sp);
+        } else {
+            throw std::runtime_error("Item in bag are not enough to make "+sp->render());
         }
+    } else {
+        throw std::runtime_error("Bag is full");
     }
 }
 

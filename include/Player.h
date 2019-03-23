@@ -159,7 +159,7 @@ class Player: public Renderable{
          * 
          * @param nama nama SideProduct yang ingin dibuat
          */
-        void mix(std::string nama);
+        void mix(Product::ProductType id);
         /**
          * @brief Mengembalikan lambang Player
          * 
@@ -170,7 +170,7 @@ class Player: public Renderable{
     private:
         class Resep{
             public:
-                static std::shared_ptr<SideProduct> getRecipe(std::string name);
+                static std::shared_ptr<SideProduct> getRecipe(Product::ProductType id);
         };
 
         const int MAX_WATER = 50;// maximum jumlah air yang bisa ditampung

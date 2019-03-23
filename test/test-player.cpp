@@ -13,7 +13,7 @@ TEST(Player, render){
     ASSERT_EQ(p.render(),"P");
 }
 
-TEST(Player, construct1){
+TEST(Player, constructor1){
     Player p;
     ASSERT_EQ(p.getWater(),50);
     ASSERT_EQ(p.getMoney(),0);
@@ -21,7 +21,7 @@ TEST(Player, construct1){
     ASSERT_EQ(p.getPosY(),0);
 }
 
-TEST(Player, construct2){
+TEST(Player, constructor2){
     Player p(100,50,5,10);
     ASSERT_EQ(p.getWater(),100);
     ASSERT_EQ(p.getMoney(),50);
@@ -73,11 +73,14 @@ TEST(Player, maxBagItem){
     Player p;
     int count = 0;
 
-    for (int i=0;i<10;i++){
+    for (int i=0;i<3;i++){ // 9 item
         p.addBag(std::shared_ptr<Product>(new ChickenEgg()));
         p.addBag(std::shared_ptr<Product>(new DuckEgg()));
         p.addBag(std::shared_ptr<Product>(new CowMilk()));
     }
+    p.addBag(std::shared_ptr<Product>(new ChickenEgg())); // item ke 10
+
+    ASSERT_THROW(p.addBag(std::shared_ptr<Product>(new CowMilk())),std::runtime_error);
     std::map<std::shared_ptr<Product>,int, Player::cmpSharedPtrProduct> bag = p.getBag();
     ASSERT_EQ(bag.size(),3);
     std::map<std::shared_ptr<Product>,int, Player::cmpSharedPtrProduct>::iterator it = bag.begin();
@@ -130,7 +133,7 @@ TEST(Player, interactAnimal){
 
     p.interact(chick);
     p.interact(tank);
-    p.interact(tanky);
+    ASSERT_THROW(p.interact(tanky),std::runtime_error);
     p.interact(donald);
     chick.setEatStatus(true);
     tank.setEatStatus(true);
@@ -138,7 +141,7 @@ TEST(Player, interactAnimal){
     donald.setEatStatus(true);
     p.interact(chick);
     p.interact(tank);
-    p.interact(tanky);
+    ASSERT_THROW(p.interact(tanky),std::runtime_error);
     p.interact(donald);
     std::map<std::shared_ptr<Product>,int, Player::cmpSharedPtrProduct> bag = p.getBag();
     ASSERT_EQ(bag.size(),3);
@@ -162,6 +165,7 @@ TEST(Player, interactWell){
 TEST(Player, interactTruck){
     Player p;
     Truck t(0,1);
+    Truck t2(1,0);
     Chicken chick(0,2);
     
     for(int i=0;i<3;i++){
@@ -172,6 +176,9 @@ TEST(Player, interactTruck){
     p.interact(t);
     ASSERT_EQ(p.getMoney(),300);
     ASSERT_FALSE(t.isUsable());
+    ASSERT_THROW(p.interact(t),std::runtime_error);
+
+    ASSERT_THROW(p.interact(t2),std::runtime_error);
 }
 
 TEST(Player, kill){
@@ -182,7 +189,7 @@ TEST(Player, kill){
 
     ASSERT_THROW(p.kill(desk),std::runtime_error);
     p.kill(top);
-
+    ASSERT_THROW(p.kill(top),std::runtime_error);
     p.interact(t);
     ASSERT_EQ(p.getMoney(),100);
     ASSERT_FALSE(desk.getDeathStatus());
@@ -206,7 +213,24 @@ TEST(Player, mix){
     p.interact(chick);
     p.kill(tank);
 
-    p.mix("BeefRolade");
+    p.mix(Product::BeefRoladeType);
     p.interact(t);
     ASSERT_EQ(p.getMoney(),400);
-}
+
+    try{
+        p.mix(Product::BeefRoladeType);
+    } catch (std::runtime_error e){
+        ASSERT_STREQ(e.what(),"Item in bag are not enough to make Beef Rolade");
+    }
+
+    for(int i=0;i<10;i++){
+        chick.setEatStatus(true);
+        p.interact(chick);
+    }
+    try{
+        p.mix(Product::EggBenedictType);
+    }
+    catch(std::runtime_error e){
+        ASSERT_STREQ(e.what(),"Bag is full");
+    }
+}   
