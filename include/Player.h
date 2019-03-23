@@ -40,7 +40,7 @@ class Player: public Renderable{
                  * @return True jika shared_ptr Produk a lebih kecil dari shared_ptr Produk b 
                  */
                 bool operator()(const std::shared_ptr<Product>& a, const std::shared_ptr<Product>& b) const {
-                    return (*a).getId() < (*b).getId();
+                    return (*a).getType() < (*b).getType();
                 }
         };
 

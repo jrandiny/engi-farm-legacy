@@ -1,6 +1,6 @@
 #include <Product/FarmProduct/CowMeat.h>
 
-CowMeat::CowMeat():FarmProduct(CowMt,100){}
+CowMeat::CowMeat():FarmProduct(ProductType::CowMeatType,100){}
 
 std::string CowMeat::render(){
     return "Cow Meat";

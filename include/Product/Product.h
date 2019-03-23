@@ -22,7 +22,7 @@ class Product: public Renderable{
 
   public:
 
-    enum ProductType {BeefRl,EggBen,Mtza,ChickEgg,CowMt,CowMk,DkEgg,GoatMt,GoatMk,HorseMt,RabbitMt};
+    enum ProductType {BeefRoladeType,EggBenedictType,MeatzaType,ChickenEggType,CowMeatType,CowMilkType,DuckEggType,GoatMeatType,GoatMilkType,HorseMeatType,RabbitMeatType};
 
     /**
      * @brief Konstruktor kelas Product
@@ -39,7 +39,7 @@ class Product: public Renderable{
     /**
      * @brief Mengembalikan nilai type suatu Product
      * 
-     * @return Nilai type suatu Product
+     * @return Nilai ProductType suatu Product
      */
     ProductType getType() const;
 

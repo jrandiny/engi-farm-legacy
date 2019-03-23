@@ -1,7 +1,7 @@
 #include <Product/FarmProduct/CowMilk.h>
 
 
-CowMilk::CowMilk():FarmProduct(CowMk,100){}
+CowMilk::CowMilk():FarmProduct(ProductType::CowMilkType,100){}
 
 std::string CowMilk::render(){
     return "Cow Milk";

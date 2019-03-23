@@ -1,7 +1,8 @@
 #include <Cell/Facility/Truck.h>
+#include <Cell/Cell.h>
 #include <TimerObject.h>
 
-Truck::Truck(int _x, int _y):Facility(_x,_y,Trck){
+Truck::Truck(int _x, int _y):Facility(_x,_y,CellType::TruckType){
     usable = true;
 }
 

@@ -6,9 +6,10 @@
  * @date 2019-03-02
  */
 
+#include <Cell/Cell.h>
 #include <Cell/Land/Coop.h>
 
-Coop::Coop(int _x, int _y):Land(_x, _y, Cp){};
+Coop::Coop(int _x, int _y):Land(_x, _y, CellType::CoopType){};
 
 std::string Coop::render(){
     if(haveGrass()){

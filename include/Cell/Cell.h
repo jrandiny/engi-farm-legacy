@@ -24,7 +24,7 @@
 class Cell : public Renderable{
     public:
 
-        enum CellType {Mxr,Trck,Wll,Brn,Cp,GrLd};
+        enum CellType {MixerType,TruckType,WellType,BarnType,CoopType,GrassLandType};
 
         /**
          * @brief Konstruktor kelas Cell
@@ -39,7 +39,7 @@ class Cell : public Renderable{
         /**
          * @brief Mengambil tipe objek
          * 
-         * @return Tipe (1 = Barn, 2 = Coop, 3 = GrassLand, 4 = Mixer, 5 = Truck, 6 = Well)
+         * @return Tipe CellType
          */
         CellType getType() const;
         
@@ -81,14 +81,7 @@ class Cell : public Renderable{
          */
         const int y;
         /**
-         * @brief Atribut tipe Cell 
-         * 
-         * - 1 = Barn
-         * - 2 = Coop
-         * - 3 = GrassLand
-         * - 4 = Mixer
-         * - 5 = Truck
-         * - 6 = Well
+         * @brief Atribut tipe Cell dengan tipe enum CellType
          */
         const CellType type;
         /**
