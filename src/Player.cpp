@@ -90,14 +90,9 @@ std::string Player::talk(FarmAnimal& hewan){
 }
 
 void Player::interact(FarmAnimal& hewan){
-    if (hewan.getEatStatus()){
-        addBag(std::shared_ptr<Product>(hewan.getProduct()));
-        // std::map<std::shared_ptr<Product>,int>::iterator iter = bag.find(std::shared_ptr<Product>(hewan.getProduct()));
-        // if (iter!=bag.end()){
-        //     iter->second++;
-        // } else {
-        //     bag.insert(std::pair<std::shared_ptr<Product>,int>(hewan.getProduct(),1));
-        // }
+    if (hewan.getEatStatus() && hewan.getHabitat()!=Cell::BarnType){
+        addBag(hewan.getProduct());
+        hewan.setEatStatus(false);
     }
 }
 void Player::interact(Well&){
@@ -119,8 +114,9 @@ void Player::interact(Truck& truck){
 }
 void Player::kill(FarmAnimal& hewan){
     
-    if (hewan.getHabitat()==2){
-        addBag(std::shared_ptr<Product>(hewan.getProduct()));
+    if (hewan.getHabitat()==Cell::BarnType){
+        addBag(hewan.getProduct());
+        hewan.setDeathStatus(true);
     } else {
         throw std::runtime_error("Can't kill animal not classified as meatproducing");
     }
