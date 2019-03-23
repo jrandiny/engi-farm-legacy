@@ -12,14 +12,14 @@ TEST(LinkedList, basicIO){
 
     ASSERT_EQ(2,list.get(1));
     ASSERT_EQ(1,list.get(2));
-    ASSERT_EQ(3,list.getFirst()->getInfo());
+    ASSERT_EQ(5,list.getFirst()->getInfo());
     ASSERT_EQ(9,list.get(list.getNeff()-1));
 
     ASSERT_FALSE(list.isEmpty());
 
     list.remove(5);
     list.remove(2);
-    ASSERT_EQ(list.getNeff(),3);
+    ASSERT_EQ(list.getNeff(),2);
 }
 
 TEST(LinkedList, find){
