@@ -22,6 +22,11 @@ FarmAnimal::FarmAnimal(int x, int y, int time,Cell::CellType type):timeToHungry(
 
 void FarmAnimal::setEatStatus(bool newStatus){
     eatStatus=newStatus;
+    if(eatStatus){
+        setTimer(timeToHungry);
+    } else {
+        setTimer(timeToDeath);
+    }
 }
 
 bool FarmAnimal::getEatStatus(){
@@ -30,6 +35,11 @@ bool FarmAnimal::getEatStatus(){
 
 void FarmAnimal::setDeathStatus(bool newStatus){
     deathStatus=newStatus;
+    if(deathStatus){
+        deactivateTimer();
+    } else {
+        setEatStatus(true);
+    }
 }
 
 bool FarmAnimal::getDeathStatus(){

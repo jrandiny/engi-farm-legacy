@@ -17,10 +17,10 @@ std::string Cow::speak(){
 }
 
 std::shared_ptr<Product> Cow::getProduct(){
-    if (habitat==1){
+    if (habitat==Cell::BarnType){
         std::shared_ptr<Product> res = std::shared_ptr<Product>(new CowMeat());
         return res;
-    }else if(habitat==2){
+    }else if(habitat==Cell::GrassLandType){
         std::shared_ptr<Product> res = std::shared_ptr<Product>(new CowMilk());
         return res;
     }else{
