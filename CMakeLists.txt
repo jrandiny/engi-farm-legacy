@@ -14,22 +14,6 @@ include_directories(include)
 
 file(GLOB_RECURSE ENGI_FARM_SOURCE "src/*.cpp")
 
-add_executable(testerList
-  ${ENGI_FARM_SOURCE}
-  test/testList.cpp
-)
+enable_testing()
+add_subdirectory(test)
 
-add_executable(testerCB
-  ${ENGI_FARM_SOURCE}
-  test/testCB.cpp
-)
-
-add_executable(testerAnimal
-  ${ENGI_FARM_SOURCE}
-  test/testAnimal.cpp
-)
-
-add_executable(testerPlayer
-  ${ENGI_FARM_SOURCE}
-  test/testPlayer.cpp
-)
