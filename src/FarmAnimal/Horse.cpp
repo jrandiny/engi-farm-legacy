@@ -1,12 +1,16 @@
+/**
+ * @file Product.cpp
+ * @author Back End K3
+ * @brief file berisi implementasi kelas Horse
+ * @version 0.1
+ * @date 2019-03-01
+ */
+
 #include <FarmAnimal/Horse.h>
 #include <iostream>
 #include <memory>
 
-Horse::Horse():FarmAnimal(5,2){
-    posX=0;
-    posY=0;
-    eatStatus=false;
-    deathStatus = false;
+Horse::Horse(int x, int y):FarmAnimal(x,y,5,Cell::CellType::BarnType){
 }
 
 std::string Horse::speak(){

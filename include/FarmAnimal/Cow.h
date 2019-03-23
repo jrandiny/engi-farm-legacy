@@ -26,9 +26,12 @@ class Cow : public FarmAnimal{
         /**
          * @brief Konstruktor kelas Cow dengan paremeter
          * 
-         * @param type Tipe habitat Goat
+         * @param x Lokasi X
+         * @param y Lokasi Y
+         * @param type Tipe habitat Cow
+         * 
          */
-        Cow(int type);
+        Cow(int x, int y, Cell::CellType type);
 
         /**
          * @brief Mengembalikan suara Cow

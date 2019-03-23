@@ -19,11 +19,9 @@
  * Cell adalah satu petak objek di peta yang tidak bergerak
  */
 
-
-
 class Cell : public Renderable{
     public:
-
+    
         enum CellType {MixerType,TruckType,WellType,BarnType,CoopType,GrassLandType};
 
         /**

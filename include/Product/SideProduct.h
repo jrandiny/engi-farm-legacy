@@ -21,7 +21,8 @@
  * SideProduct adalah Product hasil pengolahan dari 2 FarmProduct atau lebih 
  */
 class SideProduct : public Product{
-  public:
+  public:    
+
     /**
      * @brief Konstruktor kelas SideProduct
      * 
@@ -31,15 +32,9 @@ class SideProduct : public Product{
     /**
      * @brief Mengembalikan sebuah LinkedList Product
      * 
-     * @return LinkedList Product
+     * @return LinkedList of ProductType
      */
     virtual LinkedList<std::shared_ptr<Product>> getRecipe() = 0;
-
-  protected:
-    /**
-     * @brief Atribut LinkedList yang menyimpan resep untuk membuat SideProduct
-     */
-    LinkedList<std::shared_ptr<Product>> recipe;
 };
 
 #endif

@@ -24,8 +24,10 @@ class Rabbit : public FarmAnimal{
         /**
          * @brief Konstruktor kelas Rabbit
          * 
+         * @param x Lokasi X
+         * @param y Lokasi Y
          */
-        Rabbit();
+        Rabbit(int x, int y);
         /**
          * @brief Mengembalikan suara Rabbit
          * 

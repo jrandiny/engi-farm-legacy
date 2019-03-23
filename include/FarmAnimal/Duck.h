@@ -23,8 +23,10 @@ class Duck : public FarmAnimal{
         /**
          * @brief Konstruktor kelas Duck
          * 
+         * @param x Lokasi X
+         * @param y Lokasi Y
          */
-        Duck();
+        Duck(int x,int y);
         /**
          * @brief Mengembalikan suara Duck
          * 

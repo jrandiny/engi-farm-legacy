@@ -25,9 +25,11 @@ class Goat : public FarmAnimal{
         /**
          * @brief Konstruktor kelas Goat dengan parameter
          * 
+         * @param x Lokasi X
+         * @param y Lokasy Y
          * @param type Tipe habitat Goat
          */
-        Goat(int type);
+        Goat(int x, int y, Cell::CellType type);
         /**
          * @brief Mengembalikan suara Goat
          * 

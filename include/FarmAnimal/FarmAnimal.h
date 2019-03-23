@@ -13,6 +13,8 @@
 #include <Renderable.h>
 #include <memory>
 #include <TimerObject.h>
+#include <vector>
+#include <Cell/Cell.h>
 
 /**
  * @brief Kelas abstrak turunan Renderable dan TimerObject
@@ -26,15 +28,18 @@ class FarmAnimal : public Renderable, public TimerObject{
         /**
          * @brief Konstruktor kelas FarmAnimal
          * 
-         * @param time Waktu hingga lapar animal
+         * @param x Lokasi X
+         * @param y Lokasi Y
+         * @param time Waktu hingga lapar hewan
+         * @param type Tipe habitat hewan
          */
-        FarmAnimal(int time,int type);
+        FarmAnimal(int x, int y, int time,Cell::CellType type);
 
         /**
          * @brief Menggerakan posisi secara random
          * 
          */
-        void moveRandom();
+        void moveRandom(std::vector<std::shared_ptr<Cell>> sekitar);
 
         /**
          * @brief Fungsi virtual untuk mendapatkan produk hewan
@@ -137,7 +142,7 @@ class FarmAnimal : public Renderable, public TimerObject{
         /**
          * @brief Atribut yang menentukan habitat hewan
          */
-        const int habitat;
+        const Cell::CellType habitat;
 
 };
 

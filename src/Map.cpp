@@ -11,29 +11,31 @@ Map::Map(int _width,int _height):width(_width),height(_height){
 std::vector<std::shared_ptr<Cell>> Map::getSurrounding(int x, int y) {
     std::vector<std::shared_ptr<Cell>> temp;
 
-    if(y>0){
+    if(y>0){ // up
         temp.push_back(map[y-1][x]);
     }else{
         temp.push_back(nullptr);
     }
 
-    if(x+1<width){
+    if(x+1<width){ // right
         temp.push_back(map[y][x+1]);
     }else{
         temp.push_back(nullptr);
     }
 
-    if(y+1<height){
+    if(y+1<height){ // down
         temp.push_back(map[y+1][x]);
     }else{
         temp.push_back(nullptr);
     }
 
-    if(x>0){
+    if(x>0){ // left 
         temp.push_back(map[y][x-1]);
     }else{
         temp.push_back(nullptr);
     }
+
+    temp.push_back(map[y][x]); // posisi sekrang
 
     return temp;
 }

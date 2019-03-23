@@ -24,8 +24,11 @@ class Horse : public FarmAnimal{
         /**
          * @brief Konstruktor kelas Horse
          * 
+         * @param x Lokasi X
+         * @param y lokasi Y
+         * 
          */
-        Horse();
+        Horse(int x, int y);
 
         /**
          * @brief Mengembalikan suara Horse

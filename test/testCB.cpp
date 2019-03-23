@@ -29,8 +29,6 @@ int main(){
             }
         }
 
-        
-
         std::cout<<"new tick"<<std::endl;
         loop++;
     }

@@ -1,11 +1,15 @@
+/**
+ * @file Product.cpp
+ * @author Back End K3
+ * @brief file berisi implementasi kelas Chicken
+ * @version 0.1
+ * @date 2019-03-01
+ */
+
 #include <FarmAnimal/Chicken.h>
 #include <iostream>
 
-Chicken::Chicken():FarmAnimal(5,0){
-    posX=0;
-    posY=0;
-    eatStatus=false;
-    deathStatus = false;
+Chicken::Chicken(int x, int y):FarmAnimal(x,y,5,Cell::CellType::CoopType){
 }
 
 std::string Chicken::speak(){

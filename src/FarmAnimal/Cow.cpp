@@ -1,11 +1,15 @@
+/**
+ * @file Product.cpp
+ * @author Back End K3
+ * @brief file berisi implementasi kelas Cow
+ * @version 0.1
+ * @date 2019-03-01
+ */
+
 #include <FarmAnimal/Cow.h>
 #include <iostream>
 
-Cow::Cow(int type):FarmAnimal(5,type){
-    posX=0;
-    posY=0;
-    eatStatus=false;
-    deathStatus = false;
+Cow::Cow(int x, int y,Cell::CellType type):FarmAnimal(x,y,5,type){
 }
 
 std::string Cow::speak(){

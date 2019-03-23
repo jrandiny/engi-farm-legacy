@@ -1,11 +1,12 @@
 #include <Product/SideProduct/BeefRolade.h>
 
 BeefRolade::BeefRolade():SideProduct(ProductType::BeefRoladeType,400){
-    recipe.addFirst(std::shared_ptr<Product>(new CowMeat()));
-    recipe.addFirst(std::shared_ptr<Product>(new ChickenEgg()));
 }
 LinkedList<std::shared_ptr<Product>> BeefRolade::getRecipe(){
-    return recipe; //belum diimplementasikan    
+    LinkedList<std::shared_ptr<Product>> recipe;
+    recipe.addFirst(std::shared_ptr<Product>(new CowMeat()));
+    recipe.addFirst(std::shared_ptr<Product>(new ChickenEgg()));
+    return recipe;  
 }
 
 std::string BeefRolade::render(){

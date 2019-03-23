@@ -1,3 +1,11 @@
+/**
+ * @file Product.cpp
+ * @author Back End K3
+ * @brief file berisi implementasi kelas Truck
+ * @version 0.1
+ * @date 2019-03-01
+ */
+
 #include <Cell/Facility/Truck.h>
 #include <Cell/Cell.h>
 #include <TimerObject.h>
