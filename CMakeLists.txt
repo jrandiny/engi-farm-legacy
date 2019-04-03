@@ -18,9 +18,17 @@ list(REMOVE_ITEM ENGI_FARM_SOURCE
   ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
 )
 
+set(CURSES_NEED_WIDE TRUE)
+
+find_package(Curses REQUIRED)
+
 add_executable(main
   src/main.cpp
   ${ENGI_FARM_SOURCE}
+)
+
+target_link_libraries(main 
+  ${CURSES_LIBRARIES}
 )
 
 enable_testing()

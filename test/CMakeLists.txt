@@ -30,5 +30,9 @@ add_executable(tester
     ${ENGI_FARM_TEST}
     ${ENGI_FARM_SOURCE}
 )
+
+target_link_libraries(tester 
+    ${CURSES_LIBRARIES}
+)
 target_link_libraries(tester gtest_main)
 gtest_discover_tests(tester)
