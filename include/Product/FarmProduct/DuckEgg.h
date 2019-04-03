@@ -7,7 +7,7 @@
  */
 
 #ifndef DUCKEGG_H
-#define DUGGEGG_H
+#define DUCKEGG_H
 
 #include <Product/FarmProduct.h>
 #include <Player.h>
