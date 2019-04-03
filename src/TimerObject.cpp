@@ -8,8 +8,8 @@ void TimerObject::tick(){
         if (timer>0){
             timer--;
         }else{
-            callback();
             timerActive = false;
+            callback();
         }
     }
     

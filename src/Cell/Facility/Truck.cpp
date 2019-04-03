@@ -16,7 +16,7 @@ Truck::Truck(int _x, int _y):Facility(_x,_y,CellType::TruckType){
 
 void Truck::callback(){
     usable = true;
-    deactivateTimer();
+    // deactivateTimer();
 }
 
 void Truck::use(int time){

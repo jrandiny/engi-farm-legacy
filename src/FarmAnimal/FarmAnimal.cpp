@@ -15,7 +15,7 @@
 FarmAnimal::FarmAnimal(int x, int y, int time,Cell::CellType type):timeToHungry(time),habitat(type){
     posX = x;
     posY = y;
-    setTimer(timeToHungry);
+    setAndActivate(timeToHungry);
     eatStatus=true;
     deathStatus = false;
 }
@@ -23,9 +23,9 @@ FarmAnimal::FarmAnimal(int x, int y, int time,Cell::CellType type):timeToHungry(
 void FarmAnimal::setEatStatus(bool newStatus){
     eatStatus=newStatus;
     if(eatStatus){
-        setTimer(timeToHungry);
+        setAndActivate(timeToHungry);
     } else {
-        setTimer(timeToDeath);
+        setAndActivate(timeToDeath);
     }
 }
 
@@ -106,7 +106,7 @@ int FarmAnimal::getHabitat(){
 void FarmAnimal::callback(){
     if(eatStatus){
         eatStatus = false;
-        setTimer(timeToDeath);
+        setAndActivate(timeToDeath);
     }else{
         deathStatus = true;
     }
