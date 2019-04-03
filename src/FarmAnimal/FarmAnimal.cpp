@@ -51,7 +51,7 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
     bool found = false;
     int count=0;
     int way;
-    int posNow = 5;
+    int posNow = 4;
 
     // coba gerak
     while (!found && count <4){
@@ -68,28 +68,31 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
     }
 
     std::shared_ptr<Land> now = std::static_pointer_cast<Land>(sekitar[posNow]); // land sekarang
-    if(count<4){ // pindah
-        std::shared_ptr<Land> go = std::static_pointer_cast<Land>(sekitar[way]); // land yang dituju
-        now->unoccupy();
-        go->occupy();
-        switch (way)
-        {
-            case 0: // up
-                posY--;
-                break;
-            case 1: // right
-                posX++;
-                break;
-            case 2: // down
-                posY++;
-                break;
-            case 3: // left
-                posX--;
-                break;
-            default:
-                break;
+    
+    if(found){
+        if(count<4){ // pindah
+            std::shared_ptr<Land> go = std::static_pointer_cast<Land>(sekitar[way]); // land yang dituju
+            now->unoccupy();
+            go->occupy();
+            switch (way)
+            {
+                case 0: // up
+                    posY--;
+                    break;
+                case 1: // right
+                    posX++;
+                    break;
+                case 2: // down
+                    posY++;
+                    break;
+                case 3: // left
+                    posX--;
+                    break;
+                default:
+                    break;
+            }
+            now = go;
         }
-        now = go;
     }
 
     // makan
@@ -97,6 +100,7 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
         eatStatus= true;
         now->removeGrass();
     }
+
 }
 
 int FarmAnimal::getHabitat(){

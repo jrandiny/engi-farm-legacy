@@ -7,6 +7,7 @@
 #include <Cell/Land/Coop.h>
 #include <string>
 #include <memory>
+#include <Map.h>
 
 TEST(Player, render){
     Player p;
@@ -30,19 +31,25 @@ TEST(Player, constructor2){
 }
 
 TEST(Player, move){
-    Player p;
-    p.move(1);
-    ASSERT_EQ(p.getPosX(),1);
-    ASSERT_EQ(p.getPosY(),0);
-    p.move(2);
-    ASSERT_EQ(p.getPosX(),1);
-    ASSERT_EQ(p.getPosY(),1);
-    p.move(3);
-    ASSERT_EQ(p.getPosX(),0);
-    ASSERT_EQ(p.getPosY(),1);
-    p.move(0);
-    ASSERT_EQ(p.getPosX(),0);
-    ASSERT_EQ(p.getPosY(),0);
+    Player p(0,0,5,5);
+    Map map(10,10);
+    std::vector<std::shared_ptr<Cell>> playerSurr = map.getSurrounding(p.getPosX(),p.getPosY());
+    // playerSurr[Map::Up] = std::shared_ptr<Cell>(new Coop(0,0));
+    // playerSurr[Map::Down] = std::shared_ptr<Cell>(new Coop(0,0));
+    // playerSurr[Map::Left] = std::shared_ptr<Cell>(new Coop(0,0));
+    // playerSurr[Map::Right] = std::shared_ptr<Cell>(new Coop(0,0));
+    p.move(Map::Right,playerSurr);
+    ASSERT_EQ(p.getPosX(),6);
+    ASSERT_EQ(p.getPosY(),5);
+    p.move(Map::Down,playerSurr);
+    ASSERT_EQ(p.getPosX(),6);
+    ASSERT_EQ(p.getPosY(),6);
+    p.move(Map::Left,playerSurr);
+    ASSERT_EQ(p.getPosX(),5);
+    ASSERT_EQ(p.getPosY(),6);
+    p.move(Map::Up,playerSurr);
+    ASSERT_EQ(p.getPosX(),5);
+    ASSERT_EQ(p.getPosY(),5);
 }
 
 TEST(Player, talkWithAnimal){

@@ -16,8 +16,10 @@
 #include <Cell/Facility/Well.h>
 #include <Cell/Facility/Truck.h>
 #include <Cell/Land.h>
+#include <Map.h>
 #include <memory>
 #include <map>
+#include <vector>
 
 /**
  * @brief Kelas riil turunan Renderable
@@ -102,7 +104,7 @@ class Player: public Renderable{
          * 
          * @param arah (0: atas, 1: kanan, 2: bawah, 3: kiri)
          */
-        void move(int arah);
+        void move(int arah, std::vector<std::shared_ptr<Cell>> surr);
         /**
          * @brief Berbicara dengan hewan
          * 

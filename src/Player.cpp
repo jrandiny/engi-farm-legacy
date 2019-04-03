@@ -67,20 +67,24 @@ int Player::getPosY(){
     return posY;
 }
 
-void Player::move(int arah){
+void Player::move(int arah,std::vector<std::shared_ptr<Cell>> surr){
     switch (arah)
     {
-        case 0:
-            posY--;
+        case Map::Up:
+            if(surr[Map::Up]!=nullptr && !surr[Map::Up]->isOccupied())
+                posY--;
             break;
-        case 1:
-            posX++;
+        case Map::Right:
+            if(surr[Map::Right]!=nullptr && !surr[Map::Right]->isOccupied())
+                posX++;
             break;
-        case 2:
-            posY++;
+        case Map::Down:
+            if(surr[Map::Down]!=nullptr && !surr[Map::Down]->isOccupied())
+                posY++;
             break;
-        case 3:
-            posX--;
+        case Map::Left:
+            if(surr[Map::Left]!=nullptr && !surr[Map::Left]->isOccupied())
+                posX--;
             break;
         default:
             break;

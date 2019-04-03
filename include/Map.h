@@ -43,6 +43,8 @@ class Map{
                     return (*a).getType() < (*b).getType();
                 }
         };
+
+        enum MoveType {Up=0,Right=1,Down=2,Left=3};
         /**
          * @brief Konstruktor kelas Map dengan parameter
          * 
@@ -50,6 +52,20 @@ class Map{
          * @param height Tinggi peta
          */
         Map(int width, int height);
+
+        /**
+         * @brief Mengatur peta
+         * 
+         * @param in Peta yang dimasukkan
+         */
+        void setMap(std::vector<std::vector<std::shared_ptr<Cell>>> in);
+
+        /**
+         * @brief Mengambil isi peta
+         * 
+         * @return peta 
+         */
+        std::vector<std::vector<std::shared_ptr<Cell>>> getMap() const;
         
         /**
          * @brief Mengembalikan objek di sekitar
@@ -96,6 +112,25 @@ class Map{
          */
         std::shared_ptr<FarmAnimal> getFarmAnimal(int x, int y);
 
+        /**
+         * @brief Fungsi yang mengembalikan FarmAnimal di sekitar player
+         * 
+         * @param x Posisi X
+         * @param y Posisi Y
+         * @return std::vector<std::shared_ptr<FarmAnimal>> semua FarmAnimal di sekitar player
+         */
+        std::vector<std::shared_ptr<FarmAnimal>> getSurroundAnimal(int x, int y);
+
+        // std::vector<std::shared_ptr<Facility>> getSurroundFacility(int x, int y);
+        /**
+         * @brief Fungsi yang mengembalikan semua FarmAnimal di map
+         * 
+         * @return std::vector<std::shared_ptr<FarmAnimal>> semua FarmAnimal di map
+         */
+        std::vector<std::shared_ptr<FarmAnimal>> getAllFarmAnimal() const;
+
+
+        void moveAllAnimal();
     private:
         std::vector<std::vector<std::shared_ptr<Cell>>> map;
         std::vector<std::shared_ptr<Land>> land;
@@ -105,6 +140,9 @@ class Map{
         std::vector<std::shared_ptr<FarmAnimal>> farmAnimal;
         const int width;
         const int height;
+        void setCellMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type);
+        void randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type, int jumlahHewan);
+
 };
 
 
