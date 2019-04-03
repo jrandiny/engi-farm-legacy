@@ -11,7 +11,7 @@
 Land::Land(int _x, int _y, CellType _type):Cell(_x,_y,_type){
     grass = false;
     occupied = false;
-};
+}
 
 bool Land::haveGrass() const{
     return grass;

@@ -9,7 +9,7 @@
 #include <Cell/Cell.h>
 #include <Cell/Land/Barn.h>
 
-Barn::Barn(int _x, int _y):Land(_x, _y,CellType::BarnType){};
+Barn::Barn(int _x, int _y):Land(_x, _y,CellType::BarnType){}
 
 std::string Barn::render(){
     if(haveGrass()){

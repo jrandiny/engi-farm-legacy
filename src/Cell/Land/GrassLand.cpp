@@ -9,7 +9,7 @@
 #include <Cell/Cell.h>
 #include <Cell/Land/GrassLand.h>
 
-GrassLand::GrassLand(int _x, int _y):Land(_x, _y, CellType::GrassLandType){};
+GrassLand::GrassLand(int _x, int _y):Land(_x, _y, CellType::GrassLandType){}
 
 std::string GrassLand::render(){
     if(haveGrass()){
