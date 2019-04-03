@@ -14,6 +14,15 @@ include_directories(include)
 
 file(GLOB_RECURSE ENGI_FARM_SOURCE "src/*.cpp")
 
+list(REMOVE_ITEM ENGI_FARM_SOURCE
+  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp
+)
+
+add_executable(main
+  src/main.cpp
+  ${ENGI_FARM_SOURCE}
+)
+
 enable_testing()
 add_subdirectory(test)
 
