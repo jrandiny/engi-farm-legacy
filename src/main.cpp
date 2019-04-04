@@ -24,6 +24,8 @@ int main(){
     } while (map.getMap()[initialPosY][initialPosX]->isOccupied());
     // initialize player
     Player player(initialWater,initialMoney,initialPosX,initialPosY);
+    // occupy posisi player sekarang
+    std::static_pointer_cast<Land>(map.getMap()[initialPosY][initialPosX])->occupy();
     // kamus
     UI ui;
     bool action;
@@ -194,7 +196,8 @@ int main(){
             quit=true;
         }else {
             // can't recognize command
-            output = "Wrong command";
+            if(command!="RESIZE")
+                output = "Wrong command";
         }
 
         if(action){
