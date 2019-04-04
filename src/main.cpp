@@ -107,7 +107,7 @@ int main(){
             }
         }else if(command=="MIX"){ //command = mix
             surroundingFacility = map.getSurroundFacility(player.getPosX(),player.getPosY(),Cell::MixerType);
-            if(surroundingFacility.size()>0){
+            if(surroundingFacility.size()>0 && param.size()>0){
                 if(param[0]=="BEEFROLADE"){
                     try{
                         player.mix(Product::BeefRoladeType);
@@ -129,9 +129,11 @@ int main(){
                     } catch (const std::runtime_error e){
                         output = e.what();
                     }
+                }else{
+                    output = "Invalid recipe";
                 }
             }else{
-                output = "masuk";
+                output = "Invalid input";
             }
         }else if(command=="UP"){
             try{
