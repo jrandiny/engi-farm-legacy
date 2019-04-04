@@ -20,8 +20,6 @@ Map::Map(int _width,int _height):width(_width),height(_height){
     bool horizon;
     const int divider = 5;
     const int minAnimal = 2;
-    const int maxFacility =3;
-    const int minFacility =1;
     std::vector<Cell::CellType> urutan;
     srand (time(NULL));
     map.resize(height);
@@ -57,12 +55,9 @@ Map::Map(int _width,int _height):width(_width),height(_height){
         randomAnimalMap(x+1,0,_width-1,_height-1,urutan[2],rand()%(luas/divider)+minAnimal);
     }
 
-    int jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
-    setFacility(jumlahFacility,Cell::TruckType);
-    jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
-    setFacility(jumlahFacility,Cell::WellType);
-    jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
-    setFacility(jumlahFacility,Cell::MixerType);
+    setFacility(1,Cell::TruckType);
+    setFacility(1,Cell::WellType);
+    setFacility(1,Cell::MixerType);
 }
 
 void Map::randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type, int jumlahHewan){
@@ -345,7 +340,7 @@ std::vector<std::shared_ptr<Facility>> Map::getSurroundFacility(int x, int y, Ce
     return temp;
 }
 
-void Map::moveAllAnimal(){
+void Map::oneTick(){
     int chance;
     for(int i=0;i<(int)farmAnimal.size();i++){
         if(farmAnimal[i]->getDeathStatus()){
@@ -360,5 +355,8 @@ void Map::moveAllAnimal(){
             }
             farmAnimal[i]->tick();
         }
+    }
+    for(int i=0;i<(int)truck.size();i++){
+        truck[i]->tick();
     }
 }

@@ -138,7 +138,7 @@ class Map{
         std::vector<std::shared_ptr<FarmAnimal>> getAllFarmAnimal() const;
 
 
-        void moveAllAnimal();
+        void oneTick();
     private:
         std::vector<std::vector<std::shared_ptr<Cell>>> map;
         std::vector<std::shared_ptr<Land>> land;
