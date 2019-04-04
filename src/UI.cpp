@@ -252,7 +252,9 @@ std::vector<std::string> UI::getInput(){
                 output.push_back(tempInput-32);
             }
         }else if(tempInput==' '){
-            output.push_back(' ');
+            if(output.length()<50){
+                output.push_back(' ');
+            }
         }
 
     }
