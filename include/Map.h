@@ -149,7 +149,6 @@ class Map{
         
     private:
         std::vector<std::vector<std::shared_ptr<Cell>>> map;
-        std::vector<std::shared_ptr<Land>> land;
         std::vector<std::shared_ptr<Mixer>> mixer;
         std::vector<std::shared_ptr<Truck>> truck;
         std::vector<std::shared_ptr<Well>> well;
