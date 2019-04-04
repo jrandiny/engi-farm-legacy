@@ -50,7 +50,7 @@ TEST(Truck, constructor){
 
 TEST(Truck, render){
     Truck truck(5,6);
-    ASSERT_EQ(truck.render(),"D");
+    ASSERT_EQ(truck.render(),"T");
 }
 
 TEST(Truck, use){

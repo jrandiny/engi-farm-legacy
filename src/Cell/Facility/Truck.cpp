@@ -25,5 +25,5 @@ void Truck::use(int time){
 }
 
 std::string Truck::render(){
-    return "D";
+    return "T";
 }
