@@ -11,6 +11,7 @@
 #include <ctime>
 #include <Cell/Land.h>
 #include <memory>
+#include <Map.h>
 
 FarmAnimal::FarmAnimal(int x, int y, int time,Cell::CellType type):timeToHungry(time),habitat(type){
     posX = x;
@@ -49,7 +50,7 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
     bool found = false;
     int count=0;
     int way;
-    int posNow = 4;
+    int posNow = Map::Center;
 
     // coba gerak
     while (!found && count <4){
@@ -74,16 +75,16 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
             go->occupy();
             switch (way)
             {
-                case 0: // up
+                case Map::Up: // up
                     posY--;
                     break;
-                case 1: // right
+                case Map::Right: // right
                     posX++;
                     break;
-                case 2: // down
+                case Map::Down: // down
                     posY++;
                     break;
-                case 3: // left
+                case Map::Left: // left
                     posX--;
                     break;
                 default:
