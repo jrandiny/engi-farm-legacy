@@ -48,7 +48,7 @@ int main(){
         ui.drawPlayerStat(player);
         input = ui.getInput();
         // input validation
-        if(input.size()==1 || (input.size()==2 && input[0]=="MIX")){
+        if((input.size()==1 && input[0]!="MIX") || (input.size()==2 && input[0]=="MIX")){
             command = input[0]; // get the command
             param.clear();  // initialize param
             //copy from input to param

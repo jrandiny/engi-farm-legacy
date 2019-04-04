@@ -193,7 +193,26 @@ void UI::drawMap(Map in, Player P){
     for(auto animal : animals){
         posx=(animal->getX()+1)*4 + marginX;
         posy=(animal->getY()+1)*2 + marginY;
-        mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
+
+        auto idx = mapColorPair.find(animal->render());
+
+        int colorPairIndex = 0;
+
+        if(idx==mapColorPair.end()){
+            colorPairIndex = mapColorPair.size()+1;
+            mapColorPair.insert(std::make_pair(animal->render(),colorPairIndex));
+        }else{
+            colorPairIndex = idx->second;
+        }
+
+        if(animal->getEatStatus()){
+            mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
+        }else{
+            init_pair(colorPairIndex,COLOR_WHITE,COLOR_RED);
+            wattron(mapPanel,COLOR_PAIR(colorPairIndex));
+            mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
+            wattroff(mapPanel,COLOR_PAIR(colorPairIndex));
+        }
     }
 
     // Waiter
