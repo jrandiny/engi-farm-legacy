@@ -9,7 +9,7 @@
 #include <FarmAnimal/Goat.h>
 #include <iostream>
 
-Goat::Goat(int x, int y, Cell::CellType type):FarmAnimal(x,y,5,type){
+Goat::Goat(int x, int y, Cell::CellType type):FarmAnimal(x,y,10,type){
 }
 
 std::string Goat::speak(){

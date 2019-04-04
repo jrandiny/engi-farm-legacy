@@ -40,7 +40,7 @@ class UI{
          * 
          * @return string yang diinput user
          */
-        std::string getInput();
+        std::vector<std::string> getInput();
 
         /**
          * @brief Menggambarkan peta dari map yang diinput
@@ -56,6 +56,11 @@ class UI{
          */
         void drawPlayerStat(Player p);
 
+        /**
+         * @brief Menggambar tooltip dan menampilkan kata keterangan yang ingin ditampilkan
+         * 
+         * @param input keterangan yang ingin ditampilkan di tooltip
+         */
         void drawTooltip(std::string input);
 
     private:
@@ -68,6 +73,8 @@ class UI{
         WINDOW *inventoryPanel;
         WINDOW *moneyPanel;
         WINDOW *waterPanel;
+
+        std::map<std::string,int> mapColorPair;
 
         void drawBorders(WINDOW *screen);
 };

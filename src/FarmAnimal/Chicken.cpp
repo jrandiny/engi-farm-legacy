@@ -9,7 +9,7 @@
 #include <FarmAnimal/Chicken.h>
 #include <iostream>
 
-Chicken::Chicken(int x, int y):FarmAnimal(x,y,5,Cell::CellType::CoopType){
+Chicken::Chicken(int x, int y):FarmAnimal(x,y,10,Cell::CellType::CoopType){
 }
 
 std::string Chicken::speak(){

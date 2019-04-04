@@ -4,7 +4,7 @@
  * @brief File berisi implementasi kelas Barn
  * @version 0.1
  * @date 2019-03-02
- */
+*/
 
 #include <Cell/Cell.h>
 #include <Cell/Land/Barn.h>
@@ -17,4 +17,8 @@ std::string Barn::render(){
     }else{
         return "x";
     }
+}
+
+short Barn::getFgColor(){
+    return 1;
 }

@@ -9,7 +9,7 @@
 #include <FarmAnimal/Rabbit.h>
 #include <iostream>
 
-Rabbit::Rabbit(int x, int y):FarmAnimal(x,y,5,Cell::CellType::BarnType){
+Rabbit::Rabbit(int x, int y):FarmAnimal(x,y,10,Cell::CellType::BarnType){
 }
 
 std::string Rabbit::speak(){

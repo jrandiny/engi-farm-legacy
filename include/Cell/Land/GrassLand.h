@@ -33,6 +33,8 @@ class GrassLand:public Land{
          * @return Lambang yang ditampilkan untuk GrassLand
          */
         std::string render();
+
+        short getFgColor();
 };
 
 #endif

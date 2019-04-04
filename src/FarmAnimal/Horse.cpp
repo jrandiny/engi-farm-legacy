@@ -10,7 +10,7 @@
 #include <iostream>
 #include <memory>
 
-Horse::Horse(int x, int y):FarmAnimal(x,y,5,Cell::CellType::BarnType){
+Horse::Horse(int x, int y):FarmAnimal(x,y,10,Cell::CellType::BarnType){
 }
 
 std::string Horse::speak(){

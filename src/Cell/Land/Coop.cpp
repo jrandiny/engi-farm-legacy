@@ -18,3 +18,7 @@ std::string Coop::render(){
         return "o";
     }
 }
+
+short Coop::getFgColor(){
+    return 3;
+}

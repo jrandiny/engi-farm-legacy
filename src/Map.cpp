@@ -17,10 +17,11 @@
 
 Map::Map(int _width,int _height):width(_width),height(_height){
     int x, y;
-    // int type;
     bool horizon;
     const int divider = 3;
-    const int minimum_Animal = 2;
+    const int minAnimal = 2;
+    const int maxFacility =3;
+    const int minFacility =1;
     std::vector<Cell::CellType> urutan;
     srand (time(NULL));
     map.resize(height);
@@ -39,22 +40,29 @@ Map::Map(int _width,int _height):width(_width),height(_height){
 
     setCellMap(0,0,x,y,urutan[0]);
     luas = (x+1)*(y+1);
-    randomAnimalMap(0,0,x,y,urutan[0],rand()%(luas/divider)+minimum_Animal);
+    randomAnimalMap(0,0,x,y,urutan[0],rand()%(luas/divider)+minAnimal);
     if(horizon){
         setCellMap(0,y+1,_width-1,_height-1,urutan[1]);
         setCellMap(x+1,0,_width-1,y,urutan[2]);
         luas = (_width)*(_height-y-1);
-        randomAnimalMap(0,y+1,_width-1,_height-1,urutan[1],rand()%(luas/divider)+minimum_Animal);
+        randomAnimalMap(0,y+1,_width-1,_height-1,urutan[1],rand()%(luas/divider)+minAnimal);
         luas = (_width-x-1)*(y+1);
-        randomAnimalMap(x+1,0,_width-1,y,urutan[2],rand()%(luas/divider)+minimum_Animal);
+        randomAnimalMap(x+1,0,_width-1,y,urutan[2],rand()%(luas/divider)+minAnimal);
     } else {
         setCellMap(0,y+1,x,_height-1,urutan[1]);
         setCellMap(x+1,0,_width-1,_height-1,urutan[2]);
         luas = (x+1)*(_height-y-1);
-        randomAnimalMap(0,y+1,x,_height-1,urutan[1],rand()%(luas/divider)+minimum_Animal);
+        randomAnimalMap(0,y+1,x,_height-1,urutan[1],rand()%(luas/divider)+minAnimal);
         luas = (_width-x-1)*(_height);
-        randomAnimalMap(x+1,0,_width-1,_height-1,urutan[2],rand()%(luas/divider)+minimum_Animal);
+        randomAnimalMap(x+1,0,_width-1,_height-1,urutan[2],rand()%(luas/divider)+minAnimal);
     }
+
+    int jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
+    setFacility(jumlahFacility,Cell::TruckType);
+    jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
+    setFacility(jumlahFacility,Cell::WellType);
+    jumlahFacility = rand()%(maxFacility-minFacility)+minFacility;
+    setFacility(jumlahFacility,Cell::MixerType);
 }
 
 void Map::randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type, int jumlahHewan){
@@ -94,6 +102,8 @@ void Map::randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType
                         farmAnimal.push_back(std::shared_ptr<FarmAnimal>(new Goat(i,j,type)));
                     }
                     break;
+                default:
+                    break;
             }
             std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[j][i]);
             temp->occupy();
@@ -103,7 +113,7 @@ void Map::randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType
 }
 
 void Map::setCellMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type){
-    int grass = rand()%5;
+    // int grass = rand()%5;
     for(int j=yFrom;j<=yTo;j++){
         for(int i=xFrom;i<=xTo;i++){
             switch(type){
@@ -116,12 +126,43 @@ void Map::setCellMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type
                 case Cell::GrassLandType:
                     map[j][i] = std::shared_ptr<Cell>(new GrassLand(i,j));
                     break;
+                default:
+                    break;
             }
-            if(grass>3){
-                std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[j][i]);
-                temp->addGrass();
-            }
+            std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[j][i]);
+            temp->addGrass();
+            // if(grass>3){
+            // }
 
+        }
+    }
+}
+
+void Map::setFacility(int jumlah, Cell::CellType type){
+    int y = map.size();
+    int x = map[0].size();
+    int count = 0;
+    while(count<jumlah){
+        int i = rand()%x;
+        int j = rand()%y;
+        if(!map[j][i]->isOccupied()){
+            if(type==Cell::TruckType){
+                std::shared_ptr<Cell> temp(new Truck(i,j));
+                map[j][i] = temp;
+                std::shared_ptr<Truck> ptrTruck = std::static_pointer_cast<Truck>(temp);
+                truck.push_back(ptrTruck);
+            }else if(type==Cell::WellType){
+                std::shared_ptr<Cell> temp(new Well(i,j));
+                map[j][i] = temp;
+                std::shared_ptr<Well> ptrWell = std::static_pointer_cast<Well>(temp);
+                well.push_back(ptrWell);
+            }else if(type==Cell::MixerType){
+                std::shared_ptr<Cell> temp(new Mixer(i,j));
+                map[j][i] = temp;
+                std::shared_ptr<Mixer> ptrMixer = std::static_pointer_cast<Mixer>(temp);
+                mixer.push_back(ptrMixer);
+            }
+            count++;
         }
     }
 }
@@ -243,7 +284,7 @@ std::vector<std::shared_ptr<FarmAnimal>> Map::getAllFarmAnimal() const{
 }
 
 std::vector<std::shared_ptr<FarmAnimal>> Map::getSurroundAnimal(int x, int y){
-    bool found=false;
+    // bool found=false;
     std::vector<std::shared_ptr<FarmAnimal>> temp;
 
     std::vector<int> deltaX = {1,0,-1,0};
@@ -263,8 +304,49 @@ std::vector<std::shared_ptr<FarmAnimal>> Map::getSurroundAnimal(int x, int y){
     return temp;
 }
 
+std::vector<std::shared_ptr<Facility>> Map::getSurroundFacility(int x, int y, Cell::CellType type){
+    // bool found = false;
+    
+    std::vector<std::shared_ptr<Facility>> temp;
+
+    std::vector<int> deltaX = {1,0,-1,0};
+    std::vector<int> deltaY = {0,1,0,-1};
+
+    for(int i=0;i<4;i++){
+        int checkX = x+deltaX[i];
+        int checkY = y+deltaY[i];
+        switch(type){
+            case Cell::TruckType:
+                try{
+                    temp.push_back(getTruck(checkX,checkY));
+                } catch (const std::runtime_error e){
+                    
+                }
+                break;
+            case Cell::WellType:
+                try{
+                    temp.push_back(getWell(checkX,checkY));
+                }catch (const std::runtime_error e){
+                    
+                }
+                break;
+            case Cell::MixerType:
+                try{
+                    temp.push_back(getMixer(checkX,checkY));
+                }catch (const std::runtime_error e){
+                    
+                }
+                break;
+            default:
+                break;
+        }
+    }
+    
+    return temp;
+}
+
 void Map::moveAllAnimal(){
-    for(int i=0;i<farmAnimal.size();i++){
+    for(int i=0;i<(int)farmAnimal.size();i++){
         if(farmAnimal[i]->getDeathStatus()){
             std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[farmAnimal[i]->getY()][farmAnimal[i]->getX()]);
             temp->unoccupy();

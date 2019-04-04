@@ -18,3 +18,7 @@ std::string GrassLand::render(){
         return "-";
     }
 }
+
+short GrassLand::getFgColor(){
+    return 2;
+}

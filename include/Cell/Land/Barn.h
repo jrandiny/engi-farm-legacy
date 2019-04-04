@@ -34,6 +34,8 @@ class Barn:public Land{
          * @return Lambang yang ditampilkan untuk Barn
          */
         std::string render();
+
+        short getFgColor();
 };
 
 #endif

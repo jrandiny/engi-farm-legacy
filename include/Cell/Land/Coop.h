@@ -34,6 +34,8 @@ class Coop:public Land{
          * @return Lambang yang ditampilkan untuk Coop
          */
         std::string render();
+
+        short getFgColor();
 };
 
 #endif

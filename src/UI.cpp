@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <ncurses.h>
 #include <string>
+#include <sstream>
 
 UI::UI(){
     int parentX,parentY;
@@ -13,6 +14,8 @@ UI::UI(){
 
     clear();
     refresh();
+
+    start_color();
 
     getmaxyx(stdscr, parentY, parentX);
 
@@ -143,8 +146,23 @@ void UI::drawMap(Map in, Player P){
             // Lokasi posx dan posy berada di kanan P (kotak isi cell paling kanan)
 
             // Isi
-            mvwaddch(mapPanel,posy, posx-1,map[i][j]->render()[0]);
+            
+            auto idx = mapColorPair.find(map[i][j]->render());
 
+            int colorPairIndex = 0;
+    
+            if(idx==mapColorPair.end()){
+                colorPairIndex = mapColorPair.size()+1;
+                mapColorPair.insert(std::make_pair(map[i][j]->render(),colorPairIndex));
+            }else{
+                colorPairIndex = idx->second;
+            }
+
+            init_pair(colorPairIndex,map[i][j]->getFgColor(),map[i][j]->getBgColor());
+
+            wattron(mapPanel,COLOR_PAIR(colorPairIndex));
+            mvwaddch(mapPanel,posy, posx-1,map[i][j]->render()[0]);
+            wattroff(mapPanel,COLOR_PAIR(colorPairIndex));
             // Garis bawah
             if(i+1!=maxY){
                 mvwaddch(mapPanel, posy+1, posx, ACS_HLINE);
@@ -176,12 +194,12 @@ void UI::drawMap(Map in, Player P){
     // Waiter
     posx=(P.getPosX()+1)*4 + marginX;
     posy=(P.getPosY()+1)*2 + marginY;
-    mvwaddch(mapPanel, posy, posx-1, P.render()[0]);
+    mvwprintw(mapPanel, posy, posx-2, P.render().c_str());
 
     wrefresh(mapPanel);
 }
 
-std::string UI::getInput(){
+std::vector<std::string> UI::getInput(){
     std::string output;
     int tempInput;
 
@@ -228,11 +246,23 @@ std::string UI::getInput(){
             if(output.length()<50){
                 output.push_back(tempInput-32);
             }
+        }else if(tempInput==' '){
+            output.push_back(' ');
         }
 
     }
+
+    std::vector<std::string> outArr;
+
+    std::string temp;
+
+    std::istringstream split(output);
+
+    while(std::getline(split,temp,' ')){
+        outArr.push_back(temp);
+    }
     
-    return output;
+    return outArr;
 }
 
 void UI::drawTooltip(std::string input){

@@ -27,6 +27,20 @@ class Renderable{
          * @return char character object turunannya
          */
         virtual std::string render() = 0;
+
+        /**
+         * @brief Fungsi pure virtual yang mengembalikan warna foreground
+         * 
+         * @return short warna foreground
+         */
+        virtual short getFgColor();
+
+        /**
+         * @brief Fungsi pure virtual yang mengembalikan warna background
+         * 
+         * @return short warna background
+         */
+        virtual short getBgColor();
 };
 
 #endif

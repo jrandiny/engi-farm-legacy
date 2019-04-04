@@ -68,26 +68,44 @@ int Player::getPosY(){
 }
 
 void Player::move(int arah,std::vector<std::shared_ptr<Cell>> surr){
+    bool move = false;
     switch (arah)
     {
         case Map::Up:
-            if(surr[Map::Up]!=nullptr && !surr[Map::Up]->isOccupied())
+            if(surr[Map::Up]!=nullptr && !surr[Map::Up]->isOccupied()){
                 posY--;
+                move = true;
+                std::static_pointer_cast<Land>(surr[Map::Up])->occupy();
+            }
             break;
         case Map::Right:
-            if(surr[Map::Right]!=nullptr && !surr[Map::Right]->isOccupied())
+            if(surr[Map::Right]!=nullptr && !surr[Map::Right]->isOccupied()){
                 posX++;
+                move = true;
+                std::static_pointer_cast<Land>(surr[Map::Right])->occupy();
+            }
             break;
         case Map::Down:
-            if(surr[Map::Down]!=nullptr && !surr[Map::Down]->isOccupied())
+            if(surr[Map::Down]!=nullptr && !surr[Map::Down]->isOccupied()){
                 posY++;
+                move = true;
+                std::static_pointer_cast<Land>(surr[Map::Down])->occupy();
+            }
             break;
         case Map::Left:
-            if(surr[Map::Left]!=nullptr && !surr[Map::Left]->isOccupied())
+            if(surr[Map::Left]!=nullptr && !surr[Map::Left]->isOccupied()){
                 posX--;
+                move = true;
+                std::static_pointer_cast<Land>(surr[Map::Left])->occupy();
+            }
             break;
         default:
             break;
+    }
+    if(!move){
+        throw std::runtime_error("You can't move any further");
+    } else {
+        std::static_pointer_cast<Land>(surr[Map::Center])->unoccupy();
     }
 }
 
@@ -135,7 +153,16 @@ void Player::kill(FarmAnimal& hewan){
 }
 
 void Player::grow(Land& l){
-    l.addGrass();
+    if(water>0){
+        if(!l.haveGrass()){
+            l.addGrass();
+            water--;
+        } else {
+            throw std::runtime_error("Land already have grass");
+        }
+    } else {
+        throw std::runtime_error("Watercan is empty");
+    }
 }
 void Player::mix(Product::ProductType id){
     if (itemNow<MAX_ITEM_BAG){
@@ -172,5 +199,5 @@ void Player::mix(Product::ProductType id){
 }
 
 std::string Player::render(){
-    return "P";
+    return "👨‍";
 }

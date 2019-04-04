@@ -47,7 +47,7 @@ bool FarmAnimal::getDeathStatus(){
 }
 
 void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
-    std::srand(std::time(nullptr));
+    // std::srand(std::time(nullptr));
     bool found = false;
     int count=0;
     int way;

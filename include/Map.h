@@ -44,7 +44,7 @@ class Map{
                 }
         };
 
-        enum MoveType {Up=0,Right=1,Down=2,Left=3};
+        enum MoveType {Up=0,Right=1,Down=2,Left=3,Center=4};
         /**
          * @brief Konstruktor kelas Map dengan parameter
          * 
@@ -121,7 +121,15 @@ class Map{
          */
         std::vector<std::shared_ptr<FarmAnimal>> getSurroundAnimal(int x, int y);
 
-        // std::vector<std::shared_ptr<Facility>> getSurroundFacility(int x, int y);
+        /**
+         * @brief Fungsi yang mengembalikan Cell yang berisi Facility di sekitas player
+         * 
+         * @param x Posisi X
+         * @param y Posis Y
+         * @return std::vector<std::shared_ptr<Cell>> semua cell yang berisi Facility di sekitar player
+         */
+        std::vector<std::shared_ptr<Facility>> getSurroundFacility(int x, int y, Cell::CellType type);
+        
         /**
          * @brief Fungsi yang mengembalikan semua FarmAnimal di map
          * 
@@ -141,6 +149,7 @@ class Map{
         const int width;
         const int height;
         void setCellMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type);
+        void setFacility(int jumlah, Cell::CellType type);
         void randomAnimalMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type, int jumlahHewan);
 
 };
