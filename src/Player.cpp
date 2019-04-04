@@ -122,7 +122,10 @@ void Player::interact(FarmAnimal& hewan){
     }
 }
 void Player::interact(Well&){
-    water = MAX_WATER;
+    if(water<MAX_WATER)
+        water = MAX_WATER;
+    else
+        throw std::runtime_error("Watering can is full")
 }
 void Player::interact(Truck& truck){
     if(truck.isUsable()){
@@ -161,7 +164,7 @@ void Player::grow(Land& l){
             throw std::runtime_error("Land already have grass");
         }
     } else {
-        throw std::runtime_error("Watercan is empty");
+        throw std::runtime_error("Watering can is empty");
     }
 }
 void Player::mix(Product::ProductType id){
