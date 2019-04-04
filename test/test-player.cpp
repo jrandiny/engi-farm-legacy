@@ -11,7 +11,7 @@
 
 TEST(Player, render){
     Player p;
-    ASSERT_EQ(p.render(),"P");
+    ASSERT_EQ(p.render(),"👨‍");
 }
 
 TEST(Player, constructor1){
@@ -34,22 +34,22 @@ TEST(Player, move){
     Player p(0,0,5,5);
     Map map(10,10);
     std::vector<std::shared_ptr<Cell>> playerSurr = map.getSurrounding(p.getPosX(),p.getPosY());
-    // playerSurr[Map::Up] = std::shared_ptr<Cell>(new Coop(0,0));
-    // playerSurr[Map::Down] = std::shared_ptr<Cell>(new Coop(0,0));
-    // playerSurr[Map::Left] = std::shared_ptr<Cell>(new Coop(0,0));
-    // playerSurr[Map::Right] = std::shared_ptr<Cell>(new Coop(0,0));
-    p.move(Map::Right,playerSurr);
-    ASSERT_EQ(p.getPosX(),6);
-    ASSERT_EQ(p.getPosY(),5);
-    p.move(Map::Down,playerSurr);
-    ASSERT_EQ(p.getPosX(),6);
-    ASSERT_EQ(p.getPosY(),6);
-    p.move(Map::Left,playerSurr);
-    ASSERT_EQ(p.getPosX(),5);
-    ASSERT_EQ(p.getPosY(),6);
-    p.move(Map::Up,playerSurr);
-    ASSERT_EQ(p.getPosX(),5);
-    ASSERT_EQ(p.getPosY(),5);
+
+    int posX = 5;
+    int posY = 5;
+
+    std::vector<int> dirX = {0,1,0,-1};
+    std::vector<int> dirY = {-1,0,1,0};
+
+    for(int i=0;i<3;i++){
+        if(!playerSurr[i]->isOccupied()){
+            p.move(i,playerSurr);
+            posX += dirX[i];
+            posY += dirY[i];
+        }
+        ASSERT_EQ(p.getPosX(),posX);
+        ASSERT_EQ(p.getPosY(),posY);
+    }
 }
 
 TEST(Player, talkWithAnimal){
