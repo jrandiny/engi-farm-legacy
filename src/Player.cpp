@@ -125,7 +125,7 @@ void Player::interact(Well&){
     if(water<MAX_WATER)
         water = MAX_WATER;
     else
-        throw std::runtime_error("Watering can is full")
+        throw std::runtime_error("Watering can is full");
 }
 void Player::interact(Truck& truck){
     if(truck.isUsable()){
