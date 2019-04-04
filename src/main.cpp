@@ -11,13 +11,13 @@
 #include <Product/FarmProduct/DuckEgg.h>
 #include <time.h>
 
-const int initialWater = 5;
+const int initialWater = 50;
 const int initialMoney = 0;
 // const int initialPosX = 0;
 // const int initialPosY = 0;
 
-const int mapHeight = 10;
-const int mapWidth = 10;
+const int mapHeight = 8;
+const int mapWidth = 8;
 
 int main(){
     Map map(mapWidth,mapHeight);
@@ -27,7 +27,7 @@ int main(){
     do{
         initialPosX = rand()%mapWidth;
         initialPosY = rand()%mapHeight;
-    } while (!map.getMap()[initialPosY][initialPosX]->isOccupied());
+    } while (map.getMap()[initialPosY][initialPosX]->isOccupied());
     Player player(initialWater,initialMoney,initialPosX,initialPosY);
     UI ui;
     bool action;
@@ -39,15 +39,16 @@ int main(){
     std::vector<std::shared_ptr<Cell>> playerSurr;
     std::vector<std::shared_ptr<FarmAnimal>> surroundingAnimal;
     std::vector<std::shared_ptr<Facility>> surroundingFacility;
-    player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    player.addBag(std::shared_ptr<Product>(new ChickenEgg()));
-    player.addBag(std::shared_ptr<Product>(new DuckEgg()));
-    player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    player.addBag(std::shared_ptr<Product>(new CowMeat()));
+    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
+    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
+    // player.addBag(std::shared_ptr<Product>(new ChickenEgg()));
+    // player.addBag(std::shared_ptr<Product>(new DuckEgg()));
+    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
+    // player.addBag(std::shared_ptr<Product>(new CowMeat()));
 
     quit = false;
-    while (!quit){
+    std::vector<std::shared_ptr<FarmAnimal>> animalNow = map.getAllFarmAnimal();
+    while (!quit && animalNow.size()>0){
         action = false;
         output = "";
         ui.drawMap(map, player);
@@ -57,6 +58,8 @@ int main(){
             command = input[0];
             param.clear();
             std::copy(input.begin()+1,input.end(),std::back_inserter(param));
+        } else {
+            command = "";
         }
 
         playerSurr = map.getSurrounding(player.getPosX(),player.getPosY());
@@ -181,11 +184,15 @@ int main(){
             output = "Wrong command";
         }
         if(action){
-            map.moveAllAnimal();
+            map.oneTick();
         }
 
         ui.drawTooltip(output);
-        
+        animalNow = map.getAllFarmAnimal();
+    }
+    if(!quit){
+        ui.drawTooltip("GAME OVER");
+        input = ui.getInput();
     }
     return 0;
 }
