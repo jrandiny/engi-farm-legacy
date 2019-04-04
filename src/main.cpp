@@ -5,16 +5,9 @@
 #include <algorithm>
 #include <utility>
 #include <UI.h>
-#include <Product/FarmProduct/CowMilk.h>
-#include <Product/FarmProduct/CowMeat.h>
-#include <Product/FarmProduct/ChickenEgg.h>
-#include <Product/FarmProduct/DuckEgg.h>
-#include <time.h>
 
 const int initialWater = 50;
 const int initialMoney = 0;
-// const int initialPosX = 0;
-// const int initialPosY = 0;
 
 const int mapHeight = 8;
 const int mapWidth = 8;
@@ -22,13 +15,16 @@ const int mapWidth = 8;
 int main(){
     Map map(mapWidth,mapHeight);
 
-    int initialPosX = rand()%mapWidth;
-    int initialPosY = rand()%mapHeight;
+    int initialPosX;
+    int initialPosY;
     do{
         initialPosX = rand()%mapWidth;
         initialPosY = rand()%mapHeight;
+        // find the position that is not occupied
     } while (map.getMap()[initialPosY][initialPosX]->isOccupied());
+    // initialize player
     Player player(initialWater,initialMoney,initialPosX,initialPosY);
+    // kamus
     UI ui;
     bool action;
     bool quit;
@@ -39,33 +35,33 @@ int main(){
     std::vector<std::shared_ptr<Cell>> playerSurr;
     std::vector<std::shared_ptr<FarmAnimal>> surroundingAnimal;
     std::vector<std::shared_ptr<Facility>> surroundingFacility;
-    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    // player.addBag(std::shared_ptr<Product>(new ChickenEgg()));
-    // player.addBag(std::shared_ptr<Product>(new DuckEgg()));
-    // player.addBag(std::shared_ptr<Product>(new CowMilk()));
-    // player.addBag(std::shared_ptr<Product>(new CowMeat()));
 
     quit = false;
+    // check number of animal
     std::vector<std::shared_ptr<FarmAnimal>> animalNow = map.getAllFarmAnimal();
-    while (!quit && animalNow.size()>0){
+    while (!quit && animalNow.size()>0){ // looping main
         action = false;
         output = "";
         ui.drawMap(map, player);
         ui.drawPlayerStat(player);
         input = ui.getInput();
+        // input validation
         if(input.size()==1 || (input.size()==2 && input[0]=="MIX")){
-            command = input[0];
-            param.clear();
+            command = input[0]; // get the command
+            param.clear();  // initialize param
+            //copy from input to param
             std::copy(input.begin()+1,input.end(),std::back_inserter(param));
         } else {
-            command = "";
+            // if input is wrong
+            command = ""; 
         }
-
+        // get the cells at player surrounding
         playerSurr = map.getSurrounding(player.getPosX(),player.getPosY());
-        if(command=="INTERACT"){
-            surroundingAnimal = map.getSurroundAnimal(player.getPosX(),player.getPosY());
+        // find the animal in surrounding
+        surroundingAnimal = map.getSurroundAnimal(player.getPosX(),player.getPosY());
+        if(command=="INTERACT"){ // command = interact
             if(surroundingAnimal.size()>0){
+                // there is animal found
                 try{
                     player.interact(*(surroundingAnimal[0]));
                     action = true;
@@ -73,13 +69,21 @@ int main(){
                     output = e.what();
                 }
             }else{
+                // no animal found, try find well
                 surroundingFacility = map.getSurroundFacility(player.getPosX(),player.getPosY(),Cell::WellType);
                 if(surroundingFacility.size()>0){
-                    player.interact(*(std::static_pointer_cast<Well>(surroundingFacility[0])));
-                    action = true;
+                    // there is well found
+                    try{
+                        player.interact(*(std::static_pointer_cast<Well>(surroundingFacility[0])));
+                        action = true;
+                    } catch (const std::runtime_error e){
+                        output = e.what();
+                    }
                 } else {
+                    // no well found, try find truck
                     surroundingFacility = map.getSurroundFacility(player.getPosX(),player.getPosY(),Cell::TruckType);
                     if(surroundingFacility.size()>0){
+                        // there is truck found
                         try{
                             player.interact(*(std::static_pointer_cast<Truck>(surroundingFacility[0])));
                             action = true;
@@ -87,22 +91,22 @@ int main(){
                             output = e.what();
                         }
                     } else {
+                        // nothing in player surrounding
                         output = "Can't interact";
                     }
                 }
             }
         }else if(command=="TALK"){ //command = talk
-            surroundingAnimal = map.getSurroundAnimal(player.getPosX(),player.getPosY());
-
             if(surroundingAnimal.size()>0){
+                // there is animal found
                 output = player.talk(*(surroundingAnimal[0]));
                 action = true;
             }else{
                 output = "No animal found";
             }
         }else if(command=="KILL"){ //command = kill
-            surroundingAnimal = map.getSurroundAnimal(player.getPosX(),player.getPosY());
             if(surroundingAnimal.size()>0){
+                // there is animal found
                 try{
                     player.kill(*(surroundingAnimal[0]));
                     action = true;
@@ -113,7 +117,8 @@ int main(){
                 output = "No animal found";
             }
         }else if(command=="GROW"){ //command = grow
-            std::shared_ptr<Land> land = std::static_pointer_cast<Land>(map.getMap()[player.getPosY()][player.getPosX()]); // land sekarang
+            // get Land on player current position
+            std::shared_ptr<Land> land = std::static_pointer_cast<Land>(map.getMap()[player.getPosY()][player.getPosX()]);
             try{
                 player.grow(*(land));
                 action = true;
@@ -121,9 +126,12 @@ int main(){
                 output=e.what();
             }
         }else if(command=="MIX"){ //command = mix
+            // find the mixer nearby
             surroundingFacility = map.getSurroundFacility(player.getPosX(),player.getPosY(),Cell::MixerType);
-            if(surroundingFacility.size()>0 && param.size()>0){
+            if(surroundingFacility.size()>0){
+                // there is mixer found
                 if(param[0]=="BEEFROLADE"){
+                    // side product is beef rolade
                     try{
                         player.mix(Product::BeefRoladeType);
                         action = true;
@@ -131,6 +139,7 @@ int main(){
                         output = e.what();
                     }
                 } else if(param[0] == "EGGBENEDICT"){
+                    // side product is egg benedict
                     try{
                         player.mix(Product::EggBenedictType);
                         action = true;
@@ -138,6 +147,7 @@ int main(){
                         output = e.what();
                     }
                 }else if(param[0] == "MEATZA"){
+                    // side product is meatza
                     try{
                         player.mix(Product::MeatzaType);
                         action = true;
@@ -145,52 +155,57 @@ int main(){
                         output = e.what();
                     }
                 }else{
+                    // no side product found
                     output = "Invalid recipe";
                 }
             }else{
-                output = "Invalid input";
+                // no mixer nearby
+                output = "No mixer found";
             }
-        }else if(command=="UP"){
+        }else if(command=="UP"){ // command = up
             try{
                 player.move(Map::Up, playerSurr);
                 action = true;
             }catch (const std::runtime_error e){
                 output = e.what();
             }
-        }else if(command=="DOWN"){
+        }else if(command=="DOWN"){ // command = down
             try{
                 player.move(Map::Down, playerSurr);
                 action = true;
             }catch (const std::runtime_error e){
                 output = e.what();
             }
-        }else if(command=="LEFT"){
+        }else if(command=="LEFT"){ // command = left
             try{
                 player.move(Map::Left, playerSurr);
                 action = true;
             }catch (const std::runtime_error e){
                 output = e.what();
             }
-        }else if(command=="RIGHT"){
+        }else if(command=="RIGHT"){ // command = right
             try{
                 player.move(Map::Right, playerSurr);
                 action = true;
             }catch (const std::runtime_error e){
                 output = e.what();
             }
-        }else if(command=="QUIT"){
+        }else if(command=="QUIT"){ // command = quit
             quit=true;
         }else {
+            // can't recognize command
             output = "Wrong command";
         }
+
         if(action){
+            // if there is action happend
             map.oneTick();
         }
-
         ui.drawTooltip(output);
         animalNow = map.getAllFarmAnimal();
     }
     if(!quit){
+        // if all animal is dead
         ui.drawTooltip("GAME OVER");
         input = ui.getInput();
     }
