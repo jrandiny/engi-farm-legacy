@@ -15,3 +15,11 @@ Facility::Facility(int _x, int _y, CellType _type):Cell(_x,_y,_type){
 bool Facility::isUsable() const{
     return usable;
 }
+
+short Facility::getFgColor(){
+    return 0;
+}
+
+short Facility::getBgColor(){
+    return 7;
+}

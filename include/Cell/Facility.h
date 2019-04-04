@@ -33,6 +33,9 @@ class Facility: public Cell{
          */
         bool isUsable() const;
 
+        short getFgColor();
+        short getBgColor();
+
 
     protected:
         /**
