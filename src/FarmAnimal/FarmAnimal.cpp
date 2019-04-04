@@ -15,9 +15,7 @@
 FarmAnimal::FarmAnimal(int x, int y, int time,Cell::CellType type):timeToHungry(time),habitat(type){
     posX = x;
     posY = y;
-    setAndActivate(timeToHungry);
-    eatStatus=true;
-    deathStatus = false;
+    setDeathStatus(false);
 }
 
 void FarmAnimal::setEatStatus(bool newStatus){
@@ -97,7 +95,7 @@ void FarmAnimal::moveRandom(std::vector<std::shared_ptr<Cell>> sekitar){
 
     // makan
     if(!eatStatus && now->haveGrass()){
-        eatStatus= true;
+        setEatStatus(true);
         now->removeGrass();
     }
 
@@ -109,8 +107,7 @@ int FarmAnimal::getHabitat(){
 
 void FarmAnimal::callback(){
     if(eatStatus){
-        eatStatus = false;
-        setAndActivate(timeToDeath);
+        setEatStatus(false);
     }else{
         deathStatus = true;
     }
