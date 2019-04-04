@@ -205,14 +205,10 @@ void UI::drawMap(Map in, Player P){
             colorPairIndex = idx->second;
         }
 
-        if(animal->getEatStatus()){
-            mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
-        }else{
-            init_pair(colorPairIndex,COLOR_WHITE,COLOR_RED);
-            wattron(mapPanel,COLOR_PAIR(colorPairIndex));
-            mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
-            wattroff(mapPanel,COLOR_PAIR(colorPairIndex));
-        }
+        init_pair(colorPairIndex,animal->getFgColor(),animal->getBgColor());
+        wattron(mapPanel,COLOR_PAIR(colorPairIndex));
+        mvwaddch(mapPanel, posy, posx-1, animal->render()[0]);
+        wattroff(mapPanel,COLOR_PAIR(colorPairIndex));
     }
 
     // Waiter

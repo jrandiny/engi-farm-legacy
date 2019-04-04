@@ -121,3 +121,15 @@ int FarmAnimal::getX() const{
 int FarmAnimal::getY() const{
     return posY;
 }
+
+short FarmAnimal::getBgColor(){
+    if (getEatStatus()){
+        return 0;
+    }else{
+        return 1;
+    }
+}
+
+short FarmAnimal::getFgColor(){
+    return 7;
+}

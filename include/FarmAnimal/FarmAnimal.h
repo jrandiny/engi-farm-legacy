@@ -108,6 +108,20 @@ class FarmAnimal : public Renderable, public TimerObject{
          */
         int getY() const;
 
+        /**
+         * @brief Fungsi pure virtual yang mengembalikan warna foreground
+         * 
+         * @return short warna foreground
+         */
+        virtual short getFgColor();
+
+        /**
+         * @brief Fungsi pure virtual yang mengembalikan warna background
+         * 
+         * @return short warna background
+         */
+        virtual short getBgColor();
+
     protected:
         /**
          * @brief Atribut yang menentukan waktu kelaparan hewan
