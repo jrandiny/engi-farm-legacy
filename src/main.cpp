@@ -55,6 +55,7 @@ int main(){
         input = ui.getInput();
         if(input.size()==1 || (input.size()==2 && input[0]=="MIX")){
             command = input[0];
+            param.clear();
             std::copy(input.begin()+1,input.end(),std::back_inserter(param));
         }
 
