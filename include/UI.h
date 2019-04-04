@@ -63,6 +63,8 @@ class UI{
          */
         void drawTooltip(std::string input);
 
+        void refreshLayout();
+
     private:
         const int bottomBarHeight = 3;
         const int titleBarHeight = 4;

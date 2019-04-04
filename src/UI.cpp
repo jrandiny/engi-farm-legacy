@@ -5,8 +5,6 @@
 #include <sstream>
 
 UI::UI(){
-    int parentX,parentY;
-
     setlocale(LC_ALL, "");
 
     initscr();
@@ -16,6 +14,17 @@ UI::UI(){
     refresh();
 
     start_color();
+
+    refreshLayout();
+    
+}
+
+UI::~UI(){
+    endwin();
+}
+
+void UI::refreshLayout(){
+    int parentX,parentY;
 
     getmaxyx(stdscr, parentY, parentX);
 
@@ -44,10 +53,6 @@ UI::UI(){
     wrefresh(inventoryPanel);
     wrefresh(waterPanel);
     wrefresh(moneyPanel);
-}
-
-UI::~UI(){
-    endwin();
 }
 
 void UI::drawBorders(WINDOW *screen){
@@ -224,7 +229,7 @@ std::vector<std::string> UI::getInput(){
             }
         }else if(tempInput == KEY_RESIZE){
             output = std::string("RESIZE");
-            // refreshLayout(gs);
+            refreshLayout();
             finishReading = true;
         }else if(tempInput == KEY_UP){
             output = std::string("UP");
