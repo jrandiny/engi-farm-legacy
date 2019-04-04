@@ -6,23 +6,32 @@
 #include <utility>
 #include <UI.h>
 #include <Product/FarmProduct/CowMilk.h>
+#include <Product/FarmProduct/CowMeat.h>
 #include <Product/FarmProduct/ChickenEgg.h>
 #include <Product/FarmProduct/DuckEgg.h>
 #include <time.h>
 
 const int initialWater = 5;
 const int initialMoney = 0;
-const int initialPosX = 0;
-const int initialPosY = 0;
+// const int initialPosX = 0;
+// const int initialPosY = 0;
 
 const int mapHeight = 10;
 const int mapWidth = 10;
 
 int main(){
-    Player player(initialWater,initialMoney,initialPosX,initialPosY);
     Map map(mapWidth,mapHeight);
+
+    int initialPosX = rand()%mapWidth;
+    int initialPosY = rand()%mapHeight;
+    do{
+        initialPosX = rand()%mapWidth;
+        initialPosY = rand()%mapHeight;
+    } while (!map.getMap()[initialPosY][initialPosX]->isOccupied());
+    Player player(initialWater,initialMoney,initialPosX,initialPosY);
     UI ui;
     bool action;
+    bool quit;
     std::vector<std::string> input;
     std::string command;
     std::vector<std::string> param;
@@ -35,8 +44,10 @@ int main(){
     player.addBag(std::shared_ptr<Product>(new ChickenEgg()));
     player.addBag(std::shared_ptr<Product>(new DuckEgg()));
     player.addBag(std::shared_ptr<Product>(new CowMilk()));
+    player.addBag(std::shared_ptr<Product>(new CowMeat()));
 
-    while (1){
+    quit = false;
+    while (!quit){
         action = false;
         output = "";
         ui.drawMap(map, player);
@@ -163,6 +174,8 @@ int main(){
             }catch (const std::runtime_error e){
                 output = e.what();
             }
+        }else if(command=="QUIT"){
+            quit=true;
         }else {
             output = "Wrong command";
         }
