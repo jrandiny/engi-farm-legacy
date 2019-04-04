@@ -23,13 +23,13 @@ Map::Map(int _width,int _height):width(_width),height(_height){
     std::vector<Cell::CellType> urutan;
     srand (time(NULL));
     map.resize(height);
-    for(int i=0;i<width;i++){
+    for(int i=0;i<height;i++){
         map[i].resize(width);
     }
     //random bool
     horizon = rand()%2;
-    x = rand()%(_width/4)+(_width/3);
-    y = rand()%(_height/4)+(_height/3);
+    x = rand()%(width/4)+(width/3);
+    y = rand()%(height/4)+(height/3);
     urutan.push_back(Cell::BarnType);
     urutan.push_back(Cell::CoopType);
     urutan.push_back(Cell::GrassLandType);
@@ -40,19 +40,19 @@ Map::Map(int _width,int _height):width(_width),height(_height){
     luas = (x+1)*(y+1);
     randomAnimalMap(0,0,x,y,urutan[0],rand()%(luas/divider)+minAnimal);
     if(horizon){
-        setCellMap(0,y+1,_width-1,_height-1,urutan[1]);
-        setCellMap(x+1,0,_width-1,y,urutan[2]);
-        luas = (_width)*(_height-y-1);
-        randomAnimalMap(0,y+1,_width-1,_height-1,urutan[1],rand()%(luas/divider)+minAnimal);
-        luas = (_width-x-1)*(y+1);
-        randomAnimalMap(x+1,0,_width-1,y,urutan[2],rand()%(luas/divider)+minAnimal);
+        setCellMap(0,y+1,width-1,height-1,urutan[1]);
+        setCellMap(x+1,0,width-1,y,urutan[2]);
+        luas = (width)*(height-y-1);
+        randomAnimalMap(0,y+1,width-1,height-1,urutan[1],rand()%(luas/divider)+minAnimal);
+        luas = (width-x-1)*(y+1);
+        randomAnimalMap(x+1,0,width-1,y,urutan[2],rand()%(luas/divider)+minAnimal);
     } else {
-        setCellMap(0,y+1,x,_height-1,urutan[1]);
-        setCellMap(x+1,0,_width-1,_height-1,urutan[2]);
-        luas = (x+1)*(_height-y-1);
-        randomAnimalMap(0,y+1,x,_height-1,urutan[1],rand()%(luas/divider)+minAnimal);
-        luas = (_width-x-1)*(_height);
-        randomAnimalMap(x+1,0,_width-1,_height-1,urutan[2],rand()%(luas/divider)+minAnimal);
+        setCellMap(0,y+1,x,height-1,urutan[1]);
+        setCellMap(x+1,0,width-1,height-1,urutan[2]);
+        luas = (x+1)*(height-y-1);
+        randomAnimalMap(0,y+1,x,height-1,urutan[1],rand()%(luas/divider)+minAnimal);
+        luas = (width-x-1)*(height);
+        randomAnimalMap(x+1,0,width-1,height-1,urutan[2],rand()%(luas/divider)+minAnimal);
     }
 
     setFacility(1,Cell::TruckType);
@@ -126,9 +126,6 @@ void Map::setCellMap(int xFrom, int yFrom, int xTo, int yTo, Cell::CellType type
             }
             std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[j][i]);
             temp->addGrass();
-            // if(grass>3){
-            // }
-
         }
     }
 }

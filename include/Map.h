@@ -137,8 +137,16 @@ class Map{
          */
         std::vector<std::shared_ptr<FarmAnimal>> getAllFarmAnimal() const;
 
-
+        /**
+         * @brief melakukan aksi pada seluruh elemen map pada setiap tick
+         * 
+         * melakukan moveRandom pada farmAnimal
+         * menghapus farmAnimal yang telah mati
+         * dan memanggil tick pada farmAnimal dan truck
+         * 
+         */
         void oneTick();
+        
     private:
         std::vector<std::vector<std::shared_ptr<Cell>>> map;
         std::vector<std::shared_ptr<Land>> land;
