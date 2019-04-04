@@ -9,7 +9,7 @@
 #include <FarmAnimal/Duck.h>
 #include <iostream>
 
-Duck::Duck(int x, int y):FarmAnimal(x,y,10,Cell::CellType::CoopType){
+Duck::Duck(int x, int y):FarmAnimal(x,y,15,Cell::CellType::CoopType){
 }
 
 std::string Duck::speak(){

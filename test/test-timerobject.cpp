@@ -32,7 +32,7 @@ TEST(TimerObject, animalTimer){
     ASSERT_TRUE(chick.getEatStatus());
     ASSERT_FALSE(chick.getDeathStatus());
     //timeToHungry Chicken=10
-    for(int i=0;i<11;i++){//tick ke 11 berarti ketika timer=0
+    for(int i=0;i<16;i++){//tick ke 11 berarti ketika timer=0
         chick.tick();
     }
     ASSERT_FALSE(chick.getEatStatus());
@@ -42,7 +42,7 @@ TEST(TimerObject, animalTimer){
     ASSERT_TRUE(chick.getEatStatus());
     ASSERT_FALSE(chick.getDeathStatus());
     // timeToHungry Chicken=10
-    for(int i=0;i<11;i++){//tick ke 11 berarti ketika timer=0
+    for(int i=0;i<16;i++){//tick ke 11 berarti ketika timer=0
         chick.tick();
     }
     ASSERT_FALSE(chick.getEatStatus());

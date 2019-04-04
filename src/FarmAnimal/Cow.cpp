@@ -9,7 +9,7 @@
 #include <FarmAnimal/Cow.h>
 #include <iostream>
 
-Cow::Cow(int x, int y,Cell::CellType type):FarmAnimal(x,y,10,type){
+Cow::Cow(int x, int y,Cell::CellType type):FarmAnimal(x,y,15,type){
 }
 
 std::string Cow::speak(){
