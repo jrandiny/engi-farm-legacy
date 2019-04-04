@@ -18,7 +18,7 @@
 Map::Map(int _width,int _height):width(_width),height(_height){
     int x, y;
     bool horizon;
-    const int divider = 3;
+    const int divider = 5;
     const int minAnimal = 2;
     const int maxFacility =3;
     const int minFacility =1;
@@ -30,8 +30,8 @@ Map::Map(int _width,int _height):width(_width),height(_height){
     }
     //random bool
     horizon = rand()%2;
-    x = rand()%(_width/2)+(_width/4);
-    y = rand()%(_height/2)+(_height/4);
+    x = rand()%(_width/4)+(_width/3);
+    y = rand()%(_height/4)+(_height/3);
     urutan.push_back(Cell::BarnType);
     urutan.push_back(Cell::CoopType);
     urutan.push_back(Cell::GrassLandType);
@@ -346,14 +346,18 @@ std::vector<std::shared_ptr<Facility>> Map::getSurroundFacility(int x, int y, Ce
 }
 
 void Map::moveAllAnimal(){
+    int chance;
     for(int i=0;i<(int)farmAnimal.size();i++){
         if(farmAnimal[i]->getDeathStatus()){
             std::shared_ptr<Land> temp = std::static_pointer_cast<Land>(map[farmAnimal[i]->getY()][farmAnimal[i]->getX()]);
             temp->unoccupy();
             farmAnimal.erase(i+farmAnimal.begin());
         } else {
-            std::vector<std::shared_ptr<Cell>> temp = getSurrounding(farmAnimal[i]->getX(),farmAnimal[i]->getY());
-            farmAnimal[i]->moveRandom(temp);
+            chance = rand()%10;
+            if(chance>6 || !farmAnimal[i]->getEatStatus()){
+                std::vector<std::shared_ptr<Cell>> temp = getSurrounding(farmAnimal[i]->getX(),farmAnimal[i]->getY());
+                farmAnimal[i]->moveRandom(temp);
+            }
             farmAnimal[i]->tick();
         }
     }
